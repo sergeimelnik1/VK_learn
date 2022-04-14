@@ -22,7 +22,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         self.tableView.dataSource = self
-
         // Uncomment the following line to preserve selection between presentations
 //         self.clearsSelectionOnViewWillAppear = false
 
@@ -60,7 +59,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
         if segue.identifier == "toCurrentFriendViewController", let cell = sender as? UITableViewCell {
             let ctrl = segue.destination as! CurrentFriendViewController
             if let indexPath = tableView.indexPath(for: cell) {
-                ctrl.friend.name = friends[indexPath.row].name
+                ctrl.friend.name = friends[indexPath.row].name //везде все передается
             }
         }
     }

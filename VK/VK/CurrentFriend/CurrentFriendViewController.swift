@@ -14,16 +14,23 @@ class CurrentFriendViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
+        self.collectionView.dataSource = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+//        self.collectionView.register(CurrentFriendCell.self, forCellWithReuseIdentifier: "CurrentFriendCell")
+        collectionView.reloadData()
         // Do any additional setup after loading the view.
     }
-
+    func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
+        let totalWidth = cellWidth * numberOfItems
+        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
+        let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+    }
     /*
     // MARK: - Navigation
 
@@ -48,14 +55,14 @@ class CurrentFriendViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendCell", for: indexPath) as! CurrentFriendCell
-        
-        cell.friendName.text = friend.name
-        cell.friendImage.image = UIImage(named: "VK_Compact_Logo")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentFriendCell", for: indexPath) as! CurrentFriendCell
+        cell.setup(name: friend.name, image: UIImage(named: "VK_Compact_Logo") ?? UIImage())
+//        cell.friendName.text = friend.name
+//        cell.friendImage.image = UIImage(named: "VK_Compact_Logo")
         return cell
     }
     
-
+    
     // MARK: UICollectionViewDelegate
 
     /*

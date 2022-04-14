@@ -10,19 +10,25 @@ import UIKit
 class AllGroupsViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-
+    @IBAction func addButtonPressed(_ sender: Any) {
+        showAddGroupForm()
+    }
     var groups = [
     "Точка кипения ТвГУ",
     "Студенческий совет ТвГУ",
     "Арт-буфет Кафедра"
     ]
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         self.tableView.dataSource = self
+        //тут не добавляется кнопка
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddGroupForm))
+        //navigationItem.rightBarButtonItem = addButton
+       // navigationController?.navigationItem.rightBarButtonItem = addButton
+        let rightButton = UIBarButtonItem.init(title: "Title", style: .plain, target: self, action: #selector(showAddGroupForm))
+        navigationItem.rightBarButtonItem = rightButton
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,7 +38,33 @@ class AllGroupsViewController: UIViewController, UITableViewDataSource {
 //        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         tableView.reloadData()
     }
-
+    
+    func addGroup(newGroupName: String) {
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            // получаем город по индексу
+            let group = self.groups[indexPath.row]
+            //проверяем есть ли такой элемент в массиве
+            if !groups.contains(group){
+                //добавляем
+                groups.append(newGroupName)
+                //перезагружаем всю таблицу
+                tableView.reloadData()
+            }
+        }
+    }
+    @objc func showAddGroupForm() {
+        let alertController = UIAlertController(title: "Введите группу", message: nil, preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
+        })
+        let confirmAction = UIAlertAction(title: "Добавить", style: .default) { [weak self] action in
+            guard let name = alertController.textFields?[0].text else { return }
+            self?.addGroup(newGroupName: name)
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: {  })
+    }
     // MARK: - Table view data source
 
      func numberOfSections(in tableView: UITableView) -> Int {
