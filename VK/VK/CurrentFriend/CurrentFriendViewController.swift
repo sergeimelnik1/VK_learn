@@ -10,7 +10,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class CurrentFriendViewController: UICollectionViewController {
-    var friend = Friend(name: "")
+    var friend: Friend? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -56,9 +56,8 @@ class CurrentFriendViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentFriendCell", for: indexPath) as! CurrentFriendCell
-        cell.setup(name: friend.name, image: UIImage(named: "VK_Compact_Logo") ?? UIImage())
-//        cell.friendName.text = friend.name
-//        cell.friendImage.image = UIImage(named: "VK_Compact_Logo")
+//        guard let name = friend.name, let image = friend.image200 else { return }
+        cell.setup(name: friend!.name, image: friend!.image200)
         return cell
     }
     

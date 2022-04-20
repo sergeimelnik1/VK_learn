@@ -11,9 +11,12 @@ class CurrentFriendCell: UICollectionViewCell {
     @IBOutlet weak var friendImage: UIImageView!
     @IBOutlet weak var friendName: UILabel!
     
-    
-    func setup(name: String, image: UIImage) {
-        friendImage.image = image
+    func setup(name: String, image: String) {
         friendName.text = name
+        do {
+            try friendImage.image = UIImage(data: NSData(contentsOf: image.asURL()) as Data )
+        } catch {
+            print(error)
+        }
     }
 }

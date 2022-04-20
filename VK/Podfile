@@ -7,7 +7,6 @@ target 'VK' do
 
   # Pods for VK
   pod 'Alamofire', '~> 5.5'
-  pod 'SwiftKeychainWrapper'
   pod 'RealmSwift'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end

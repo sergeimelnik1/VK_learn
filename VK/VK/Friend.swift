@@ -6,14 +6,23 @@
 //
 
 import Foundation
+import SwiftyJSON
+import RealmSwift
 
-struct Friend {
+class Friend: Object {
+    @objc dynamic var id = 0
+    @objc dynamic var name = ""
+    @objc dynamic var image50 = ""
+    @objc dynamic var image200 = ""
     
-    var name: String
-//    var type: GroupType
+    convenience init(with json: JSON) {
+        self.init()
+        func primaryKey() -> String? {
+                return "id"
+            }
+        self.id = json["id"].intValue
+        self.name = json["first_name"].stringValue + " " + json["last_name"].stringValue
+        self.image50 = json["photo_50"].stringValue
+        self.image200 = json["photo_200_orig"].stringValue
+    }
 }
-
-//enum GroupType: String {
-//    case myGroup = "Мои группы"
-//    case allGroup = "Все группы"
-//}
