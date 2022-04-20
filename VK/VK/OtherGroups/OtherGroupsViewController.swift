@@ -32,7 +32,6 @@ class OtherGroupsViewController: UIViewController, UITableViewDataSource, UITabl
         self.tableView.dataSource = self
         self.tableView.delegate = self
 //        https://debash.medium.com/uisearchcontroller-48dbc0f4cb63
-        
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Поиск по группам..."
@@ -67,23 +66,6 @@ class OtherGroupsViewController: UIViewController, UITableViewDataSource, UITabl
             tableView.deselectRow(at: indexPath, animated: true)
     //some code
     }
-    // MARK: - Navigation
-//    //это если нам надо прыгать на другой экран и передавать туда данные для отображения детальной информации выбранной группы
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let group: Group
-//                if isFiltering {
-//                    group = filteredGroups[indexPath.row]
-//                } else {
-//                    group = groups[indexPath.row]
-//                }
-////                let detailVC = segue.destination as! DetailViewController
-////                detailVC.group = group
-//            }
-//        }
-//    }
-    
 }
 // MARK: - UISearchResultsUpdating Delegate
 extension OtherGroupsViewController: UISearchResultsUpdating {
@@ -102,9 +84,9 @@ extension OtherGroupsViewController: UISearchResultsUpdating {
             self.groups = []
             self.tableView.reloadData()
         }
-        
     }
 }
+
 extension OtherGroupsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
             filterContentForSearchText(searchBar.text!)

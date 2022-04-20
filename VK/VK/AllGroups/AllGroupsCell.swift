@@ -9,13 +9,13 @@ import UIKit
 
 class AllGroupsCell: UITableViewCell {
 
-    @IBOutlet weak var groupName: UILabel!
-    @IBOutlet weak var groupImage: UIImageView!
+    @IBOutlet private weak var groupName: UILabel!
+    @IBOutlet private weak var groupImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        groupImage.layer.cornerRadius = 15.0;
-        groupImage.layer.masksToBounds = true;
+        self.groupImage.layer.cornerRadius = 15.0;
+        self.groupImage.layer.masksToBounds = true;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,9 +23,9 @@ class AllGroupsCell: UITableViewCell {
     }
 
     func setup(group: Group) {
-        groupName.text = group.name
+        self.groupName.text = group.name
         do {
-            try groupImage.image = UIImage(data: NSData(contentsOf: group.image50.asURL()) as Data )
+            try self.groupImage.image = UIImage(data: NSData(contentsOf: group.image50.asURL()) as Data)
         } catch {
             print(error)
         }

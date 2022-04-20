@@ -9,30 +9,25 @@ import UIKit
 
 class OtherGroupsCell: UITableViewCell {
     
-    @IBOutlet weak var groupImage: UIImageView!
-    @IBOutlet weak var groupName: UILabel!
-    @IBOutlet weak var followersCount: UILabel!
+    @IBOutlet private weak var groupImage: UIImageView!
+    @IBOutlet private weak var groupName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        groupImage.layer.cornerRadius = 15;
-        groupImage.layer.masksToBounds = true;
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     func setup(group: Group) {
-        
         do {
             try groupImage.image = UIImage(data: NSData(contentsOf: group.image50.asURL()) as Data )
         } catch {
             print(error)
         }
         groupName.text = group.name
-//        followersCount.text = String(group.countMembers)
+        //делаем закругление красивое
+        self.groupImage.layer.cornerRadius = 15;
+        self.groupImage.layer.masksToBounds = true;
     }
 }

@@ -202,7 +202,7 @@
                             <constraint firstItem="bbr-o2-QbT" firstAttribute="trailing" secondItem="Jh1-A4-ieM" secondAttribute="trailing" id="ppp-lT-3MR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Группы" selectedImage="rectangle.3.group.bubble.left" catalog="system" id="9cT-gh-6oW"/>
+                    <tabBarItem key="tabBarItem" title="Группы" image="rectangle.3.group.bubble.left.fill" catalog="system" landscapeImage="rectangle.3.group.bubble.left" largeContentSizeImage="rectangle.3.group.bubble.left" selectedImage="rectangle.3.group.bubble.left" springLoaded="YES" id="9cT-gh-6oW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="Jh1-A4-ieM" id="684-ct-6bT"/>
@@ -260,7 +260,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Друзья" selectedImage="face.smiling" catalog="system" id="Le3-g3-BPd"/>
+                    <tabBarItem key="tabBarItem" title="Друзья" image="person" catalog="system" selectedImage="person" id="Le3-g3-BPd"/>
                     <navigationItem key="navigationItem" title="Title" id="VJ0-Oq-xVN"/>
                     <connections>
                         <outlet property="tableView" destination="pSa-hX-ueR" id="Ssc-FR-LtI"/>
@@ -440,8 +440,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="face.smiling" catalog="system" width="32" height="32"/>
+        <image name="person" catalog="system" width="32" height="32"/>
         <image name="rectangle.3.group.bubble.left" catalog="system" width="32" height="32"/>
+        <image name="rectangle.3.group.bubble.left.fill" catalog="system" width="32" height="32"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

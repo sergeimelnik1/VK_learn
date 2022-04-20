@@ -11,16 +11,27 @@ import RealmSwift
 class FriendsViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var friends: Results<Friend>?
-
-//    var friends: [Friend] = []
+    private var friends: Results<Friend>?
     
+    let myRefreshControl: UIRefreshControl = {
+    let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         self.tableView.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
+        self.tableView.refreshControl = myRefreshControl
+        
+        self.loadData()
+    }
+    
+    @objc func refresh(sender: UIRefreshControl){
         loadData()
+        self.tableView.reloadData()
+        sender.endRefreshing()
     }
     
     // MARK: - Table view data source
@@ -65,9 +76,9 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
             print(error)
         }
     }
+    //принудительное скрытие кнопки back
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.hidesBackButton = true
     }
-    
 }

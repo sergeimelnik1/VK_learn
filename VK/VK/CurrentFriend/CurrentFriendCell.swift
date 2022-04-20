@@ -8,13 +8,13 @@
 import UIKit
 
 class CurrentFriendCell: UICollectionViewCell {
-    @IBOutlet weak var friendImage: UIImageView!
-    @IBOutlet weak var friendName: UILabel!
+    @IBOutlet private weak var friendImage: UIImageView!
+    @IBOutlet private weak var friendName: UILabel!
     
     func setup(name: String, image: String) {
-        friendName.text = name
+        self.friendName.text = name
         do {
-            try friendImage.image = UIImage(data: NSData(contentsOf: image.asURL()) as Data )
+            try self.friendImage.image = UIImage(data: NSData(contentsOf: image.asURL()) as Data )
         } catch {
             print(error)
         }

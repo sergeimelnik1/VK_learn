@@ -25,18 +25,17 @@ class CurrentFriendViewController: UICollectionViewController {
         let rightInset = leftInset
         return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentFriendCell", for: indexPath) as! CurrentFriendCell
         cell.setup(name: friend!.name, image: friend!.image200)
