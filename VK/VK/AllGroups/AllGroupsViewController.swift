@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AllGroupsViewController: UIViewController, UITableViewDataSource {
     
@@ -15,17 +16,12 @@ class AllGroupsViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        //        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.tableView.dataSource = self
-        AuthService.loadGroupList(success: { [weak self] groups in
-            self?.groups = groups
-            self?.tableView.reloadData()
-        })
-//        tableView.reloadData()
+        loadData()
     }
     
     // MARK: - Table view data source
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -44,6 +40,35 @@ class AllGroupsViewController: UIViewController, UITableViewDataSource {
         let group = groups[indexPath.row]
         cell.setup(group: group)
         return cell
+    }
+    
+    //обработка нажатия на конкретную группу
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toOtherGroups", let cell = sender as? UITableViewCell {
+            _ = segue.destination as! OtherGroupsViewController
+            if let indexPath = tableView.indexPath(for: cell) {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+    }
+
+    func loadData() {
+            do {
+                let realm = try Realm()
+                AuthService.loadGroupList()
+                let groups = realm.objects(Group.self)
+                
+                self.groups = Array(groups)
+                
+            } catch {
+    // если произошла ошибка, выводим ее в консоль
+                print(error)
+            }
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.hidesBackButton = true
     }
 
     /*

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OtherGroupsViewController: UIViewController, UITableViewDataSource {
+class OtherGroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
     lazy var searchUIBar:UISearchBar = UISearchBar()
@@ -20,15 +20,17 @@ class OtherGroupsViewController: UIViewController, UITableViewDataSource {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
     }
+    
     private var isFiltering: Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!searchBarIsEmpty || searchBarScopeIsFiltering)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         self.tableView.dataSource = self
+        self.tableView.delegate = self
 //        https://debash.medium.com/uisearchcontroller-48dbc0f4cb63
         
         searchController.searchResultsUpdater = self
@@ -50,8 +52,7 @@ class OtherGroupsViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }
-
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         // получаем ячейку из пула
@@ -61,6 +62,10 @@ class OtherGroupsViewController: UIViewController, UITableViewDataSource {
         group = groups[indexPath.row]
         cell.setup(group: group)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+    //some code
     }
     // MARK: - Navigation
 //    //это если нам надо прыгать на другой экран и передавать туда данные для отображения детальной информации выбранной группы

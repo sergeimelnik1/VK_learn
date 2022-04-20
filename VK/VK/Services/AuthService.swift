@@ -12,11 +12,11 @@ import SwiftyJSON
 
 class AuthService {
        
-    public static func loadFriendList(success: @escaping ([Friend]) -> ()) {
+    public static func loadFriendList() {
         let url = "https://api.vk.com/method/friends.get"
         let parameters: Parameters = [
             "v": "5.131",
-            "count": "100",
+            "count": "3000",
             "order": "hints",
             "fields" : ["nickname", "photo_50", "photo_200_orig"],
             "access_token": Singleton.sharedInstance().accessToken
@@ -26,13 +26,10 @@ class AuthService {
             do {
                 guard let data = repsons.value else { return }
                 let json = try JSON(data: data)
-                
                 let friends: [Friend] = json["response"]["items"].arrayValue.compactMap { Friend(with: $0) }
-//                print(json)
-                success(friends)
+//                success(friends)
                 //тут мы данные сохраняем в Realm
-//                self.saveFriendsData(friend: friends)
-//                print(json)
+                self.saveFriendsData(friends)
                 //тут отправка инфы, что данные поменялись
 //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadWeathers"), object: weathers)
                 
@@ -43,12 +40,12 @@ class AuthService {
         
     }
 
-    public static func loadGroupList(success: @escaping ([Group]) -> ()) {
+    public static func loadGroupList() {
         let url = "https://api.vk.com/method/groups.get"
         let parameters: Parameters = [
             "v": "5.131",
             "extended" : "1",
-            "count": "100",
+            "count": "1000",
             "fields" : ["name", "photo_50"],
             "access_token": Singleton.sharedInstance().accessToken
         ]
@@ -60,11 +57,9 @@ class AuthService {
                 print(json)
                 //ошибка в строке ниже
                 let groups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
-                success(groups)
+//                success(groups)
                 //тут мы данные сохраняем в Realm
-//                self.saveData(data: groups)
-//                print("Выгрузка по группам")
-//                print(json)
+                self.saveGroupsData(groups)
                 //тут отправка инфы, что данные поменялись
 //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadWeathers"), object: weathers)
                 
@@ -100,16 +95,16 @@ class AuthService {
         }
     }
     
-    // сохранение погодных данных в realm
+////     сохранение погодных данных в realm
 //    func saveFriendsData(friend: [Friend]) {
 //        // обработка исключений при работе с хранилищем
 //        do {
 //            // получаем доступ к хранилищу
 //            let realm = try Realm()
 //            // получаем друзей
+//            guard let friends = realm.object(ofType: Friend.self, forPrimaryKey: friends.id) else { return }
 //
-//
-//            guard let friends = realm.objects(Friend) else { return }
+////            guard let friends = realm.objects(Friend) else { return }
 //            // все старые погодные данные для текущего города
 //            let oldFriends = friends
 //            // начинаем изменять хранилище
@@ -125,6 +120,54 @@ class AuthService {
 //            print(error)
 //        }
 //    }
+    //сохранение друзей в realm
+    private static func saveFriendsData(_ friends: [Friend]) {
+        // обработка исключений при работе с хранилищем
+        do {
+            // получаем доступ к хранилищу
+            let realm = try Realm()
+            print(realm.configuration.fileURL)
+            // все старые данные друзей
+            let oldFriends = realm.objects(Friend.self)
+            // начинаем изменять хранилище
+            realm.beginWrite()
+            //удаляем старые данные
+            realm.delete(oldFriends)
+            // кладем все объекты класса друзей в хранилище
+            realm.add(friends)
+            
+            // завершаем изменять хранилище
+            try realm.commitWrite()
+        } catch {
+            // если произошла ошибка, выводим ее в консоль
+            print(error)
+        }
+    }
+    
+    //сохранение групп в realm
+        private static func saveGroupsData(_ groups: [Group]) {
+    // обработка исключений при работе с хранилищем
+            do {
+    // получаем доступ к хранилищу
+                let realm = try Realm()
+                print(realm.configuration.fileURL)
+                // все старые данные друзей
+                let oldGroups = realm.objects(Group.self)
+                // начинаем изменять хранилище
+                realm.beginWrite()
+                //удаляем старые данные
+                realm.delete(oldGroups)
+                // кладем все объекты класса друзей в хранилище
+                realm.add(groups)
+                
+    // завершаем изменять хранилище
+                try realm.commitWrite()
+            } catch {
+    // если произошла ошибка, выводим ее в консоль
+                print(error)
+            }
+        }
+
 }
 //func addNewSpecimen() {
 //  let realm = try! Realm() // 1
