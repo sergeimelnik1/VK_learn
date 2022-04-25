@@ -16,8 +16,8 @@ class Friend: Object {
     @objc dynamic var image200 = ""
     
     func primaryKey() -> String? {
-            return "id"
-        }
+        return "id"
+    }
     
     convenience init(with json: JSON) {
         self.init()

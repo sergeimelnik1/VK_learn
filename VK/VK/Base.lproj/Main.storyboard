@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -141,7 +142,7 @@
             </objects>
             <point key="canvasLocation" x="-2465.217391304348" y="-1664.0625"/>
         </scene>
-        <!--Группы-->
+        <!--Все мои группы-->
         <scene sceneID="Cvz-YV-YzK">
             <objects>
                 <viewController storyboardIdentifier="AllGroupsVC" id="KIB-wZ-qdp" customClass="AllGroupsViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +150,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jh1-A4-ieM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jh1-A4-ieM">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -173,13 +174,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CV2-z5-qsG">
+                                                    <rect key="frame" x="0.0" y="74" width="414" height="1"/>
+                                                    <color key="backgroundColor" systemColor="linkColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="8at-rk-Fk3"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QM7-BM-fZb" firstAttribute="centerY" secondItem="ROF-tl-YH4" secondAttribute="centerY" id="0Xd-uW-BU3"/>
+                                                <constraint firstAttribute="bottom" secondItem="CV2-z5-qsG" secondAttribute="bottom" id="46l-JE-bA8"/>
                                                 <constraint firstItem="ROF-tl-YH4" firstAttribute="centerY" secondItem="fuZ-5x-n5w" secondAttribute="centerY" id="ACh-cg-76T"/>
                                                 <constraint firstItem="ROF-tl-YH4" firstAttribute="leading" secondItem="fuZ-5x-n5w" secondAttribute="leadingMargin" constant="-4" id="Krw-UT-xPW"/>
                                                 <constraint firstItem="QM7-BM-fZb" firstAttribute="top" secondItem="fuZ-5x-n5w" secondAttribute="topMargin" constant="9" id="SC2-XD-tIB"/>
+                                                <constraint firstAttribute="trailing" secondItem="CV2-z5-qsG" secondAttribute="trailing" id="Y3e-iD-9Q7"/>
+                                                <constraint firstItem="CV2-z5-qsG" firstAttribute="leading" secondItem="fuZ-5x-n5w" secondAttribute="leading" id="fLz-vc-AhG"/>
                                                 <constraint firstItem="QM7-BM-fZb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ROF-tl-YH4" secondAttribute="trailing" constant="15" id="fNw-pX-cR1"/>
+                                                <constraint firstItem="CV2-z5-qsG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fuZ-5x-n5w" secondAttribute="top" constant="50" id="i8h-mf-T4N"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="QM7-BM-fZb" secondAttribute="trailing" constant="67" id="lfl-dV-ODr"/>
                                                 <constraint firstItem="QM7-BM-fZb" firstAttribute="leading" secondItem="ROF-tl-YH4" secondAttribute="trailing" constant="29" id="mFR-E1-cPE"/>
                                             </constraints>
@@ -187,7 +199,8 @@
                                         <connections>
                                             <outlet property="groupImage" destination="ROF-tl-YH4" id="3Ia-sU-ybP"/>
                                             <outlet property="groupName" destination="QM7-BM-fZb" id="cjr-ip-AIy"/>
-                                            <segue destination="MGE-PW-PeX" kind="show" identifier="toOtherGroups" id="e7K-Bt-FBB"/>
+                                            <outlet property="separatorView" destination="CV2-z5-qsG" id="u27-Pk-sGH"/>
+                                            <segue destination="MGE-PW-PeX" kind="show" identifier="toOtherGroups" id="RD9-xt-B8X"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -196,13 +209,16 @@
                         <viewLayoutGuide key="safeArea" id="bbr-o2-QbT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Jh1-A4-ieM" firstAttribute="top" secondItem="bbr-o2-QbT" secondAttribute="top" id="81O-9W-JA6"/>
                             <constraint firstItem="Jh1-A4-ieM" firstAttribute="leading" secondItem="bbr-o2-QbT" secondAttribute="leading" id="L1k-L2-Xft"/>
-                            <constraint firstItem="Jh1-A4-ieM" firstAttribute="top" secondItem="bbr-o2-QbT" secondAttribute="top" id="Ulf-Bn-1Xh"/>
                             <constraint firstItem="bbr-o2-QbT" firstAttribute="bottom" secondItem="Jh1-A4-ieM" secondAttribute="bottom" id="X73-ed-uIj"/>
                             <constraint firstItem="bbr-o2-QbT" firstAttribute="trailing" secondItem="Jh1-A4-ieM" secondAttribute="trailing" id="ppp-lT-3MR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Группы" image="rectangle.3.group.bubble.left.fill" catalog="system" landscapeImage="rectangle.3.group.bubble.left" largeContentSizeImage="rectangle.3.group.bubble.left" selectedImage="rectangle.3.group.bubble.left" springLoaded="YES" id="9cT-gh-6oW"/>
+                    <navigationItem key="navigationItem" title="Все мои группы" id="F8Y-mh-qGu">
+                        <barButtonItem key="rightBarButtonItem" title="Добавить группу" id="1pQ-6m-Xp7"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="Jh1-A4-ieM" id="684-ct-6bT"/>
@@ -217,10 +233,12 @@
         <scene sceneID="tH5-sq-Vlt">
             <objects>
                 <viewController storyboardIdentifier="FriendsVC" id="jit-Hg-QdY" customClass="FriendsViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pSa-hX-ueR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pSa-hX-ueR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="separatorColor" name="AccentColor"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="75" id="ppa-v2-EV0" customClass="FriendCell" customModule="VK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="75"/>
@@ -242,19 +260,30 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QI7-kX-lix">
+                                            <rect key="frame" x="0.0" y="74" width="414" height="1"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="OjA-uH-mSc"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="W7K-cj-YBV" firstAttribute="top" secondItem="YM2-so-JLz" secondAttribute="topMargin" constant="-1" id="39B-sf-Z8c"/>
                                         <constraint firstItem="W7K-cj-YBV" firstAttribute="centerY" secondItem="YM2-so-JLz" secondAttribute="centerY" id="6Nm-k8-83p"/>
                                         <constraint firstItem="W7K-cj-YBV" firstAttribute="leading" secondItem="YM2-so-JLz" secondAttribute="leading" constant="75" id="Kcj-NW-zfl"/>
+                                        <constraint firstAttribute="bottom" secondItem="QI7-kX-lix" secondAttribute="bottom" id="QM9-Cu-tO9"/>
+                                        <constraint firstItem="QI7-kX-lix" firstAttribute="leading" secondItem="YM2-so-JLz" secondAttribute="leading" id="agU-oB-a4L"/>
                                         <constraint firstItem="bIv-Ut-SpR" firstAttribute="centerY" secondItem="W7K-cj-YBV" secondAttribute="centerY" id="f4a-6y-xkR"/>
                                         <constraint firstItem="W7K-cj-YBV" firstAttribute="centerX" secondItem="YM2-so-JLz" secondAttribute="centerX" constant="28.5" id="iJq-V3-vbT"/>
+                                        <constraint firstAttribute="trailing" secondItem="QI7-kX-lix" secondAttribute="trailing" id="p8T-pe-7RG"/>
                                         <constraint firstItem="bIv-Ut-SpR" firstAttribute="leading" secondItem="YM2-so-JLz" secondAttribute="leadingMargin" id="tzQ-sv-4Mx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="friendImage" destination="bIv-Ut-SpR" id="dqF-HD-RQG"/>
                                     <outlet property="friendName" destination="W7K-cj-YBV" id="B36-jk-npy"/>
+                                    <outlet property="separatorView" destination="QI7-kX-lix" id="BAb-W5-yrP"/>
                                     <segue destination="o2t-ud-vI4" kind="show" identifier="toCurrentFriendViewController" id="5U8-3q-Xwp"/>
                                 </connections>
                             </tableViewCell>
@@ -363,8 +392,15 @@
         <!--Other Group-->
         <scene sceneID="Q5x-ga-LhC">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JFo-nD-ffM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="bd7-I2-57h">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="ZIb-I0-Al0"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
                 <tableViewController storyboardIdentifier="OtherGroupsVC" id="MGE-PW-PeX" userLabel="Other Group" customClass="OtherGroupsViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="0MB-EQ-z36">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="0MB-EQ-z36">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -389,20 +425,32 @@
                                                 <constraint firstAttribute="height" constant="56" id="6de-ql-AHb"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVv-hm-KjS">
+                                            <rect key="frame" x="0.0" y="74" width="414" height="1"/>
+                                            <color key="backgroundColor" systemColor="linkColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="gLf-Tp-kct"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="GZ3-Fz-vua" firstAttribute="centerY" secondItem="uKF-FB-LIj" secondAttribute="centerY" id="2BE-VM-lHr"/>
+                                        <constraint firstAttribute="bottom" secondItem="KVv-hm-KjS" secondAttribute="bottom" id="482-Ku-UJd"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eVq-c7-AkQ" secondAttribute="trailing" constant="15" id="QeW-TE-CUc"/>
+                                        <constraint firstAttribute="trailing" secondItem="KVv-hm-KjS" secondAttribute="trailing" id="WpF-8G-mI7"/>
                                         <constraint firstItem="GZ3-Fz-vua" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uKF-FB-LIj" secondAttribute="leading" constant="15" id="XDS-IX-Efq"/>
                                         <constraint firstItem="eVq-c7-AkQ" firstAttribute="leading" secondItem="uKF-FB-LIj" secondAttribute="leading" constant="84" id="dwE-13-G2E"/>
+                                        <constraint firstItem="KVv-hm-KjS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uKF-FB-LIj" secondAttribute="top" constant="15" id="fWp-6R-h4a"/>
                                         <constraint firstAttribute="trailing" secondItem="GZ3-Fz-vua" secondAttribute="trailing" constant="338" id="ifg-PB-92C"/>
                                         <constraint firstItem="eVq-c7-AkQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GZ3-Fz-vua" secondAttribute="trailing" constant="8" symbolic="YES" id="n1B-KO-62n"/>
+                                        <constraint firstItem="KVv-hm-KjS" firstAttribute="leading" secondItem="uKF-FB-LIj" secondAttribute="leading" id="r37-Ua-qq9"/>
                                         <constraint firstItem="eVq-c7-AkQ" firstAttribute="centerY" secondItem="uKF-FB-LIj" secondAttribute="centerY" id="ryh-RA-RWj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="groupImage" destination="GZ3-Fz-vua" id="Fhq-Ej-upn"/>
                                     <outlet property="groupName" destination="eVq-c7-AkQ" id="9Kk-pI-BBD"/>
+                                    <outlet property="separatorView" destination="KVv-hm-KjS" id="R3j-FC-pfu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -416,7 +464,6 @@
                         <outlet property="tableView" destination="0MB-EQ-z36" id="mnS-8r-MM2"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JFo-nD-ffM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="408.69565217391306" y="-1321.2053571428571"/>
         </scene>
@@ -440,14 +487,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="person" catalog="system" width="32" height="32"/>
-        <image name="rectangle.3.group.bubble.left" catalog="system" width="32" height="32"/>
-        <image name="rectangle.3.group.bubble.left.fill" catalog="system" width="32" height="32"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="rectangle.3.group.bubble.left" catalog="system" width="128" height="110"/>
+        <image name="rectangle.3.group.bubble.left.fill" catalog="system" width="128" height="110"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

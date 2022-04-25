@@ -9,15 +9,19 @@ import UIKit
 
 class OtherGroupsCell: UITableViewCell {
     
-    @IBOutlet private weak var groupImage: UIImageView!
+    @IBOutlet weak var groupImage: UIImageView!
     @IBOutlet private weak var groupName: UILabel!
-    
+    @IBOutlet private var separatorView: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    func hideSeparator() {
+        separatorView.isHidden = true
     }
     func setup(group: Group) {
         do {
@@ -26,8 +30,5 @@ class OtherGroupsCell: UITableViewCell {
             print(error)
         }
         groupName.text = group.name
-        //делаем закругление красивое
-        self.groupImage.layer.cornerRadius = 15;
-        self.groupImage.layer.masksToBounds = true;
     }
 }

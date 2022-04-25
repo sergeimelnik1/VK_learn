@@ -8,16 +8,19 @@
 import UIKit
 import RealmSwift
 
-class FriendsViewController: UIViewController, UITableViewDataSource {
+#warning("UITableViewDataSource не вынесены в расширение, беспорядок в коде")
+class FriendsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     private var friends: Results<Friend>?
+    var token: NotificationToken?
     
     let myRefreshControl: UIRefreshControl = {
-    let refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -27,15 +30,10 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
         
         self.loadData()
     }
-    
-    @objc func refresh(sender: UIRefreshControl){
-        loadData()
-        self.tableView.reloadData()
-        sender.endRefreshing()
-    }
-    
-    // MARK: - Table view data source
-    
+}
+// MARK: - Table view data source
+
+extension FriendsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,12 +45,24 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // получаем ячейку из пула
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
+        if indexPath.row == (friends?.count ?? 1) - 1 {
+            cell.hideSeparator()
+        }
         // получаем имя друга для конкретной строки
         let friend = friends?[indexPath.row]
+        
         // устанавливаем имя друга в надпись ячейки
         cell.setup(friend: friend!)
         return cell
     }
+}
+extension FriendsViewController {
+    
+    @objc func refresh(sender: UIRefreshControl){
+        self.loadData()
+        sender.endRefreshing()
+    }
+    
     //передача информации при нажатии на конкретного друга
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCurrentFriendViewController", let cell = sender as? UITableViewCell {
@@ -64,11 +74,19 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
         }
     }
     func loadData() {
+        //увеличиваем версию базы на 1, чтобы новодобавленные поля не ломали app'ку
+        var config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {}
+            })
+        config.deleteRealmIfMigrationNeeded = true
+        Realm.Configuration.defaultConfiguration = config
         do {
             let realm = try Realm()
-            AuthService.loadFriendList()
+            print(realm.configuration.fileURL!)
+            FriendService.loadFriendList()
             let friends = realm.objects(Friend.self)
-            
             self.friends = friends
             self.tableView.reloadData()
         } catch {

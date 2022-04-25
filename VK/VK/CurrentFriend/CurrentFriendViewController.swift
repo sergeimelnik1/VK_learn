@@ -7,23 +7,15 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
+#warning("беспорядок в коде")
 class CurrentFriendViewController: UICollectionViewController {
     var friend: Friend? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         overrideUserInterfaceStyle = .light
         self.collectionView.dataSource = self
         collectionView.reloadData()
-        // Do any additional setup after loading the view.
-    }
-    func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
-        let totalWidth = cellWidth * numberOfItems
-        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
-        let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
-        let rightInset = leftInset
-        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
     
     // MARK: UICollectionViewDataSource
@@ -40,5 +32,15 @@ class CurrentFriendViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentFriendCell", for: indexPath) as! CurrentFriendCell
         cell.setup(name: friend!.name, image: friend!.image200)
         return cell
+    }
+}
+extension CurrentFriendViewController {
+    //центрирование cell по центру
+    func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
+        let totalWidth = cellWidth * numberOfItems
+        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
+        let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
 }

@@ -11,7 +11,8 @@ class AllGroupsCell: UITableViewCell {
 
     @IBOutlet private weak var groupName: UILabel!
     @IBOutlet private weak var groupImage: UIImageView!
-    
+    @IBOutlet private var separatorView: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.groupImage.layer.cornerRadius = 15.0;
@@ -22,6 +23,10 @@ class AllGroupsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+    func hideSeparator() {
+        separatorView.isHidden = true
+    }
+    
     func setup(group: Group) {
         self.groupName.text = group.name
         do {

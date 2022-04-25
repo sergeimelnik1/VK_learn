@@ -8,43 +8,28 @@
 import UIKit
 import WebKit
 
-class Singleton {
-
-    var accessToken: String
-    var userId: String
-
-    static let shared = Singleton()
-    public static func sharedInstance() -> Singleton {
-        return .shared
-        }
-    init() {
-        self.accessToken = ""
-        self.userId = ""
-    }
-}
-
-
+#warning("Singleton вынести в отдельный файл, беспорядок в коде")
 
 class LoginFormController: UIViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loginInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBAction func loginButtonPressed(_ sender: Any) {
-            // получаем текст логина
-            let login = loginInput.text!
-            // получаем текст пароль
-            let password = passwordInput.text!
-            
-            // проверяем верны ли они
-            if login == "1" && password == "1" {
-                print("успешная авторизация")
-            } else {
-                print("неуспешная авторизация")
-            }
+        // получаем текст логина
+        let login = loginInput.text!
+        // получаем текст пароль
+        let password = passwordInput.text!
+        // проверяем верны ли они
+        if login == "1" && password == "1" {
+            print("успешная авторизация")
+        } else {
+            print("неуспешная авторизация")
         }
+    }
+    //ID нашего приложения в API VK
     let appId = "8137039"
-
+    
     var webView: WKWebView!
     override func loadView() {
         webView = WKWebView()
@@ -52,78 +37,77 @@ class LoginFormController: UIViewController {
         view = webView
     }
     override func viewDidLoad() {
-            super.viewDidLoad()
-            overrideUserInterfaceStyle = .light
-            // жест нажатия
-            let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
-            // присваиваем его UIScrollVIew
-            scrollView?.addGestureRecognizer(hideKeyboardGesture)
-        guard let url = URL (string: "https://oauth.vk.com/authorize?client_id=" + appId + "display=page&redirect_url=https://oauth.vk.com/blank.html&scope=friends,groups,photos&response_type=token&v=5.131state=123456") else { return }
-        let requestObj = URLRequest (url: url)
-        webView.load(requestObj)
-        
-        
-        }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-            // Проверяем данные
-            let checkResult = checkUserData()
-            
-            // если данные неверны, покажем ошибку
-            if !checkResult {
-                showLoginError()
-            }
-            
-            // вернем результат
-            return checkResult
-        }
-        
-        func checkUserData() -> Bool {
-            let login = loginInput.text!
-            let password = passwordInput.text!
-            
-            if login == "1" && password == "1" {
-                return true
-            } else {
-                return false
-            }
-        }
-        
-        func showLoginError() {
-            // Создаем контроллер
-            let alter = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
-            // Создаем кнопку для UIAlertController
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            // Добавляем кнопку на UIAlertController
-            alter.addAction(action)
-            // показываем UIAlertController
-            present(alter, animated: true, completion: nil)
-        }
-
-    override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            
-            // Подписываемся на два уведомления, одно приходит при появлении клавиатуры
-            NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: UIWindow.keyboardWillShowNotification, object: nil)
-            // Второе когда она пропадает
-            NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+        super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         // жест нажатия
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         // присваиваем его UIScrollVIew
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
-
+        //авторизация
+        guard let url = URL (string: "https://oauth.vk.com/authorize?client_id=" + appId + "display=page&redirect_url=https://oauth.vk.com/blank.html&scope=friends,groups,photos&response_type=token&v=5.131state=123456") else { return }
+        let requestObj = URLRequest (url: url)
+        webView.load(requestObj)
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        // Проверяем данные
+        let checkResult = checkUserData()
+        
+        // если данные неверны, покажем ошибку
+        if !checkResult {
+            showLoginError()
         }
+        
+        // вернем результат
+        return checkResult
+    }
+    
+    func checkUserData() -> Bool {
+        let login = loginInput.text!
+        let password = passwordInput.text!
+        
+        if login == "1" && password == "1" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func showLoginError() {
+        // Создаем контроллер
+        let alter = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+        // Создаем кнопку для UIAlertController
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        // Добавляем кнопку на UIAlertController
+        alter.addAction(action)
+        // показываем UIAlertController
+        present(alter, animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Подписываемся на два уведомления, одно приходит при появлении клавиатуры
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: UIWindow.keyboardWillShowNotification, object: nil)
+        // Второе когда она пропадает
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+        // жест нажатия
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        // присваиваем его UIScrollVIew
+        scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+    }
     //отписываемся
     override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            
+        super.viewWillDisappear(animated)
+        
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
-        }
+    }
     @objc func hideKeyboard() {
-            self.scrollView?.endEditing(true)
-        }
-
+        self.scrollView?.endEditing(true)
+    }
+    
     // когда клавиатура появляется
     @objc func keyboardWasShown(notification: Notification) {
         
@@ -145,7 +129,6 @@ class LoginFormController: UIViewController {
         scrollView?.scrollIndicatorInsets = contentInsets
     }
 }
-
 
 extension LoginFormController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {

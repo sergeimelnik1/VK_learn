@@ -11,6 +11,7 @@ class FriendCell: UITableViewCell {
     
     @IBOutlet private var friendName: UILabel!
     @IBOutlet private var friendImage: UIImageView!
+    @IBOutlet private var separatorView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +22,10 @@ class FriendCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func hideSeparator() {
+        separatorView.isHidden = true
     }
     
     func setup(friend: Friend) {
