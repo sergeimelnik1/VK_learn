@@ -8,13 +8,12 @@
 import UIKit
 import WebKit
 
-#warning("Singleton вынести в отдельный файл, беспорядок в коде")
-
 class LoginFormController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loginInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
         // получаем текст логина
         let login = loginInput.text!
@@ -28,14 +27,15 @@ class LoginFormController: UIViewController {
         }
     }
     //ID нашего приложения в API VK
-    let appId = "8137039"
+    private let appId = "8137039"
+    private var webView: WKWebView!
     
-    var webView: WKWebView!
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
         view = webView
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -47,41 +47,6 @@ class LoginFormController: UIViewController {
         guard let url = URL (string: "https://oauth.vk.com/authorize?client_id=" + appId + "display=page&redirect_url=https://oauth.vk.com/blank.html&scope=friends,groups,photos&response_type=token&v=5.131state=123456") else { return }
         let requestObj = URLRequest (url: url)
         webView.load(requestObj)
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        // Проверяем данные
-        let checkResult = checkUserData()
-        
-        // если данные неверны, покажем ошибку
-        if !checkResult {
-            showLoginError()
-        }
-        
-        // вернем результат
-        return checkResult
-    }
-    
-    func checkUserData() -> Bool {
-        let login = loginInput.text!
-        let password = passwordInput.text!
-        
-        if login == "1" && password == "1" {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func showLoginError() {
-        // Создаем контроллер
-        let alter = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
-        // Создаем кнопку для UIAlertController
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        // Добавляем кнопку на UIAlertController
-        alter.addAction(action)
-        // показываем UIAlertController
-        present(alter, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +62,7 @@ class LoginFormController: UIViewController {
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
     }
+    
     //отписываемся
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -104,6 +70,42 @@ class LoginFormController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        // Проверяем данные
+        let checkResult = checkUserData()
+        
+        // если данные неверны, покажем ошибку
+        if !checkResult {
+            showLoginError()
+        }
+        
+        // вернем результат
+        return checkResult
+    }
+    
+    private func checkUserData() -> Bool {
+        let login = loginInput.text!
+        let password = passwordInput.text!
+        
+        if login == "1" && password == "1" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func showLoginError() {
+        // Создаем контроллер
+        let alter = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+        // Создаем кнопку для UIAlertController
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        // Добавляем кнопку на UIAlertController
+        alter.addAction(action)
+        // показываем UIAlertController
+        present(alter, animated: true, completion: nil)
+    }
+    
     @objc func hideKeyboard() {
         self.scrollView?.endEditing(true)
     }

@@ -8,16 +8,13 @@
 import Foundation
 
 class Singleton {
-
-    var accessToken: String
-    var userId: String
-
-    static let shared = Singleton()
+    
+    var accessToken: String = ""
+    var userId: String = ""
+    
+    private static let singleton = Singleton()
+    
     public static func sharedInstance() -> Singleton {
-        return .shared
-        }
-    init() {
-        self.accessToken = ""
-        self.userId = ""
+        return .singleton
     }
 }

@@ -24,11 +24,10 @@ class GroupService {
             "access_token": Singleton.sharedInstance().accessToken
         ]
         //выходит сразу же после попадания в строчку ниже, даже не скачивая данные
-        AF.request(url, method: .get, parameters: parameters).responseData { [self] repsons in
+        AF.request(url, method: .get, parameters: parameters).responseData { [self] repsonse in
             do {
-                guard let data = repsons.value else { return }
+                guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
-                print(json)
                 let groups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
                 //тут мы данные сохраняем в Realm
                 self.saveGroupsData(groups)
@@ -49,9 +48,9 @@ class GroupService {
             "access_token": Singleton.sharedInstance().accessToken
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { repsons in
+        AF.request(url, method: .get, parameters: parameters).responseData { repsonse in
             do {
-                guard let data = repsons.value else { return }
+                guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
                 let searchGroups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
                 print(searchGroups)
@@ -70,15 +69,11 @@ class GroupService {
             "access_token": Singleton.sharedInstance().accessToken
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { [self] repsons in
+        AF.request(url, method: .get, parameters: parameters).responseData { repsons in
             do {
                 guard let data = repsons.value else { return }
-                let json = try JSON(data: data)
-                print(json)
-                let groups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
+                _ = try JSON(data: data)
                 success()
-//                //тут мы данные сохраняем в Realm
-//                self.saveGroupsData(groups)
             } catch {
                 print(error)
             }
@@ -92,13 +87,11 @@ class GroupService {
             "group_id" : groupId,
             "access_token": Singleton.sharedInstance().accessToken
         ]
-        AF.request(url, method: .get, parameters: parameters).responseData { [self] repsons in
+        AF.request(url, method: .get, parameters: parameters).responseData { repsonse in
             do {
-                guard let data = repsons.value else { return }
-                let json = try JSON(data: data)
+                guard let data = repsonse.value else { return }
+                _ = try JSON(data: data)
                 success()
-//                print(json)
-//                let groups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
             } catch {
                 print(error)
             }
@@ -112,7 +105,6 @@ class GroupService {
             let realm = try Realm()
             // все старые данные друзей
             let oldGroups = realm.objects(Group.self)
-            print(realm.configuration.fileURL)
             // начинаем изменять хранилище
             realm.beginWrite()
             //удаляем старые данные

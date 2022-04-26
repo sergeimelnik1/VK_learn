@@ -10,8 +10,6 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-#warning("название не несет логики")
-#warning("Вынес в отдельные классы по соответствующим названиям")
 class FriendService {
     var token: NotificationToken?
 
@@ -25,11 +23,10 @@ class FriendService {
             "access_token": Singleton.sharedInstance().accessToken
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { [self] repsons in
+        AF.request(url, method: .get, parameters: parameters).responseData { [self] repsonse in
             do {
-                guard let data = repsons.value else { return }
+                guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
-//                print(json)
                 let friends: [Friend] = json["response"]["items"].arrayValue.compactMap { Friend(with: $0) }
                 //тут мы данные сохраняем в Realm
                 self.saveFriendsData(friends)

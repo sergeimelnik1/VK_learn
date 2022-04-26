@@ -8,27 +8,43 @@
 import UIKit
 import RealmSwift
 
-#warning("UITableViewDataSource не вынесены в расширение, беспорядок в коде")
 class FriendsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var friends: Results<Friend>?
-    var token: NotificationToken?
     
-    let myRefreshControl: UIRefreshControl = {
+    private var friends: Results<Friend>?
+    
+    private let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
     
+    //увеличиваем версию базы на 1, чтобы новодобавленные поля не ломали app'ку
+    private var config = Realm.Configuration(
+        schemaVersion: 1,
+        migrationBlock: { migration, oldSchemaVersion in
+            if (oldSchemaVersion < 1) {}
+        })
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         overrideUserInterfaceStyle = .light
         self.tableView.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.tableView.refreshControl = myRefreshControl
+        config.deleteRealmIfMigrationNeeded = true
+        Realm.Configuration.defaultConfiguration = config
         
         self.loadData()
+    }
+    
+    //принудительное скрытие кнопки back
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.navigationItem.hidesBackButton = true
     }
 }
 // MARK: - Table view data source
@@ -73,15 +89,8 @@ extension FriendsViewController {
             }
         }
     }
-    func loadData() {
-        //увеличиваем версию базы на 1, чтобы новодобавленные поля не ломали app'ку
-        var config = Realm.Configuration(
-            schemaVersion: 1,
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {}
-            })
-        config.deleteRealmIfMigrationNeeded = true
-        Realm.Configuration.defaultConfiguration = config
+    
+    private func loadData() {
         do {
             let realm = try Realm()
             print(realm.configuration.fileURL!)
@@ -93,10 +102,5 @@ extension FriendsViewController {
             // если произошла ошибка, выводим ее в консоль
             print(error)
         }
-    }
-    //принудительное скрытие кнопки back
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.hidesBackButton = true
     }
 }

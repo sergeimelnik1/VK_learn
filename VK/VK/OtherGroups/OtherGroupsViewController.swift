@@ -7,8 +7,7 @@
 
 import UIKit
 
-#warning("UITableViewDataSource, UITableViewDelegate не вынесены в расширение, вынести setup searchController в отдельный метод")
-class OtherGroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class OtherGroupsViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
@@ -33,72 +32,17 @@ class OtherGroupsViewController: UIViewController, UITableViewDataSource, UITabl
         self.tableView.dataSource = self
         self.tableView.delegate = self
         //        https://debash.medium.com/uisearchcontroller-48dbc0f4cb63
+        setupSearchController()
+        tableView.reloadData()
+    }
+    
+    private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Сюда иди, текст введи быстро"
         searchController.searchBar.setValue("Ай, передумал", forKey: "cancelButtonText")
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
-        
-        tableView.reloadData()
-    }
-    // MARK: - Table view data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "otherGroupCell", for: indexPath) as! OtherGroupsCell
-        var group: Group
-        
-        group = groups[indexPath.row]
-        if indexPath.row == (groups.count) - 1 {
-            cell.hideSeparator()
-        }
-        cell.setup(group: group)
-        return cell
-    }
-    //при нажатии выделение Cell пропадает
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        var actionTableView = UIContextualAction()
-        if self.groups[indexPath.row].is_member.description == "0" {
-            var action = UIContextualAction(style: .normal, title: "Add") { [weak self] (action, view, completionHandler) in
-                //тут логика подписки на группу
-                GroupService.followGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
-                    self?.filterContentForSearchText(self?.currentSearchText ?? "")
-                    tableView.reloadData()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
-                })
-                completionHandler(true)
-            }
-            actionTableView = action
-            action.backgroundColor = .systemBlue
-        } else if self.groups[indexPath.row].is_member.description == "1" {
-            var action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
-                //тут логика подписки на группу
-                GroupService.leaveGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
-                    self?.filterContentForSearchText(self?.currentSearchText ?? "")
-                    tableView.reloadData()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
-                })
-                //тут нотификация должна отрабатывать о добавлении элемента
-                completionHandler(true)
-            }
-            actionTableView = action
-            action.backgroundColor = .systemRed
-        }
-        return UISwipeActionsConfiguration(actions: [actionTableView])
     }
 }
 // MARK: - UISearchResultsUpdating Delegate
@@ -143,5 +87,66 @@ extension UIViewController {
         }
         // 5
         return activityIndicatorView
+    }
+}
+extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // MARK: - Table view data source
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return groups.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // получаем ячейку из пула
+        let cell = tableView.dequeueReusableCell(withIdentifier: "otherGroupCell", for: indexPath) as! OtherGroupsCell
+        var group: Group
+        
+        group = groups[indexPath.row]
+        if indexPath.row == (groups.count) - 1 {
+            cell.hideSeparator()
+        }
+        cell.setup(group: group)
+        return cell
+    }
+    //при нажатии выделение Cell пропадает
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var actionTableView = UIContextualAction()
+        if self.groups[indexPath.row].is_member.description == "0" {
+            let action = UIContextualAction(style: .normal, title: "Add") { [weak self] (action, view, completionHandler) in
+                //тут логика подписки на группу
+                GroupService.followGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
+                    self?.filterContentForSearchText(self?.currentSearchText ?? "")
+                    tableView.reloadData()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
+                })
+                completionHandler(true)
+            }
+            actionTableView = action
+            action.backgroundColor = .systemBlue
+        } else if self.groups[indexPath.row].is_member.description == "1" {
+            let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
+                //тут логика подписки на группу
+                GroupService.leaveGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
+                    self?.filterContentForSearchText(self?.currentSearchText ?? "")
+                    tableView.reloadData()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
+                })
+                //тут нотификация должна отрабатывать о добавлении элемента
+                completionHandler(true)
+            }
+            actionTableView = action
+            action.backgroundColor = .systemRed
+        }
+        return UISwipeActionsConfiguration(actions: [actionTableView])
     }
 }

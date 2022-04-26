@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OtherGroupsCell: UITableViewCell {
+final class OtherGroupsCell: UITableViewCell {
     
     @IBOutlet weak var groupImage: UIImageView!
     @IBOutlet private weak var groupName: UILabel!
@@ -20,9 +20,11 @@ class OtherGroupsCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     func hideSeparator() {
         separatorView.isHidden = true
     }
+    
     func setup(group: Group) {
         do {
             try groupImage.image = UIImage(data: NSData(contentsOf: group.image50.asURL()) as Data )

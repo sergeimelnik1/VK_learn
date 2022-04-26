@@ -7,7 +7,6 @@
 
 import UIKit
 
-#warning("беспорядок в коде")
 class CurrentFriendViewController: UICollectionViewController {
     var friend: Friend? = nil
     override func viewDidLoad() {
