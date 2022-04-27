@@ -31,6 +31,7 @@ class FriendsViewController: UIViewController {
         super.viewDidLoad()
         
         overrideUserInterfaceStyle = .light
+        self.tableView.delegate = self
         self.tableView.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.tableView.refreshControl = myRefreshControl
@@ -49,7 +50,7 @@ class FriendsViewController: UIViewController {
 }
 // MARK: - Table view data source
 
-extension FriendsViewController: UITableViewDataSource {
+extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -79,15 +80,24 @@ extension FriendsViewController {
         sender.endRefreshing()
     }
     
-    //передача информации при нажатии на конкретного друга
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toCurrentFriendViewController", let cell = sender as? UITableViewCell {
-            let ctrl = segue.destination as! CurrentFriendViewController
-            if let indexPath = tableView.indexPath(for: cell) {
-                tableView.deselectRow(at: indexPath, animated: true)
-                ctrl.friend = friends?[indexPath.row]
-            }
-        }
+//    //передача информации при нажатии на конкретного друга
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toCurrentFriendViewController", let cell = sender as? UITableViewCell {
+//            let ctrl = segue.destination as! CurrentFriendViewController
+//            if let indexPath = tableView.indexPath(for: cell) {
+////                tableView.deselectRow(at: indexPath, animated: true)
+//                ctrl.friend = friends?[indexPath.row]
+//            }
+//        }
+//    }
+    
+    func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
+        vc.friend = self.friends?[indexPath.row]
+        vc.modalPresentationStyle = .fullScreen
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.present(vc, animated: false, completion: nil)
     }
     
     private func loadData() {
