@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		090CCAEF2809AF9200DD5CC0 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CCAEE2809AF9100DD5CC0 /* FriendService.swift */; };
+		094A6A6528198C2800D9682C /* FriendListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6428198C2800D9682C /* FriendListRouter.swift */; };
+		094A6A6728198C2F00D9682C /* FriendListRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6628198C2F00D9682C /* FriendListRouterInput.swift */; };
+		094A6A6928198C3500D9682C /* FriendListRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6828198C3500D9682C /* FriendListRouterOutput.swift */; };
+		094A6A6B28198C4600D9682C /* FriendListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6A28198C4600D9682C /* FriendListInteractor.swift */; };
+		094A6A6D28198C4F00D9682C /* FriendListInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6C28198C4F00D9682C /* FriendListInteractorInput.swift */; };
+		094A6A6F28198C5800D9682C /* FriendListInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6E28198C5800D9682C /* FriendListInteractorOutput.swift */; };
+		094A6A7128198CD700D9682C /* OtherGroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7028198CD700D9682C /* OtherGroupsRouter.swift */; };
+		094A6A7328198CDF00D9682C /* OtherGroupsRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7228198CDF00D9682C /* OtherGroupsRouterInput.swift */; };
+		094A6A7528198CE500D9682C /* OtherGroupsRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7428198CE500D9682C /* OtherGroupsRouterOutput.swift */; };
+		094A6A7828198D0A00D9682C /* OtherGroupsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7728198D0A00D9682C /* OtherGroupsConfig.swift */; };
+		094A6A7A28198D4500D9682C /* OtherGroupsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7928198D4500D9682C /* OtherGroupsViewInput.swift */; };
+		094A6A7C28198D4C00D9682C /* OtherGroupsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7B28198D4C00D9682C /* OtherGroupsViewOutput.swift */; };
+		094A6A7E28198DA000D9682C /* OtherGroupsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7D28198DA000D9682C /* OtherGroupsPresenter.swift */; };
+		094A6A8028198DBC00D9682C /* OtherGroupsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A7F28198DBC00D9682C /* OtherGroupsInteractor.swift */; };
+		094A6A8228198DC300D9682C /* OtherGroupsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A8128198DC300D9682C /* OtherGroupsInteractorInput.swift */; };
+		094A6A8428198DD100D9682C /* OtherGroupsInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A8328198DD100D9682C /* OtherGroupsInteractorOutput.swift */; };
 		09786EE3281692180078ABB4 /* OtherGroupsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09786EE2281692180078ABB4 /* OtherGroupsController.storyboard */; };
 		09786EE528182E030078ABB4 /* CurrentFriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09786EE428182E030078ABB4 /* CurrentFriendInteractor.swift */; };
 		09786EE728182E0E0078ABB4 /* CurrentFriendInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09786EE628182E0E0078ABB4 /* CurrentFriendInteractorInput.swift */; };
@@ -47,6 +63,22 @@
 
 /* Begin PBXFileReference section */
 		090CCAEE2809AF9100DD5CC0 /* FriendService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
+		094A6A6428198C2800D9682C /* FriendListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListRouter.swift; sourceTree = "<group>"; };
+		094A6A6628198C2F00D9682C /* FriendListRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListRouterInput.swift; sourceTree = "<group>"; };
+		094A6A6828198C3500D9682C /* FriendListRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListRouterOutput.swift; sourceTree = "<group>"; };
+		094A6A6A28198C4600D9682C /* FriendListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListInteractor.swift; sourceTree = "<group>"; };
+		094A6A6C28198C4F00D9682C /* FriendListInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListInteractorInput.swift; sourceTree = "<group>"; };
+		094A6A6E28198C5800D9682C /* FriendListInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListInteractorOutput.swift; sourceTree = "<group>"; };
+		094A6A7028198CD700D9682C /* OtherGroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsRouter.swift; sourceTree = "<group>"; };
+		094A6A7228198CDF00D9682C /* OtherGroupsRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsRouterInput.swift; sourceTree = "<group>"; };
+		094A6A7428198CE500D9682C /* OtherGroupsRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsRouterOutput.swift; sourceTree = "<group>"; };
+		094A6A7728198D0A00D9682C /* OtherGroupsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsConfig.swift; sourceTree = "<group>"; };
+		094A6A7928198D4500D9682C /* OtherGroupsViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsViewInput.swift; sourceTree = "<group>"; };
+		094A6A7B28198D4C00D9682C /* OtherGroupsViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsViewOutput.swift; sourceTree = "<group>"; };
+		094A6A7D28198DA000D9682C /* OtherGroupsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsPresenter.swift; sourceTree = "<group>"; };
+		094A6A7F28198DBC00D9682C /* OtherGroupsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsInteractor.swift; sourceTree = "<group>"; };
+		094A6A8128198DC300D9682C /* OtherGroupsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsInteractorInput.swift; sourceTree = "<group>"; };
+		094A6A8328198DD100D9682C /* OtherGroupsInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsInteractorOutput.swift; sourceTree = "<group>"; };
 		09786EE2281692180078ABB4 /* OtherGroupsController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OtherGroupsController.storyboard; sourceTree = "<group>"; };
 		09786EE428182E030078ABB4 /* CurrentFriendInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentFriendInteractor.swift; sourceTree = "<group>"; };
 		09786EE628182E0E0078ABB4 /* CurrentFriendInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentFriendInteractorInput.swift; sourceTree = "<group>"; };
@@ -110,6 +142,14 @@
 				09ED1ED628104564009AF6FF /* Singleton.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		094A6A7628198CEF00D9682C /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				094A6A7728198D0A00D9682C /* OtherGroupsConfig.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 		09786EFA281831880078ABB4 /* Configuration */ = {
@@ -198,12 +238,11 @@
 		09E935152805E5DA0032F99A /* OtherGroups */ = {
 			isa = PBXGroup;
 			children = (
+				094A6A7628198CEF00D9682C /* Configurator */,
 				09ED1EC9281030D0009AF6FF /* Interactor */,
 				09ED1EC8281030CA009AF6FF /* Presenter */,
 				09ED1EC7281030C3009AF6FF /* Router */,
 				09ED1EC6281030B4009AF6FF /* View */,
-				09E935182805E6090032F99A /* OtherGroupsViewController.swift */,
-				09E935162805E5F90032F99A /* OtherGroupsCell.swift */,
 			);
 			path = OtherGroups;
 			sourceTree = "<group>";
@@ -282,6 +321,10 @@
 			isa = PBXGroup;
 			children = (
 				09786EE2281692180078ABB4 /* OtherGroupsController.storyboard */,
+				09E935182805E6090032F99A /* OtherGroupsViewController.swift */,
+				09E935162805E5F90032F99A /* OtherGroupsCell.swift */,
+				094A6A7928198D4500D9682C /* OtherGroupsViewInput.swift */,
+				094A6A7B28198D4C00D9682C /* OtherGroupsViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,6 +332,9 @@
 		09ED1EC7281030C3009AF6FF /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				094A6A7028198CD700D9682C /* OtherGroupsRouter.swift */,
+				094A6A7228198CDF00D9682C /* OtherGroupsRouterInput.swift */,
+				094A6A7428198CE500D9682C /* OtherGroupsRouterOutput.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -296,6 +342,7 @@
 		09ED1EC8281030CA009AF6FF /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				094A6A7D28198DA000D9682C /* OtherGroupsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -303,6 +350,9 @@
 		09ED1EC9281030D0009AF6FF /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				094A6A7F28198DBC00D9682C /* OtherGroupsInteractor.swift */,
+				094A6A8128198DC300D9682C /* OtherGroupsInteractorInput.swift */,
+				094A6A8328198DD100D9682C /* OtherGroupsInteractorOutput.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -326,6 +376,9 @@
 		09ED1ECC281030E1009AF6FF /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				094A6A6428198C2800D9682C /* FriendListRouter.swift */,
+				094A6A6628198C2F00D9682C /* FriendListRouterInput.swift */,
+				094A6A6828198C3500D9682C /* FriendListRouterOutput.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -333,6 +386,9 @@
 		09ED1ECD281030E8009AF6FF /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				094A6A6A28198C4600D9682C /* FriendListInteractor.swift */,
+				094A6A6C28198C4F00D9682C /* FriendListInteractorInput.swift */,
+				094A6A6E28198C5800D9682C /* FriendListInteractorOutput.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -476,31 +532,47 @@
 			files = (
 				09786EE728182E0E0078ABB4 /* CurrentFriendInteractorInput.swift in Sources */,
 				09B5AC7D2804AD6C00F20D27 /* ViewController.swift in Sources */,
+				094A6A8428198DD100D9682C /* OtherGroupsInteractorOutput.swift in Sources */,
+				094A6A6B28198C4600D9682C /* FriendListInteractor.swift in Sources */,
+				094A6A6528198C2800D9682C /* FriendListRouter.swift in Sources */,
 				09DF46F628071EC00093DCD5 /* Friend.swift in Sources */,
 				09E9350A2805E0150032F99A /* FriendCell.swift in Sources */,
 				09786EFF2818451A0078ABB4 /* ViewCell.swift in Sources */,
 				09E935082805DFFB0032F99A /* FriendsViewController.swift in Sources */,
+				094A6A8228198DC300D9682C /* OtherGroupsInteractorInput.swift in Sources */,
 				09E935142805E4CE0032F99A /* AllGroupsCell.swift in Sources */,
 				09786EF728182EE30078ABB4 /* CurrentFriendRouterOutput.swift in Sources */,
 				09B5AC8D2804B6C400F20D27 /* LoginFormController.swift in Sources */,
 				09E935122805E46A0032F99A /* AllGroupsViewController.swift in Sources */,
 				09786EF328182EC40078ABB4 /* CurrentFriendRouter.swift in Sources */,
 				09E9351B280708F90032F99A /* Group.swift in Sources */,
+				094A6A6928198C3500D9682C /* FriendListRouterOutput.swift in Sources */,
 				09E9350D2805E16C0032F99A /* CurrentFriendViewController.swift in Sources */,
 				09786EFC281831DD0078ABB4 /* CurrentFriendConfig.swift in Sources */,
+				094A6A8028198DBC00D9682C /* OtherGroupsInteractor.swift in Sources */,
 				09E935192805E6090032F99A /* OtherGroupsViewController.swift in Sources */,
 				09B5AC792804AD6C00F20D27 /* AppDelegate.swift in Sources */,
 				09786EE928182E180078ABB4 /* CurrentFriendInteractorOutput.swift in Sources */,
 				09786EF128182E950078ABB4 /* CurrentFriendViewOutput.swift in Sources */,
 				09786EE528182E030078ABB4 /* CurrentFriendInteractor.swift in Sources */,
 				090CCAEF2809AF9200DD5CC0 /* FriendService.swift in Sources */,
+				094A6A7328198CDF00D9682C /* OtherGroupsRouterInput.swift in Sources */,
+				094A6A7528198CE500D9682C /* OtherGroupsRouterOutput.swift in Sources */,
+				094A6A6728198C2F00D9682C /* FriendListRouterInput.swift in Sources */,
 				09786EF528182ED60078ABB4 /* CurrentFriendRouterInput.swift in Sources */,
+				094A6A7128198CD700D9682C /* OtherGroupsRouter.swift in Sources */,
+				094A6A6D28198C4F00D9682C /* FriendListInteractorInput.swift in Sources */,
 				09ED1ED728104564009AF6FF /* Singleton.swift in Sources */,
+				094A6A7A28198D4500D9682C /* OtherGroupsViewInput.swift in Sources */,
 				09ED1ED9281045C4009AF6FF /* GroupService.swift in Sources */,
 				09B5AC7B2804AD6C00F20D27 /* SceneDelegate.swift in Sources */,
+				094A6A7828198D0A00D9682C /* OtherGroupsConfig.swift in Sources */,
 				09786EEF28182E8A0078ABB4 /* CurrentFriendViewInput.swift in Sources */,
 				09786EEB28182E250078ABB4 /* CurrentFriendPresenter.swift in Sources */,
 				09E935172805E5F90032F99A /* OtherGroupsCell.swift in Sources */,
+				094A6A6F28198C5800D9682C /* FriendListInteractorOutput.swift in Sources */,
+				094A6A7C28198D4C00D9682C /* OtherGroupsViewOutput.swift in Sources */,
+				094A6A7E28198DA000D9682C /* OtherGroupsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
