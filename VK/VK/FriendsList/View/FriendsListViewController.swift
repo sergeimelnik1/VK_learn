@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class FriendsViewController: UIViewController {
+class FriendsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -50,7 +50,7 @@ class FriendsViewController: UIViewController {
 }
 // MARK: - Table view data source
 
-extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
+extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -73,23 +73,12 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
-extension FriendsViewController {
+extension FriendsListViewController {
     
     @objc func refresh(sender: UIRefreshControl){
         self.loadData()
         sender.endRefreshing()
     }
-    
-//    //передача информации при нажатии на конкретного друга
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toCurrentFriendViewController", let cell = sender as? UITableViewCell {
-//            let ctrl = segue.destination as! CurrentFriendViewController
-//            if let indexPath = tableView.indexPath(for: cell) {
-////                tableView.deselectRow(at: indexPath, animated: true)
-//                ctrl.friend = friends?[indexPath.row]
-//            }
-//        }
-//    }
     
     func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)

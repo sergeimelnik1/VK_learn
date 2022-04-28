@@ -6,3 +6,28 @@
 //
 
 import Foundation
+
+class OtherGroupsPresenter {
+    
+        var view: OtherGroupsViewInput!
+        var interactor: OtherGroupsInteractorInput!
+        var router: OtherGroupsRouterInput!
+        
+    }
+
+    extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
+        
+    }
+
+    extension OtherGroupsPresenter: OtherGroupsRouterOutput {
+        
+    }
+
+extension OtherGroupsPresenter: OtherGroupsViewOutput {
+    func viewIsReady() {
+    
+    }
+    
+
+    }
+

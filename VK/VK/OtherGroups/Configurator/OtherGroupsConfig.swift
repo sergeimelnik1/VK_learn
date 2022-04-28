@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+class OtherGroupsConfig {
+    
+    var view : OtherGroupsViewInput?
+    let presenter = OtherGroupsPresenter()
+    
+    init(){
+        view = OtherGroupsViewController()
+        let router = OtherGroupsRouter()
+        let interactor = OtherGroupsInteractor()
+        
+        interactor.output = presenter
+        presenter.interactor = interactor
+        
+        router.output = presenter
+        presenter.router = router
+        
+        view!.output = presenter
+        presenter.view = view
+    }
+}

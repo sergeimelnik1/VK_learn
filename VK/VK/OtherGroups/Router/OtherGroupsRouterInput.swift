@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol OtherGroupsRouterInput {
+    
+    var output: OtherGroupsRouterOutput? { get set }
+    
+}

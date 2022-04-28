@@ -44,8 +44,22 @@
 		09B5AC822804AD6E00F20D27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09B5AC812804AD6E00F20D27 /* Assets.xcassets */; };
 		09B5AC852804AD6E00F20D27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09B5AC832804AD6E00F20D27 /* LaunchScreen.storyboard */; };
 		09B5AC8D2804B6C400F20D27 /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5AC8C2804B6C400F20D27 /* LoginFormController.swift */; };
+		09CE2B6A281A6C5B00CC0CC6 /* FriendListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B69281A6C5B00CC0CC6 /* FriendListPresenter.swift */; };
+		09CE2B6D281A6C7B00CC0CC6 /* FriendListConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B6C281A6C7B00CC0CC6 /* FriendListConfig.swift */; };
+		09CE2B70281A6CF400CC0CC6 /* AllGroupConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B6F281A6CF400CC0CC6 /* AllGroupConfigurator.swift */; };
+		09CE2B72281A6D2A00CC0CC6 /* FriendsListViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B71281A6D2A00CC0CC6 /* FriendsListViewOutput.swift */; };
+		09CE2B74281A6D3800CC0CC6 /* FriendsListViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B73281A6D3800CC0CC6 /* FriendsListViewInput.swift */; };
+		09CE2B76281A6D4500CC0CC6 /* AllGroupViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B75281A6D4500CC0CC6 /* AllGroupViewInput.swift */; };
+		09CE2B78281A6D5200CC0CC6 /* AllGroupViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B77281A6D5200CC0CC6 /* AllGroupViewOutput.swift */; };
+		09CE2B7A281A6D8F00CC0CC6 /* AllGroupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B79281A6D8F00CC0CC6 /* AllGroupRouter.swift */; };
+		09CE2B7C281A6D9500CC0CC6 /* AllGroupRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B7B281A6D9500CC0CC6 /* AllGroupRouterInput.swift */; };
+		09CE2B7E281A6D9D00CC0CC6 /* AllGroupRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B7D281A6D9D00CC0CC6 /* AllGroupRouterOutput.swift */; };
+		09CE2B80281A6DA500CC0CC6 /* AllGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B7F281A6DA500CC0CC6 /* AllGroupPresenter.swift */; };
+		09CE2B82281A6DBE00CC0CC6 /* AllGroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B81281A6DBE00CC0CC6 /* AllGroupInteractor.swift */; };
+		09CE2B84281A6DC800CC0CC6 /* AllGroupInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B83281A6DC800CC0CC6 /* AllGroupInteractorInput.swift */; };
+		09CE2B86281A6DD400CC0CC6 /* AllGroupInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B85281A6DD400CC0CC6 /* AllGroupInteractorOutput.swift */; };
 		09DF46F628071EC00093DCD5 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF46F528071EC00093DCD5 /* Friend.swift */; };
-		09E935082805DFFB0032F99A /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E935072805DFFB0032F99A /* FriendsViewController.swift */; };
+		09E935082805DFFB0032F99A /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E935072805DFFB0032F99A /* FriendsListViewController.swift */; };
 		09E9350A2805E0150032F99A /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E935092805E0150032F99A /* FriendCell.swift */; };
 		09E9350D2805E16C0032F99A /* CurrentFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E9350C2805E16C0032F99A /* CurrentFriendViewController.swift */; };
 		09E935122805E46A0032F99A /* AllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E935112805E46A0032F99A /* AllGroupsViewController.swift */; };
@@ -101,8 +115,22 @@
 		09B5AC842804AD6E00F20D27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09B5AC862804AD6E00F20D27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09B5AC8C2804B6C400F20D27 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
+		09CE2B69281A6C5B00CC0CC6 /* FriendListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListPresenter.swift; sourceTree = "<group>"; };
+		09CE2B6C281A6C7B00CC0CC6 /* FriendListConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListConfig.swift; sourceTree = "<group>"; };
+		09CE2B6F281A6CF400CC0CC6 /* AllGroupConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupConfigurator.swift; sourceTree = "<group>"; };
+		09CE2B71281A6D2A00CC0CC6 /* FriendsListViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewOutput.swift; sourceTree = "<group>"; };
+		09CE2B73281A6D3800CC0CC6 /* FriendsListViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewInput.swift; sourceTree = "<group>"; };
+		09CE2B75281A6D4500CC0CC6 /* AllGroupViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupViewInput.swift; sourceTree = "<group>"; };
+		09CE2B77281A6D5200CC0CC6 /* AllGroupViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupViewOutput.swift; sourceTree = "<group>"; };
+		09CE2B79281A6D8F00CC0CC6 /* AllGroupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupRouter.swift; sourceTree = "<group>"; };
+		09CE2B7B281A6D9500CC0CC6 /* AllGroupRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupRouterInput.swift; sourceTree = "<group>"; };
+		09CE2B7D281A6D9D00CC0CC6 /* AllGroupRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupRouterOutput.swift; sourceTree = "<group>"; };
+		09CE2B7F281A6DA500CC0CC6 /* AllGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupPresenter.swift; sourceTree = "<group>"; };
+		09CE2B81281A6DBE00CC0CC6 /* AllGroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupInteractor.swift; sourceTree = "<group>"; };
+		09CE2B83281A6DC800CC0CC6 /* AllGroupInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupInteractorInput.swift; sourceTree = "<group>"; };
+		09CE2B85281A6DD400CC0CC6 /* AllGroupInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupInteractorOutput.swift; sourceTree = "<group>"; };
 		09DF46F528071EC00093DCD5 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		09E935072805DFFB0032F99A /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		09E935072805DFFB0032F99A /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		09E935092805E0150032F99A /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		09E9350C2805E16C0032F99A /* CurrentFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentFriendViewController.swift; path = ../CurrentFriendViewController.swift; sourceTree = "<group>"; };
 		09E935112805E46A0032F99A /* AllGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsViewController.swift; sourceTree = "<group>"; };
@@ -198,10 +226,26 @@
 			path = VK;
 			sourceTree = "<group>";
 		};
+		09CE2B6B281A6C6D00CC0CC6 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				09CE2B6C281A6C7B00CC0CC6 /* FriendListConfig.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		09CE2B6E281A6CE100CC0CC6 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				09CE2B6F281A6CF400CC0CC6 /* AllGroupConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 		09E935062805DE960032F99A /* FriendsList */ = {
 			isa = PBXGroup;
 			children = (
-				09E935072805DFFB0032F99A /* FriendsViewController.swift */,
+				09CE2B6B281A6C6D00CC0CC6 /* Configuration */,
 				09ED1ECD281030E8009AF6FF /* Interactor */,
 				09ED1ECC281030E1009AF6FF /* Router */,
 				09ED1ECB281030DC009AF6FF /* Presenter */,
@@ -225,12 +269,11 @@
 		09E935102805E1A00032F99A /* AllGroups */ = {
 			isa = PBXGroup;
 			children = (
+				09CE2B6E281A6CE100CC0CC6 /* Configurator */,
 				09ED1EC128103090009AF6FF /* View */,
 				09ED1EC028103088009AF6FF /* Router */,
 				09ED1EBF28103081009AF6FF /* Presenter */,
 				09ED1EBE28103077009AF6FF /* Interactor */,
-				09E935112805E46A0032F99A /* AllGroupsViewController.swift */,
-				09E935132805E4CE0032F99A /* AllGroupsCell.swift */,
 			);
 			path = AllGroups;
 			sourceTree = "<group>";
@@ -250,6 +293,9 @@
 		09ED1EBE28103077009AF6FF /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				09CE2B81281A6DBE00CC0CC6 /* AllGroupInteractor.swift */,
+				09CE2B83281A6DC800CC0CC6 /* AllGroupInteractorInput.swift */,
+				09CE2B85281A6DD400CC0CC6 /* AllGroupInteractorOutput.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -257,6 +303,7 @@
 		09ED1EBF28103081009AF6FF /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				09CE2B7F281A6DA500CC0CC6 /* AllGroupPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -264,6 +311,9 @@
 		09ED1EC028103088009AF6FF /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				09CE2B79281A6D8F00CC0CC6 /* AllGroupRouter.swift */,
+				09CE2B7B281A6D9500CC0CC6 /* AllGroupRouterInput.swift */,
+				09CE2B7D281A6D9D00CC0CC6 /* AllGroupRouterOutput.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -272,6 +322,10 @@
 			isa = PBXGroup;
 			children = (
 				09ED1ED028103234009AF6FF /* AllGroupsViewController.storyboard */,
+				09E935112805E46A0032F99A /* AllGroupsViewController.swift */,
+				09E935132805E4CE0032F99A /* AllGroupsCell.swift */,
+				09CE2B75281A6D4500CC0CC6 /* AllGroupViewInput.swift */,
+				09CE2B77281A6D5200CC0CC6 /* AllGroupViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,7 +415,10 @@
 			isa = PBXGroup;
 			children = (
 				09ED1ED42810325D009AF6FF /* FriendsListViewController.storyboard */,
+				09E935072805DFFB0032F99A /* FriendsListViewController.swift */,
 				09E935092805E0150032F99A /* FriendCell.swift */,
+				09CE2B71281A6D2A00CC0CC6 /* FriendsListViewOutput.swift */,
+				09CE2B73281A6D3800CC0CC6 /* FriendsListViewInput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,6 +426,7 @@
 		09ED1ECB281030DC009AF6FF /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				09CE2B69281A6C5B00CC0CC6 /* FriendListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -531,6 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09786EE728182E0E0078ABB4 /* CurrentFriendInteractorInput.swift in Sources */,
+				09CE2B84281A6DC800CC0CC6 /* AllGroupInteractorInput.swift in Sources */,
 				09B5AC7D2804AD6C00F20D27 /* ViewController.swift in Sources */,
 				094A6A8428198DD100D9682C /* OtherGroupsInteractorOutput.swift in Sources */,
 				094A6A6B28198C4600D9682C /* FriendListInteractor.swift in Sources */,
@@ -538,7 +597,9 @@
 				09DF46F628071EC00093DCD5 /* Friend.swift in Sources */,
 				09E9350A2805E0150032F99A /* FriendCell.swift in Sources */,
 				09786EFF2818451A0078ABB4 /* ViewCell.swift in Sources */,
-				09E935082805DFFB0032F99A /* FriendsViewController.swift in Sources */,
+				09E935082805DFFB0032F99A /* FriendsListViewController.swift in Sources */,
+				09CE2B82281A6DBE00CC0CC6 /* AllGroupInteractor.swift in Sources */,
+				09CE2B78281A6D5200CC0CC6 /* AllGroupViewOutput.swift in Sources */,
 				094A6A8228198DC300D9682C /* OtherGroupsInteractorInput.swift in Sources */,
 				09E935142805E4CE0032F99A /* AllGroupsCell.swift in Sources */,
 				09786EF728182EE30078ABB4 /* CurrentFriendRouterOutput.swift in Sources */,
@@ -550,10 +611,18 @@
 				09E9350D2805E16C0032F99A /* CurrentFriendViewController.swift in Sources */,
 				09786EFC281831DD0078ABB4 /* CurrentFriendConfig.swift in Sources */,
 				094A6A8028198DBC00D9682C /* OtherGroupsInteractor.swift in Sources */,
+				09CE2B76281A6D4500CC0CC6 /* AllGroupViewInput.swift in Sources */,
+				09CE2B70281A6CF400CC0CC6 /* AllGroupConfigurator.swift in Sources */,
 				09E935192805E6090032F99A /* OtherGroupsViewController.swift in Sources */,
+				09CE2B80281A6DA500CC0CC6 /* AllGroupPresenter.swift in Sources */,
+				09CE2B6D281A6C7B00CC0CC6 /* FriendListConfig.swift in Sources */,
+				09CE2B74281A6D3800CC0CC6 /* FriendsListViewInput.swift in Sources */,
 				09B5AC792804AD6C00F20D27 /* AppDelegate.swift in Sources */,
+				09CE2B7C281A6D9500CC0CC6 /* AllGroupRouterInput.swift in Sources */,
+				09CE2B7E281A6D9D00CC0CC6 /* AllGroupRouterOutput.swift in Sources */,
 				09786EE928182E180078ABB4 /* CurrentFriendInteractorOutput.swift in Sources */,
 				09786EF128182E950078ABB4 /* CurrentFriendViewOutput.swift in Sources */,
+				09CE2B6A281A6C5B00CC0CC6 /* FriendListPresenter.swift in Sources */,
 				09786EE528182E030078ABB4 /* CurrentFriendInteractor.swift in Sources */,
 				090CCAEF2809AF9200DD5CC0 /* FriendService.swift in Sources */,
 				094A6A7328198CDF00D9682C /* OtherGroupsRouterInput.swift in Sources */,
@@ -562,6 +631,7 @@
 				09786EF528182ED60078ABB4 /* CurrentFriendRouterInput.swift in Sources */,
 				094A6A7128198CD700D9682C /* OtherGroupsRouter.swift in Sources */,
 				094A6A6D28198C4F00D9682C /* FriendListInteractorInput.swift in Sources */,
+				09CE2B86281A6DD400CC0CC6 /* AllGroupInteractorOutput.swift in Sources */,
 				09ED1ED728104564009AF6FF /* Singleton.swift in Sources */,
 				094A6A7A28198D4500D9682C /* OtherGroupsViewInput.swift in Sources */,
 				09ED1ED9281045C4009AF6FF /* GroupService.swift in Sources */,
@@ -572,7 +642,9 @@
 				09E935172805E5F90032F99A /* OtherGroupsCell.swift in Sources */,
 				094A6A6F28198C5800D9682C /* FriendListInteractorOutput.swift in Sources */,
 				094A6A7C28198D4C00D9682C /* OtherGroupsViewOutput.swift in Sources */,
+				09CE2B7A281A6D8F00CC0CC6 /* AllGroupRouter.swift in Sources */,
 				094A6A7E28198DA000D9682C /* OtherGroupsPresenter.swift in Sources */,
+				09CE2B72281A6D2A00CC0CC6 /* FriendsListViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

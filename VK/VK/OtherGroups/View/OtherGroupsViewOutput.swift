@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol OtherGroupsViewOutput {
+    func viewIsReady()
+}

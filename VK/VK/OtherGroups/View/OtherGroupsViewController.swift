@@ -9,6 +9,8 @@ import UIKit
 
 class OtherGroupsViewController: UIViewController {
     
+    var output : OtherGroupsViewOutput?
+    
     @IBOutlet var tableView: UITableView!
     
     lazy var searchUIBar:UISearchBar = UISearchBar()
@@ -148,5 +150,10 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
             action.backgroundColor = .systemRed
         }
         return UISwipeActionsConfiguration(actions: [actionTableView])
+    }
+}
+extension OtherGroupsViewController: OtherGroupsViewInput {
+    func getVC() -> UIViewController {
+        return self
     }
 }

@@ -5,4 +5,11 @@
 //  Created by Sergey Melnik on 27.04.2022.
 //
 
-import Foundation
+import UIKit
+
+protocol OtherGroupsViewInput {
+    
+    var output: OtherGroupsViewOutput? { get set }
+    func getVC() -> UIViewController
+    
+}
