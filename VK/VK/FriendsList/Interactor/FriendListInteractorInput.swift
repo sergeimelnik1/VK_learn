@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol FriendListInteractorInput {
+    var output: FriendListInteractorOutput? { get set }
+    
+    func loadData()
+}

@@ -1,5 +1,5 @@
 //
-//  FriendListConfig.swift
+//  AllGroupConfigurator.swift
 //  VK
 //
 //  Created by Sergey Melnik on 28.04.2022.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-class FriendListConfig {
+class AllGroupsConfig {
     
-    var view : FriendListViewInput
-    let presenter = FriendListPresenter()
+    var view : AllGroupsViewInput?
+    let presenter = AllGroupsPresenter()
     
     init(){
-        view = FriendListViewController()
-        let router = FriendListRouter()
-        let interactor = FriendListInteractor()
+        view = AllGroupsViewController()
+        let router = AllGroupsRouter()
+        let interactor = AllGroupsInteractor()
         
         interactor.output = presenter
         presenter.interactor = interactor
@@ -23,7 +23,7 @@ class FriendListConfig {
         router.output = presenter
         presenter.router = router
         
-        view.output = presenter
+        view!.output = presenter
         presenter.view = view
     }
 }

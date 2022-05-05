@@ -11,6 +11,10 @@ import SwiftUI
 
 class AllGroupsViewController: UIViewController {
     
+    var output : AllGroupsViewOutput?
+    @IBAction func otherGroupsButton(_ sender: Any) {
+        self.output?.openOtherGroups()
+    }
     @IBOutlet var tableView: UITableView!
     private var groups: Results<Group>?
     
@@ -19,18 +23,16 @@ class AllGroupsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
-    
-    private var config = Realm.Configuration(
-        schemaVersion: 1,
-        migrationBlock: { migration, oldSchemaVersion in
-            if (oldSchemaVersion < 1) {}
-        })
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         overrideUserInterfaceStyle = .light
-  
+        var config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {}
+            })
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
         
@@ -38,7 +40,7 @@ class AllGroupsViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.refreshControl = myRefreshControl
         NotificationCenter.default.addObserver(self, selector: #selector(loadGroupsAfterEdit(notification:)), name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
-        
+        output?.viewIsReady()
         self.loadData()
     }
     
@@ -64,12 +66,13 @@ class AllGroupsViewController: UIViewController {
     
     //обработка нажатия на конкретную группу
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toOtherGroups", let cell = sender as? UITableViewCell {
-            _ = segue.destination as! OtherGroupsViewController
+        if let cell = sender as? UITableViewCell {
             if let indexPath = tableView.indexPath(for: cell) {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
         }
+        self.output?.openOtherGroups()
+
     }
     
     private func loadData() {
@@ -125,5 +128,10 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
         }
         action.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [action])
+    }
+}
+extension AllGroupsViewController: AllGroupsViewInput {
+    func getVC() -> UIViewController {
+        return self
     }
 }

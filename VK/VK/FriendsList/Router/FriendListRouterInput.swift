@@ -5,4 +5,10 @@
 //  Created by Sergey Melnik on 27.04.2022.
 //
 
-import Foundation
+import UIKit
+
+protocol FriendListRouterInput {
+    
+    var output: FriendListRouterOutput? { get set }
+    func showCurrentFriend(from vc: UIViewController, friend: Friend)
+}

@@ -8,7 +8,9 @@
 import UIKit
 import RealmSwift
 
-class FriendsListViewController: UIViewController {
+class FriendListViewController: UIViewController {
+    
+    var output : FriendListViewOutput?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,10 +37,12 @@ class FriendsListViewController: UIViewController {
         self.tableView.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.tableView.refreshControl = myRefreshControl
+        //все что внизу выносим в interactor
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
-        
-        self.loadData()
+        //но тут нет передачи данных во friends
+        //как лучше сделать, отдельным методом или вызовом данных из Realm'а
+        self.output?.loadData()
     }
     
     //принудительное скрытие кнопки back
@@ -50,7 +54,7 @@ class FriendsListViewController: UIViewController {
 }
 // MARK: - Table view data source
 
-extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate {
+extension FriendListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -66,40 +70,38 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
             cell.hideSeparator()
         }
         // получаем имя друга для конкретной строки
-        let friend = friends?[indexPath.row]
-        
+        if let friend = friends?[indexPath.row] {
         // устанавливаем имя друга в надпись ячейки
-        cell.setup(friend: friend!)
+        cell.setup(friend: friend)
+        }
         return cell
-    }
-}
-extension FriendsListViewController {
-    
-    @objc func refresh(sender: UIRefreshControl){
-        self.loadData()
-        sender.endRefreshing()
     }
     
     func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
-        vc.friend = self.friends?[indexPath.row]
-        vc.modalPresentationStyle = .fullScreen
         tableView.deselectRow(at: indexPath, animated: true)
-        self.present(vc, animated: false, completion: nil)
+        if let friend = self.friends?[indexPath.row] {
+            output?.enterFriendCell(friend: friend)
+        }
+    }
+}
+extension FriendListViewController {
+    
+    @objc func refresh(sender: UIRefreshControl){
+        self.output?.loadData()
+        self.tableView.reloadData()
+        sender.endRefreshing()
     }
     
-    private func loadData() {
-        do {
-            let realm = try Realm()
-            print(realm.configuration.fileURL!)
-            FriendService.loadFriendList()
-            let friends = realm.objects(Friend.self)
-            self.friends = friends
-            self.tableView.reloadData()
-        } catch {
-            // если произошла ошибка, выводим ее в консоль
-            print(error)
-        }
+
+
+}
+extension FriendListViewController: FriendListViewInput {
+    func loadFriendData(friend: Results<Friend>) {
+        self.friends = friend
+        self.tableView.reloadData()
+    }
+    
+    func getVC() -> UIViewController {
+        return self
     }
 }

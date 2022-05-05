@@ -6,3 +6,25 @@
 //
 
 import Foundation
+import RealmSwift
+
+class FriendListInteractor : FriendListInteractorInput {
+    func loadData() {
+            do {
+                let realm = try Realm()
+                print(realm.configuration.fileURL!)
+                FriendService.loadFriendList()
+                let friends = realm.objects(Friend.self)
+                output?.sendFriendDataToView(friend: friends)
+            } catch {
+                // если произошла ошибка, выводим ее в консоль
+                print(error)
+            }
+    }
+    
+    
+    var output : FriendListInteractorOutput?
+    
+    
+    
+}

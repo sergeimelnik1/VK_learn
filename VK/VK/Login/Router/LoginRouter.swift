@@ -1,22 +1,18 @@
 //
-//  FriendListRouter.swift
+//  LoginRouter.swift
 //  VK
 //
-//  Created by Sergey Melnik on 27.04.2022.
+//  Created by Sergey Melnik on 04.05.2022.
 //
 
 import UIKit
 
-class FriendListRouter: FriendListRouterInput {
-    func showCurrentFriend(from vc: UIViewController, friend: Friend) {
+class LoginRouter: LoginRouterInput {
+    var output: LoginRouterOutput?
+    func showTabBarController(from vc: UIViewController) {
         let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
-        vc.friend = friend
         vc.modalPresentationStyle = .fullScreen
         vc.present(vc, animated: false, completion: nil)
     }
-    
-    
-    var output: FriendListRouterOutput?
-    
 }

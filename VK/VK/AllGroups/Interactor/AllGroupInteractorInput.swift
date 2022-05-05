@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol AllGroupsInteractorInput {
+    var output: AllGroupsInteractorOutput? { get set }
+}

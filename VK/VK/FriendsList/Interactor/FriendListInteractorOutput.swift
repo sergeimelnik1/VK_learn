@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import RealmSwift
+
+protocol FriendListInteractorOutput {
+    func sendFriendDataToView(friend: Results<Friend>)
+}

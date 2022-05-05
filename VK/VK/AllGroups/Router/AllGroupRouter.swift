@@ -5,4 +5,17 @@
 //  Created by Sergey Melnik on 28.04.2022.
 //
 
-import Foundation
+import UIKit
+
+class AllGroupsRouter: AllGroupsRouterInput {
+    func openOtherGroups(from vc: UIViewController) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "OtherGroupsViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "OtherGroupsVC") as! OtherGroupsViewController
+        vc.modalPresentationStyle = .fullScreen
+        vc.present(vc, animated: false, completion: nil)
+    }
+
+    
+    var output: AllGroupsRouterOutput?
+    
+}

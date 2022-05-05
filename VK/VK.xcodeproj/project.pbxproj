@@ -44,9 +44,21 @@
 		09B5AC822804AD6E00F20D27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09B5AC812804AD6E00F20D27 /* Assets.xcassets */; };
 		09B5AC852804AD6E00F20D27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09B5AC832804AD6E00F20D27 /* LaunchScreen.storyboard */; };
 		09B5AC8D2804B6C400F20D27 /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5AC8C2804B6C400F20D27 /* LoginFormController.swift */; };
+		09C3729A28229F53009D4185 /* LoginConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3729928229F53009D4185 /* LoginConfig.swift */; };
+		09C3729C2822A074009D4185 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3729B2822A074009D4185 /* LoginInteractor.swift */; };
+		09C3729E2822A083009D4185 /* LoginInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3729D2822A083009D4185 /* LoginInteractorInput.swift */; };
+		09C372A02822A091009D4185 /* LoginInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3729F2822A091009D4185 /* LoginInteractorOutput.swift */; };
+		09C372A22822A0B4009D4185 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C372A12822A0B4009D4185 /* LoginPresenter.swift */; };
+		09C372A42822A0BE009D4185 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C372A32822A0BE009D4185 /* LoginRouter.swift */; };
+		09C372A62822A0C7009D4185 /* LoginRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C372A52822A0C7009D4185 /* LoginRouterInput.swift */; };
+		09C372A82822A0CE009D4185 /* LoginRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C372A72822A0CE009D4185 /* LoginRouterOutput.swift */; };
+		09C372AA2822A0DC009D4185 /* LoginFormOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C372A92822A0DC009D4185 /* LoginFormOutput.swift */; };
+		09C372AC2822A0EC009D4185 /* LoginFormInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C372AB2822A0EC009D4185 /* LoginFormInput.swift */; };
+		09C372B02822ADF6009D4185 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C372AF2822ADF6009D4185 /* TabBarViewController.swift */; };
+		09C372B22822AE78009D4185 /* TabBarView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C372B12822AE78009D4185 /* TabBarView.storyboard */; };
 		09CE2B6A281A6C5B00CC0CC6 /* FriendListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B69281A6C5B00CC0CC6 /* FriendListPresenter.swift */; };
 		09CE2B6D281A6C7B00CC0CC6 /* FriendListConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B6C281A6C7B00CC0CC6 /* FriendListConfig.swift */; };
-		09CE2B70281A6CF400CC0CC6 /* AllGroupConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B6F281A6CF400CC0CC6 /* AllGroupConfigurator.swift */; };
+		09CE2B70281A6CF400CC0CC6 /* AllGroupConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B6F281A6CF400CC0CC6 /* AllGroupConfig.swift */; };
 		09CE2B72281A6D2A00CC0CC6 /* FriendsListViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B71281A6D2A00CC0CC6 /* FriendsListViewOutput.swift */; };
 		09CE2B74281A6D3800CC0CC6 /* FriendsListViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B73281A6D3800CC0CC6 /* FriendsListViewInput.swift */; };
 		09CE2B76281A6D4500CC0CC6 /* AllGroupViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE2B75281A6D4500CC0CC6 /* AllGroupViewInput.swift */; };
@@ -115,9 +127,21 @@
 		09B5AC842804AD6E00F20D27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09B5AC862804AD6E00F20D27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09B5AC8C2804B6C400F20D27 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
+		09C3729928229F53009D4185 /* LoginConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfig.swift; sourceTree = "<group>"; };
+		09C3729B2822A074009D4185 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		09C3729D2822A083009D4185 /* LoginInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorInput.swift; sourceTree = "<group>"; };
+		09C3729F2822A091009D4185 /* LoginInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorOutput.swift; sourceTree = "<group>"; };
+		09C372A12822A0B4009D4185 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		09C372A32822A0BE009D4185 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		09C372A52822A0C7009D4185 /* LoginRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterInput.swift; sourceTree = "<group>"; };
+		09C372A72822A0CE009D4185 /* LoginRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterOutput.swift; sourceTree = "<group>"; };
+		09C372A92822A0DC009D4185 /* LoginFormOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormOutput.swift; sourceTree = "<group>"; };
+		09C372AB2822A0EC009D4185 /* LoginFormInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormInput.swift; sourceTree = "<group>"; };
+		09C372AF2822ADF6009D4185 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		09C372B12822AE78009D4185 /* TabBarView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBarView.storyboard; sourceTree = "<group>"; };
 		09CE2B69281A6C5B00CC0CC6 /* FriendListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListPresenter.swift; sourceTree = "<group>"; };
 		09CE2B6C281A6C7B00CC0CC6 /* FriendListConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListConfig.swift; sourceTree = "<group>"; };
-		09CE2B6F281A6CF400CC0CC6 /* AllGroupConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupConfigurator.swift; sourceTree = "<group>"; };
+		09CE2B6F281A6CF400CC0CC6 /* AllGroupConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupConfig.swift; sourceTree = "<group>"; };
 		09CE2B71281A6D2A00CC0CC6 /* FriendsListViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewOutput.swift; sourceTree = "<group>"; };
 		09CE2B73281A6D3800CC0CC6 /* FriendsListViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewInput.swift; sourceTree = "<group>"; };
 		09CE2B75281A6D4500CC0CC6 /* AllGroupViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupViewInput.swift; sourceTree = "<group>"; };
@@ -209,13 +233,14 @@
 		09B5AC772804AD6C00F20D27 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				09C372AD2822A64B009D4185 /* TabBarController */,
 				090CCAED2809AF9100DD5CC0 /* Services */,
+				09C3729328226CBC009D4185 /* Login */,
 				09E935152805E5DA0032F99A /* OtherGroups */,
 				09E935102805E1A00032F99A /* AllGroups */,
 				09E9350B2805E13B0032F99A /* CurrentFriend */,
 				09E935062805DE960032F99A /* FriendsList */,
 				09B5AC782804AD6C00F20D27 /* AppDelegate.swift */,
-				09B5AC8C2804B6C400F20D27 /* LoginFormController.swift */,
 				09B5AC7A2804AD6C00F20D27 /* SceneDelegate.swift */,
 				09B5AC7C2804AD6C00F20D27 /* ViewController.swift */,
 				09B5AC7E2804AD6C00F20D27 /* Main.storyboard */,
@@ -224,6 +249,81 @@
 				09B5AC862804AD6E00F20D27 /* Info.plist */,
 			);
 			path = VK;
+			sourceTree = "<group>";
+		};
+		09C3729328226CBC009D4185 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				09C3729828227897009D4185 /* Interactor */,
+				09C3729728227892009D4185 /* Presenter */,
+				09C3729628227886009D4185 /* Router */,
+				09C3729528227880009D4185 /* View */,
+				09C372942822786D009D4185 /* Configurator */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		09C372942822786D009D4185 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				09C3729928229F53009D4185 /* LoginConfig.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		09C3729528227880009D4185 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09B5AC8C2804B6C400F20D27 /* LoginFormController.swift */,
+				09C372A92822A0DC009D4185 /* LoginFormOutput.swift */,
+				09C372AB2822A0EC009D4185 /* LoginFormInput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09C3729628227886009D4185 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				09C372A32822A0BE009D4185 /* LoginRouter.swift */,
+				09C372A52822A0C7009D4185 /* LoginRouterInput.swift */,
+				09C372A72822A0CE009D4185 /* LoginRouterOutput.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		09C3729728227892009D4185 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				09C372A12822A0B4009D4185 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		09C3729828227897009D4185 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				09C3729B2822A074009D4185 /* LoginInteractor.swift */,
+				09C3729D2822A083009D4185 /* LoginInteractorInput.swift */,
+				09C3729F2822A091009D4185 /* LoginInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		09C372AD2822A64B009D4185 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				09C372AE2822ADE9009D4185 /* View */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		09C372AE2822ADE9009D4185 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09C372AF2822ADF6009D4185 /* TabBarViewController.swift */,
+				09C372B12822AE78009D4185 /* TabBarView.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		09CE2B6B281A6C6D00CC0CC6 /* Configuration */ = {
@@ -237,7 +337,7 @@
 		09CE2B6E281A6CE100CC0CC6 /* Configurator */ = {
 			isa = PBXGroup;
 			children = (
-				09CE2B6F281A6CF400CC0CC6 /* AllGroupConfigurator.swift */,
+				09CE2B6F281A6CF400CC0CC6 /* AllGroupConfig.swift */,
 			);
 			path = Configurator;
 			sourceTree = "<group>";
@@ -417,8 +517,8 @@
 				09ED1ED42810325D009AF6FF /* FriendsListViewController.storyboard */,
 				09E935072805DFFB0032F99A /* FriendsListViewController.swift */,
 				09E935092805E0150032F99A /* FriendCell.swift */,
-				09CE2B71281A6D2A00CC0CC6 /* FriendsListViewOutput.swift */,
 				09CE2B73281A6D3800CC0CC6 /* FriendsListViewInput.swift */,
+				09CE2B71281A6D2A00CC0CC6 /* FriendsListViewOutput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -530,6 +630,7 @@
 			files = (
 				09786F002818451A0078ABB4 /* ViewCell.xib in Resources */,
 				09B5AC852804AD6E00F20D27 /* LaunchScreen.storyboard in Resources */,
+				09C372B22822AE78009D4185 /* TabBarView.storyboard in Resources */,
 				09786EE3281692180078ABB4 /* OtherGroupsController.storyboard in Resources */,
 				09ED1ED128103234009AF6FF /* AllGroupsViewController.storyboard in Resources */,
 				09B5AC822804AD6E00F20D27 /* Assets.xcassets in Resources */,
@@ -593,6 +694,7 @@
 				09B5AC7D2804AD6C00F20D27 /* ViewController.swift in Sources */,
 				094A6A8428198DD100D9682C /* OtherGroupsInteractorOutput.swift in Sources */,
 				094A6A6B28198C4600D9682C /* FriendListInteractor.swift in Sources */,
+				09C372A42822A0BE009D4185 /* LoginRouter.swift in Sources */,
 				094A6A6528198C2800D9682C /* FriendListRouter.swift in Sources */,
 				09DF46F628071EC00093DCD5 /* Friend.swift in Sources */,
 				09E9350A2805E0150032F99A /* FriendCell.swift in Sources */,
@@ -601,10 +703,13 @@
 				09CE2B82281A6DBE00CC0CC6 /* AllGroupInteractor.swift in Sources */,
 				09CE2B78281A6D5200CC0CC6 /* AllGroupViewOutput.swift in Sources */,
 				094A6A8228198DC300D9682C /* OtherGroupsInteractorInput.swift in Sources */,
+				09C3729C2822A074009D4185 /* LoginInteractor.swift in Sources */,
+				09C372AC2822A0EC009D4185 /* LoginFormInput.swift in Sources */,
 				09E935142805E4CE0032F99A /* AllGroupsCell.swift in Sources */,
 				09786EF728182EE30078ABB4 /* CurrentFriendRouterOutput.swift in Sources */,
 				09B5AC8D2804B6C400F20D27 /* LoginFormController.swift in Sources */,
 				09E935122805E46A0032F99A /* AllGroupsViewController.swift in Sources */,
+				09C372A22822A0B4009D4185 /* LoginPresenter.swift in Sources */,
 				09786EF328182EC40078ABB4 /* CurrentFriendRouter.swift in Sources */,
 				09E9351B280708F90032F99A /* Group.swift in Sources */,
 				094A6A6928198C3500D9682C /* FriendListRouterOutput.swift in Sources */,
@@ -612,9 +717,10 @@
 				09786EFC281831DD0078ABB4 /* CurrentFriendConfig.swift in Sources */,
 				094A6A8028198DBC00D9682C /* OtherGroupsInteractor.swift in Sources */,
 				09CE2B76281A6D4500CC0CC6 /* AllGroupViewInput.swift in Sources */,
-				09CE2B70281A6CF400CC0CC6 /* AllGroupConfigurator.swift in Sources */,
+				09CE2B70281A6CF400CC0CC6 /* AllGroupConfig.swift in Sources */,
 				09E935192805E6090032F99A /* OtherGroupsViewController.swift in Sources */,
 				09CE2B80281A6DA500CC0CC6 /* AllGroupPresenter.swift in Sources */,
+				09C372AA2822A0DC009D4185 /* LoginFormOutput.swift in Sources */,
 				09CE2B6D281A6C7B00CC0CC6 /* FriendListConfig.swift in Sources */,
 				09CE2B74281A6D3800CC0CC6 /* FriendsListViewInput.swift in Sources */,
 				09B5AC792804AD6C00F20D27 /* AppDelegate.swift in Sources */,
@@ -633,6 +739,7 @@
 				094A6A6D28198C4F00D9682C /* FriendListInteractorInput.swift in Sources */,
 				09CE2B86281A6DD400CC0CC6 /* AllGroupInteractorOutput.swift in Sources */,
 				09ED1ED728104564009AF6FF /* Singleton.swift in Sources */,
+				09C372A82822A0CE009D4185 /* LoginRouterOutput.swift in Sources */,
 				094A6A7A28198D4500D9682C /* OtherGroupsViewInput.swift in Sources */,
 				09ED1ED9281045C4009AF6FF /* GroupService.swift in Sources */,
 				09B5AC7B2804AD6C00F20D27 /* SceneDelegate.swift in Sources */,
@@ -642,9 +749,14 @@
 				09E935172805E5F90032F99A /* OtherGroupsCell.swift in Sources */,
 				094A6A6F28198C5800D9682C /* FriendListInteractorOutput.swift in Sources */,
 				094A6A7C28198D4C00D9682C /* OtherGroupsViewOutput.swift in Sources */,
+				09C372B02822ADF6009D4185 /* TabBarViewController.swift in Sources */,
 				09CE2B7A281A6D8F00CC0CC6 /* AllGroupRouter.swift in Sources */,
 				094A6A7E28198DA000D9682C /* OtherGroupsPresenter.swift in Sources */,
+				09C372A62822A0C7009D4185 /* LoginRouterInput.swift in Sources */,
+				09C372A02822A091009D4185 /* LoginInteractorOutput.swift in Sources */,
+				09C3729E2822A083009D4185 /* LoginInteractorInput.swift in Sources */,
 				09CE2B72281A6D2A00CC0CC6 /* FriendsListViewOutput.swift in Sources */,
+				09C3729A28229F53009D4185 /* LoginConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

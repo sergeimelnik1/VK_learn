@@ -28,6 +28,7 @@ class FriendService {
                 guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
                 let friends: [Friend] = json["response"]["items"].arrayValue.compactMap { Friend(with: $0) }
+                print(friends)
                 //тут мы данные сохраняем в Realm
                 self.saveFriendsData(friends)
             } catch {

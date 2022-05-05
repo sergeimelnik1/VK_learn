@@ -5,4 +5,11 @@
 //  Created by Sergey Melnik on 28.04.2022.
 //
 
-import Foundation
+import UIKit
+
+protocol AllGroupsViewInput {
+    
+    var output: AllGroupsViewOutput? { get set }
+    func getVC() -> UIViewController
+    
+}

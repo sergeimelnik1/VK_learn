@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol AllGroupsViewOutput {
+    func viewIsReady()
+    func openOtherGroups()
+}

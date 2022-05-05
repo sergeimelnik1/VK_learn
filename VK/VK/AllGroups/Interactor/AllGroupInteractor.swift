@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class AllGroupsInteractor : AllGroupsInteractorInput {
+    
+    var output : AllGroupsInteractorOutput?
+    
+}
