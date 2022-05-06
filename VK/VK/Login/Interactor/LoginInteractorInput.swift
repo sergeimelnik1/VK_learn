@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import WebKit
 
 protocol LoginInteractorInput {
-    
+    func authVK(decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void)
 }

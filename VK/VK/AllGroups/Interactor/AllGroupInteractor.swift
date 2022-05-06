@@ -6,9 +6,22 @@
 //
 
 import Foundation
+import RealmSwift
 
 class AllGroupsInteractor : AllGroupsInteractorInput {
     
     var output : AllGroupsInteractorOutput?
     
+    func loadGroups() {
+        do {
+            let realm = try Realm()
+            GroupService.loadGroupList(success: { [weak self] in
+                let groups = realm.objects(Group.self)
+                self?.output?.loadGroupsSuccess(groups)
+            })
+        } catch {
+            // если произошла ошибка, выводим ее в консоль
+            output?.loadGroupsError(error)
+        }
+    }
 }

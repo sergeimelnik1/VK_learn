@@ -5,15 +5,26 @@
 //  Created by Sergey Melnik on 28.04.2022.
 //
 
-import Foundation
+import UIKit
 
-class AllGroupsConfig {
+class AllGroupsConfig: TabBarViewProtocol {
+    var title: String = "Группы"
     
-    var view : AllGroupsViewInput?
+    var image: UIImage? = UIImage(named: "")
+    
+    func configured() -> UIViewController {
+        return view.getVC()
+    }
+    var view : AllGroupsViewInput
     let presenter = AllGroupsPresenter()
     
     init(){
-        view = AllGroupsViewController()
+        let storyboard: UIStoryboard = UIStoryboard(name: "AllGroupsViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AllGroupsViewController") as! AllGroupsViewController
+        vc.modalPresentationStyle = .fullScreen
+        
+        view = vc
+//        view = AllGroupsViewController()
         let router = AllGroupsRouter()
         let interactor = AllGroupsInteractor()
         
@@ -23,7 +34,7 @@ class AllGroupsConfig {
         router.output = presenter
         presenter.router = router
         
-        view!.output = presenter
+        view.output = presenter
         presenter.view = view
     }
 }

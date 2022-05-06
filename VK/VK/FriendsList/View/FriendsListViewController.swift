@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class FriendListViewController: UIViewController {
+class FriendsListViewController: UIViewController {
     
     var output : FriendListViewOutput?
     
@@ -54,7 +54,7 @@ class FriendListViewController: UIViewController {
 }
 // MARK: - Table view data source
 
-extension FriendListViewController: UITableViewDataSource, UITableViewDelegate {
+extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -84,7 +84,7 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-extension FriendListViewController {
+extension FriendsListViewController {
     
     @objc func refresh(sender: UIRefreshControl){
         self.output?.loadData()
@@ -95,7 +95,7 @@ extension FriendListViewController {
 
 
 }
-extension FriendListViewController: FriendListViewInput {
+extension FriendsListViewController: FriendListViewInput {
     func loadFriendData(friend: Results<Friend>) {
         self.friends = friend
         self.tableView.reloadData()

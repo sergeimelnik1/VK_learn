@@ -9,4 +9,5 @@ import Foundation
 
 protocol OtherGroupsInteractorInput {
     var output: OtherGroupsInteractorOutput? { get set }
+    func loadSearchData(_ searchText: String)
 }

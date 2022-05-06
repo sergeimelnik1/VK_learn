@@ -5,16 +5,45 @@
 //  Created by Sergey Melnik on 04.05.2022.
 //
 
-import Foundation
 import UIKit
-class TabBarViewController {
-    let tabBarVC = UITabBarController()
-    let vc1 = UINavigationController(rootViewController: FriendListViewController())
-    let vc2 = UINavigationController(rootViewController: AllGroupsViewController())
-//    vc1.title = "Мои друзья"
-//    vc2.title = "Мои группы"
+
+class TabBarViewController: UITabBarController {
     
-//    tabBarVC.setViewController([vc1, vc2], animated: false)
-//    tabBarVC.modalPresentationStyle = .fullScreen
-//    present(tabBarVC, animated: true)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
+        
+        var viewControllers: [UIViewController] = []
+        let modules: [TabBarViewProtocol] = [AllGroupsConfig()]
+
+        for module in modules {
+            viewControllers.append(setupPageController(module))
+        }
+        self.viewControllers = viewControllers
+        
+        let navigation: UINavigationController = UINavigationController(rootViewController: self)
+        navigation.navigationBar.isHidden = true
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = navigation
+    }
+    
+    private func setupPageController(_ module: TabBarViewProtocol) -> UIViewController {
+        let tabBarItem = UITabBarItem()
+        
+        tabBarItem.title = module.title
+        tabBarItem.image = module.image
+        
+        let controller = module.configured()
+        controller.tabBarItem = tabBarItem
+        controller.title = module.title
+        
+        return controller
+    }
+}
+protocol TabBarViewProtocol {
+    var title: String { get }
+    var image: UIImage? { get }
+    func configured() -> UIViewController
+    
 }

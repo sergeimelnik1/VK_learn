@@ -51,26 +51,26 @@ class OtherGroupsViewController: UIViewController {
 extension OtherGroupsViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        self.filterContentForSearchText(searchController.searchBar.text!)
+        self.output?.filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    private func filterContentForSearchText(_ searchText: String) {
-        if searchText != "" {
-            GroupService.loadSearchGroupList(query: searchText, success: { [weak self] groups in
-                self?.groups = groups
-                self?.currentSearchText = searchText
-                self?.tableView.reloadData()
-            })
-        } else {
-            self.groups = []
-            self.tableView.reloadData()
-        }
-    }
+//    private func filterContentForSearchText(_ searchText: String) {
+//        if searchText != "" {
+//            GroupService.loadSearchGroupList(query: searchText, success: { [weak self] groups in
+//                self?.groups = groups
+//                self?.currentSearchText = searchText
+//                self?.tableView.reloadData()
+//            })
+//        } else {
+//            self.groups = []
+//            self.tableView.reloadData()
+//        }
+//    }
 }
 
 extension OtherGroupsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        self.filterContentForSearchText(searchBar.text!)
+        self.output?.filterContentForSearchText(searchBar.text!)
         self.currentSearchText = searchBar.text!
     }
 }
@@ -127,7 +127,7 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
             let action = UIContextualAction(style: .normal, title: "Add") { [weak self] (action, view, completionHandler) in
                 //тут логика подписки на группу
                 GroupService.followGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
-                    self?.filterContentForSearchText(self?.currentSearchText ?? "")
+                    self?.output?.filterContentForSearchText(self?.currentSearchText ?? "")
                     tableView.reloadData()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
                 })
@@ -139,7 +139,7 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
             let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
                 //тут логика подписки на группу
                 GroupService.leaveGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
-                    self?.filterContentForSearchText(self?.currentSearchText ?? "")
+                    self?.output?.filterContentForSearchText(self?.currentSearchText ?? "")
                     tableView.reloadData()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
                 })
@@ -153,6 +153,11 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 extension OtherGroupsViewController: OtherGroupsViewInput {
+    func loadSearchData(_ searchText: String, groups: [Group]) {
+        self.currentSearchText = searchText
+        self.groups = groups
+    }
+    
     func getVC() -> UIViewController {
         return self
     }

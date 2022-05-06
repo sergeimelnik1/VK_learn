@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import WebKit
 
-protocol LoginFormOutput {
-    func loginSuccess()
+protocol LoginViewOutput {
+//    func loginSuccess()
+    func authVK(decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void)
 }

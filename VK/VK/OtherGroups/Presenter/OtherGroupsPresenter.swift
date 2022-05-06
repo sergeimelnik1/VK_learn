@@ -9,13 +9,17 @@ import Foundation
 
 class OtherGroupsPresenter {
     
-        var view: OtherGroupsViewInput!
+        weak var view: OtherGroupsViewInput!
         var interactor: OtherGroupsInteractorInput!
         var router: OtherGroupsRouterInput!
         
     }
 
-    extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
+extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
+    func sendSearchDataToView(_ searchText: String, groups: [Group]) {
+        view.loadSearchData(searchText, groups: groups)
+    }
+    
         
     }
 
@@ -24,6 +28,10 @@ class OtherGroupsPresenter {
     }
 
 extension OtherGroupsPresenter: OtherGroupsViewOutput {
+    func filterContentForSearchText(_ searchText: String) {
+        self.interactor.loadSearchData(searchText)
+    }
+    
     func viewIsReady() {
     
     }

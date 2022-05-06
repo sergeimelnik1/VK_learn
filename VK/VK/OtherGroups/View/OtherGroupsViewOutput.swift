@@ -9,4 +9,5 @@ import Foundation
 
 protocol OtherGroupsViewOutput {
     func viewIsReady()
+    func filterContentForSearchText(_ searchText: String)
 }

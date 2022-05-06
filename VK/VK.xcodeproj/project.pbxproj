@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		090CCAEF2809AF9200DD5CC0 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CCAEE2809AF9100DD5CC0 /* FriendService.swift */; };
+		092D03E3282415630074D0CA /* LoginFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092D03E2282415630074D0CA /* LoginFormController.storyboard */; };
+		092D03E5282415D50074D0CA /* LoginConfigInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D03E4282415D50074D0CA /* LoginConfigInput.swift */; };
 		094A6A6528198C2800D9682C /* FriendListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6428198C2800D9682C /* FriendListRouter.swift */; };
 		094A6A6728198C2F00D9682C /* FriendListRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6628198C2F00D9682C /* FriendListRouterInput.swift */; };
 		094A6A6928198C3500D9682C /* FriendListRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A6A6828198C3500D9682C /* FriendListRouterOutput.swift */; };
@@ -89,6 +91,8 @@
 
 /* Begin PBXFileReference section */
 		090CCAEE2809AF9100DD5CC0 /* FriendService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
+		092D03E2282415630074D0CA /* LoginFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginFormController.storyboard; sourceTree = "<group>"; };
+		092D03E4282415D50074D0CA /* LoginConfigInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigInput.swift; sourceTree = "<group>"; };
 		094A6A6428198C2800D9682C /* FriendListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListRouter.swift; sourceTree = "<group>"; };
 		094A6A6628198C2F00D9682C /* FriendListRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListRouterInput.swift; sourceTree = "<group>"; };
 		094A6A6828198C3500D9682C /* FriendListRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListRouterOutput.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				09C3729928229F53009D4185 /* LoginConfig.swift */,
+				092D03E4282415D50074D0CA /* LoginConfigInput.swift */,
 			);
 			path = Configurator;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				09B5AC8C2804B6C400F20D27 /* LoginFormController.swift */,
 				09C372A92822A0DC009D4185 /* LoginFormOutput.swift */,
 				09C372AB2822A0EC009D4185 /* LoginFormInput.swift */,
+				092D03E2282415630074D0CA /* LoginFormController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				09786EE3281692180078ABB4 /* OtherGroupsController.storyboard in Resources */,
 				09ED1ED128103234009AF6FF /* AllGroupsViewController.storyboard in Resources */,
 				09B5AC822804AD6E00F20D27 /* Assets.xcassets in Resources */,
+				092D03E3282415630074D0CA /* LoginFormController.storyboard in Resources */,
 				09ED1ED52810325D009AF6FF /* FriendsListViewController.storyboard in Resources */,
 				09B5AC802804AD6C00F20D27 /* Main.storyboard in Resources */,
 				09ED1ED32810324A009AF6FF /* CurrentFriendViewController.storyboard in Resources */,
@@ -751,6 +758,7 @@
 				094A6A7C28198D4C00D9682C /* OtherGroupsViewOutput.swift in Sources */,
 				09C372B02822ADF6009D4185 /* TabBarViewController.swift in Sources */,
 				09CE2B7A281A6D8F00CC0CC6 /* AllGroupRouter.swift in Sources */,
+				092D03E5282415D50074D0CA /* LoginConfigInput.swift in Sources */,
 				094A6A7E28198DA000D9682C /* OtherGroupsPresenter.swift in Sources */,
 				09C372A62822A0C7009D4185 /* LoginRouterInput.swift in Sources */,
 				09C372A02822A091009D4185 /* LoginInteractorOutput.swift in Sources */,

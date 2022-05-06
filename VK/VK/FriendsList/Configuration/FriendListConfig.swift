@@ -5,15 +5,28 @@
 //  Created by Sergey Melnik on 28.04.2022.
 //
 
-import Foundation
+import UIKit
 
-class FriendListConfig {
+class FriendListConfig: TabBarViewProtocol {
+    var title: String = "Друзья"
+    
+    var image: UIImage? = UIImage(named: "")
+    
+    func configured() -> UIViewController {
+        return view.getVC()
+    }
+    
     
     var view : FriendListViewInput
     let presenter = FriendListPresenter()
     
     init(){
-        view = FriendListViewController()
+        let storyboard: UIStoryboard = UIStoryboard(name: "FriendsListViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "FriendsListViewController") as! FriendsListViewController
+        vc.modalPresentationStyle = .fullScreen
+        
+        view = vc
+//        view = FriendListViewController()
         let router = FriendListRouter()
         let interactor = FriendListInteractor()
         

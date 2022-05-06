@@ -15,8 +15,8 @@ class AllGroupsViewController: UIViewController {
     @IBAction func otherGroupsButton(_ sender: Any) {
         self.output?.openOtherGroups()
     }
-    @IBOutlet var tableView: UITableView!
-    private var groups: Results<Group>?
+    @IBOutlet var table: UITableView!
+//    private var groups: Results<Group>?
     
     private let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -28,6 +28,7 @@ class AllGroupsViewController: UIViewController {
         super.viewDidLoad()
         
         overrideUserInterfaceStyle = .light
+        //ниже в viewIsReady засунуть
         var config = Realm.Configuration(
             schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
@@ -36,12 +37,13 @@ class AllGroupsViewController: UIViewController {
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.refreshControl = myRefreshControl
+        self.table.dataSource = self
+        self.table.delegate = self
+        self.table.refreshControl = myRefreshControl
         NotificationCenter.default.addObserver(self, selector: #selector(loadGroupsAfterEdit(notification:)), name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
         output?.viewIsReady()
-        self.loadData()
+        self.output?.loadGroups()
+        self.table.reloadData()
     }
     
     //принудительное скрытие кнопки back
@@ -53,41 +55,28 @@ class AllGroupsViewController: UIViewController {
     
     //перезагрузка контроллера руками
     @objc func refresh(sender: UIRefreshControl){
-        self.loadData()
+        self.output?.loadGroups()
+        self.table.reloadData()
         sender.endRefreshing()
     }
     
     //метод дергается после нотификации о удалении или добавлении группы
     @objc func loadGroupsAfterEdit(notification: Notification) {
         GroupService.loadGroupList(success: { [weak self] in
-            self?.tableView.reloadData()
+            self?.table.reloadData()
         })
     }
     
-    //обработка нажатия на конкретную группу
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? UITableViewCell {
-            if let indexPath = tableView.indexPath(for: cell) {
-                tableView.deselectRow(at: indexPath, animated: true)
-            }
-        }
-        self.output?.openOtherGroups()
-
-    }
-    
-    private func loadData() {
-        do {
-            let realm = try Realm()
-            GroupService.loadGroupList(success: { [weak self] in
-                let groups = realm.objects(Group.self)
-                self?.groups = groups
-                self?.tableView.reloadData()
-            })
-        } catch {
-            // если произошла ошибка, выводим ее в консоль
-            print(error)
-        }
-    }
+//    //обработка нажатия на конкретную группу
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let cell = sender as? UITableViewCell {
+//            if let indexPath = table.indexPath(for: cell) {
+//                table.deselectRow(at: indexPath, animated: true)
+//            }
+//        }
+//        self.output?.openOtherGroups()
+//
+//    }
 }
 // MARK: - Table view data source
 
@@ -97,18 +86,18 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups?.count ?? 1
+        return self.output?.getCountGroups() ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // получаем ячейку из пула
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! AllGroupsCell
-        if indexPath.row == (groups?.count ?? 1) - 1 {
+        if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
             cell.hideSeparator()
         }
         // получаем название группы для конкретной строки
-        if let group = groups?[indexPath.row] {
+        if let group = self.output?.getIndexPathRowGroup(indexPath.row) {
             cell.setup(group: group)
         }
         return cell
@@ -120,11 +109,15 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
             //тут логика отписки от группы
-            GroupService.leaveGroup(groupId: self?.groups?[indexPath.row].id ?? 1, success: { [weak self] in
-                self?.loadData()
-            })
-            //тут нотификация должна отрабатывать о добавлении элемента
-            completionHandler(true)
+            if let group = self?.output?.getIndexPathRowGroup(indexPath.row) {
+                GroupService.leaveGroup(groupId: group.id, success: { [weak self] in
+                    self?.output?.loadGroups()
+                    self?.table.reloadData()
+                })
+                
+                //тут нотификация должна отрабатывать о добавлении элемента
+                completionHandler(true)
+            }
         }
         action.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [action])

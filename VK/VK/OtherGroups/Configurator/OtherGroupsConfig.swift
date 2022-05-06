@@ -5,9 +5,11 @@
 //  Created by Sergey Melnik on 27.04.2022.
 //
 
-import Foundation
+import UIKit
 
 class OtherGroupsConfig {
+
+    
     
     var view : OtherGroupsViewInput?
     let presenter = OtherGroupsPresenter()

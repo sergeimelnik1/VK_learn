@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol LoginFormInput {
-    var output: LoginFormOutput? { get set }
+protocol LoginViewInput {
+    var output: LoginViewOutput? { get set }
     func getVC() -> UIViewController
 
 }

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol AllGroupsInteractorOutput {
-    
+    func loadGroupsSuccess(_ groups: Results<Group>)
+    func loadGroupsError(_ error: Error)
 }

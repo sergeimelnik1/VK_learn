@@ -5,25 +5,11 @@
 //  Created by Sergey Melnik on 04.05.2022.
 //
 
-import Foundation
+import UIKit
 
 class LoginConfig {
-    
-    var view : LoginFormInput?
-    let presenter = LoginPresenter()
-    
-    init(){
-        view = LoginFormController()
-        let router = LoginRouter()
-        let interactor = LoginInteractor()
-        
-        interactor.output = presenter
-        presenter.interactor = interactor
-        
-        router.output = presenter
-        presenter.router = router
-        
-        view!.output = presenter
-        presenter.view = view
-    }
+ 
+}
+extension LoginConfig {
+
 }

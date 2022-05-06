@@ -8,6 +8,10 @@
 import UIKit
 
 class AllGroupsRouter: AllGroupsRouterInput {
+    func loadGroupsError(_ error: Error) {
+        print(error)
+    }
+    
     func openOtherGroups(from vc: UIViewController) {
         let storyboard: UIStoryboard = UIStoryboard(name: "OtherGroupsViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "OtherGroupsVC") as! OtherGroupsViewController
