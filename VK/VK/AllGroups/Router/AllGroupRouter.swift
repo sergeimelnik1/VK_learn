@@ -8,7 +8,7 @@
 import UIKit
 
 class AllGroupsRouter: AllGroupsRouterInput {
-    func loadGroupsError(_ error: Error) {
+    func showLoadGroupsError(_ error: Error) {
         print(error)
     }
     

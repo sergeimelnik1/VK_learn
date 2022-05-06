@@ -11,11 +11,18 @@ import RealmSwift
 class AllGroupsInteractor : AllGroupsInteractorInput {
     
     var output : AllGroupsInteractorOutput?
+    var groupService: GroupServiceProtocol!
+    func leaveGroup(_ groupId: Int) {
+        groupService.leaveGroup(groupId: groupId, success: { [weak self] in
+            self?.loadGroups()
+        })
+    }
     
     func loadGroups() {
         do {
             let realm = try Realm()
-            GroupService.loadGroupList(success: { [weak self] in
+            
+            groupService.loadGroupList(success: { [weak self] in
                 let groups = realm.objects(Group.self)
                 self?.output?.loadGroupsSuccess(groups)
             })

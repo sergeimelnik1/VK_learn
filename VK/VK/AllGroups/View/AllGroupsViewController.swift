@@ -16,7 +16,6 @@ class AllGroupsViewController: UIViewController {
         self.output?.openOtherGroups()
     }
     @IBOutlet var table: UITableView!
-//    private var groups: Results<Group>?
     
     private let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -28,28 +27,17 @@ class AllGroupsViewController: UIViewController {
         super.viewDidLoad()
         
         overrideUserInterfaceStyle = .light
-        //ниже в viewIsReady засунуть
-        var config = Realm.Configuration(
-            schemaVersion: 1,
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {}
-            })
-        config.deleteRealmIfMigrationNeeded = true
-        Realm.Configuration.defaultConfiguration = config
-        
+
         self.table.dataSource = self
         self.table.delegate = self
         self.table.refreshControl = myRefreshControl
-        NotificationCenter.default.addObserver(self, selector: #selector(loadGroupsAfterEdit(notification:)), name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
-        output?.viewIsReady()
-        self.output?.loadGroups()
-        self.table.reloadData()
+        
+        self.output?.viewIsReady()
     }
     
     //принудительное скрытие кнопки back
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tabBarController?.navigationItem.hidesBackButton = true
     }
     
@@ -59,24 +47,6 @@ class AllGroupsViewController: UIViewController {
         self.table.reloadData()
         sender.endRefreshing()
     }
-    
-    //метод дергается после нотификации о удалении или добавлении группы
-    @objc func loadGroupsAfterEdit(notification: Notification) {
-        GroupService.loadGroupList(success: { [weak self] in
-            self?.table.reloadData()
-        })
-    }
-    
-//    //обработка нажатия на конкретную группу
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let cell = sender as? UITableViewCell {
-//            if let indexPath = table.indexPath(for: cell) {
-//                table.deselectRow(at: indexPath, animated: true)
-//            }
-//        }
-//        self.output?.openOtherGroups()
-//
-//    }
 }
 // MARK: - Table view data source
 
@@ -110,14 +80,11 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
         let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
             //тут логика отписки от группы
             if let group = self?.output?.getIndexPathRowGroup(indexPath.row) {
-                GroupService.leaveGroup(groupId: group.id, success: { [weak self] in
-                    self?.output?.loadGroups()
-                    self?.table.reloadData()
-                })
-                
-                //тут нотификация должна отрабатывать о добавлении элемента
+                self?.output?.leaveGroup(group.id)
                 completionHandler(true)
             }
+            self?.table.reloadData()
+
         }
         action.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [action])
@@ -126,5 +93,8 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
 extension AllGroupsViewController: AllGroupsViewInput {
     func getVC() -> UIViewController {
         return self
+    }
+    func reload() {
+        self.table.reloadData()
     }
 }

@@ -10,11 +10,11 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-class GroupService {
+class GroupService: GroupServiceProtocol {
     
     var token: NotificationToken?
     
-    public static func loadGroupList(success: @escaping () -> ()) {
+    func loadGroupList(success: @escaping () -> ()) {
         let url = "https://api.vk.com/method/groups.get"
         let parameters: Parameters = [
             "v": "5.131",
@@ -39,7 +39,7 @@ class GroupService {
         }
     }
     
-    public static func loadSearchGroupList(query: String, success: @escaping ([Group]) -> ()) {
+    func loadSearchGroupList(query: String, success: @escaping ([Group]) -> ()) {
         let url = "https://api.vk.com/method/groups.search"
         let parameters: Parameters = [
             "v": "5.131",
@@ -62,7 +62,7 @@ class GroupService {
         }
     }
     //подписка на группу по ID
-    public static func followGroup(groupId: Int, success: @escaping () -> ()) {
+    func followGroup(groupId: Int, success: @escaping () -> ()) {
         let url = "https://api.vk.com/method/groups.join"
         let parameters: Parameters = [
             "v": "5.131",
@@ -81,7 +81,7 @@ class GroupService {
         }
     }
     //покинуть группу по ID
-    public static func leaveGroup(groupId: Int, success: @escaping () -> ()) {
+    func leaveGroup(groupId: Int, success: @escaping () -> ()) {
         let url = "https://api.vk.com/method/groups.leave"
         let parameters: Parameters = [
             "v": "5.131",
@@ -99,7 +99,7 @@ class GroupService {
         }
     }
     //сохранение групп в realm
-    private static func saveGroupsData(_ groups: [Group]) {
+    private func saveGroupsData(_ groups: [Group]) {
         // обработка исключений при работе с хранилищем
         do {
             // получаем доступ к хранилищу

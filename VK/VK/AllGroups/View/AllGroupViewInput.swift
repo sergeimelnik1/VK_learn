@@ -11,5 +11,5 @@ protocol AllGroupsViewInput {
     
     var output: AllGroupsViewOutput? { get set }
     func getVC() -> UIViewController
-    
+    func reload()
 }

@@ -11,5 +11,5 @@ protocol AllGroupsRouterInput {
     
     var output: AllGroupsRouterOutput? { get set }
     func openOtherGroups(from vc: UIViewController)
-    func loadGroupsError(_ error: Error)
+    func showLoadGroupsError(_ error: Error)
 }

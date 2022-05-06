@@ -20,10 +20,11 @@ class AllGroupsPresenter {
 extension AllGroupsPresenter: AllGroupsInteractorOutput {
     func loadGroupsSuccess(_ groups: Results<Group>) {
         self.groups = groups
+        self.view.reload()
     }
     
     func loadGroupsError(_ error: Error) {
-        self.router.loadGroupsError(error)
+        self.router.showLoadGroupsError(error)
     }
     
     
@@ -34,6 +35,10 @@ extension AllGroupsPresenter: AllGroupsRouterOutput {
 }
 
 extension AllGroupsPresenter: AllGroupsViewOutput {
+    func leaveGroup(_ groupId: Int) {
+        self.interactor.leaveGroup(groupId)
+    }
+    
     func getIndexPathRowGroup(_ row: Int) -> Group? {
             return self.groups?[row]
     }
@@ -52,7 +57,22 @@ extension AllGroupsPresenter: AllGroupsViewOutput {
     }
     
     func viewIsReady() {
-        
+        //ниже в viewIsReady засунуть
+        var config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {}
+            })
+        config.deleteRealmIfMigrationNeeded = true
+        Realm.Configuration.defaultConfiguration = config
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadGroupsAfterEdit), name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
+        self.interactor.loadGroups()
+
+    }
+    //метод дергается после нотификации о удалении или добавлении группы
+    @objc func loadGroupsAfterEdit(notification: Notification) {
+        self.interactor.loadGroups()
+        self.view.reload()
     }
 }
 

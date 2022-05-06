@@ -24,9 +24,9 @@ class AllGroupsConfig: TabBarViewProtocol {
         vc.modalPresentationStyle = .fullScreen
         
         view = vc
-//        view = AllGroupsViewController()
         let router = AllGroupsRouter()
         let interactor = AllGroupsInteractor()
+        interactor.groupService = GroupService()
         
         interactor.output = presenter
         presenter.interactor = interactor

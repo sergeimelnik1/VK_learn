@@ -126,7 +126,7 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
         if self.groups[indexPath.row].is_member.description == "0" {
             let action = UIContextualAction(style: .normal, title: "Add") { [weak self] (action, view, completionHandler) in
                 //тут логика подписки на группу
-                GroupService.followGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
+                GroupService().followGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
                     self?.output?.filterContentForSearchText(self?.currentSearchText ?? "")
                     tableView.reloadData()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
@@ -138,7 +138,7 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
         } else if self.groups[indexPath.row].is_member.description == "1" {
             let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
                 //тут логика подписки на группу
-                GroupService.leaveGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
+                GroupService().leaveGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
                     self?.output?.filterContentForSearchText(self?.currentSearchText ?? "")
                     tableView.reloadData()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)

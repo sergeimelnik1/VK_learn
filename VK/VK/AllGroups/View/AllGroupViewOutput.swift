@@ -13,4 +13,5 @@ protocol AllGroupsViewOutput {
     func loadGroups()
     func getCountGroups() -> Int
     func getIndexPathRowGroup(_ row: Int) -> Group?
+    func leaveGroup(_ groupId: Int)
 }

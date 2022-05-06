@@ -10,7 +10,7 @@ import Foundation
 class OtherGroupsInteractor : OtherGroupsInteractorInput {
     func loadSearchData(_ searchText: String) {
         if searchText != "" {
-            GroupService.loadSearchGroupList(query: searchText, success: { [weak self] groups in
+            GroupService().loadSearchGroupList(query: searchText, success: { [weak self] groups in
                 self?.output?.sendSearchDataToView(searchText, groups: groups)
             })
         } else {
