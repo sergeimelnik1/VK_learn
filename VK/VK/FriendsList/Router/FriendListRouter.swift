@@ -16,7 +16,9 @@ class FriendListRouter: FriendListRouterInput {
         vc.present(vc, animated: false, completion: nil)
     }
     
+    func showLoadFriendsError(_ error: Error) {
+        print(error)
+    }
     
     var output: FriendListRouterOutput?
-    
 }

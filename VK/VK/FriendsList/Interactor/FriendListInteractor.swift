@@ -15,7 +15,8 @@ class FriendListInteractor : FriendListInteractorInput {
                 print(realm.configuration.fileURL!)
                 FriendService.loadFriendList()
                 let friends = realm.objects(Friend.self)
-                output?.sendFriendDataToView(friend: friends)
+                self.output?.loadFriendsSuccess(friends)
+                
             } catch {
                 // если произошла ошибка, выводим ее в консоль
                 print(error)

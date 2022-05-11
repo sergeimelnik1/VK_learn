@@ -14,21 +14,12 @@ class FriendsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var friends: Results<Friend>?
-    
     private let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
-    
-    //увеличиваем версию базы на 1, чтобы новодобавленные поля не ломали app'ку
-    private var config = Realm.Configuration(
-        schemaVersion: 1,
-        migrationBlock: { migration, oldSchemaVersion in
-            if (oldSchemaVersion < 1) {}
-        })
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,11 +28,8 @@ class FriendsListViewController: UIViewController {
         self.tableView.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.tableView.refreshControl = myRefreshControl
-        //все что внизу выносим в interactor
-        config.deleteRealmIfMigrationNeeded = true
-        Realm.Configuration.defaultConfiguration = config
-        //но тут нет передачи данных во friends
-        //как лучше сделать, отдельным методом или вызовом данных из Realm'а
+        
+        self.output?.viewIsReady()
         self.output?.loadData()
     }
     
@@ -60,17 +48,17 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends?.count ?? 1
+        return self.output?.getCountFriends() ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // получаем ячейку из пула
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
-        if indexPath.row == (friends?.count ?? 1) - 1 {
+        if indexPath.row == (self.output?.getCountFriends() ?? 1) - 1 {
             cell.hideSeparator()
         }
         // получаем имя друга для конкретной строки
-        if let friend = friends?[indexPath.row] {
+        if let friend = self.output?.getIndexPathRowFriend(indexPath.row) {
         // устанавливаем имя друга в надпись ячейки
         cell.setup(friend: friend)
         }
@@ -79,8 +67,8 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let friend = self.friends?[indexPath.row] {
-            output?.enterFriendCell(friend: friend)
+        if let friend = self.output?.getIndexPathRowFriend(indexPath.row) {
+            self.output?.enterFriendCell(friend: friend)
         }
     }
 }
@@ -92,14 +80,8 @@ extension FriendsListViewController {
         sender.endRefreshing()
     }
     
-
-
 }
 extension FriendsListViewController: FriendListViewInput {
-    func loadFriendData(friend: Results<Friend>) {
-        self.friends = friend
-        self.tableView.reloadData()
-    }
     
     func getVC() -> UIViewController {
         return self

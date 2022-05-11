@@ -16,7 +16,7 @@ class OtherGroupsViewController: UIViewController {
     lazy var searchUIBar:UISearchBar = UISearchBar()
     private var currentSearchText = ""
     private let searchController = UISearchController(searchResultsController: nil)
-    private var groups: [Group] = []
+//    private var groups: [Group] = []
     
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
@@ -71,6 +71,7 @@ extension OtherGroupsViewController: UISearchResultsUpdating {
 extension OtherGroupsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         self.output?.filterContentForSearchText(searchBar.text!)
+        self.tableView.reloadData()
         self.currentSearchText = searchBar.text!
     }
 }
@@ -100,21 +101,23 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return self.output?.getCountGroups() ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // получаем ячейку из пула
         let cell = tableView.dequeueReusableCell(withIdentifier: "otherGroupCell", for: indexPath) as! OtherGroupsCell
-        var group: Group
+        //        var group: Group
         
-        group = groups[indexPath.row]
-        if indexPath.row == (groups.count) - 1 {
-            cell.hideSeparator()
-        }
+        if let group: Group = self.output?.getIndexPathRowGroup(indexPath.row) {
+            if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
+                cell.hideSeparator()
+            }
         cell.setup(group: group)
+        }
         return cell
+        
     }
     //при нажатии выделение Cell пропадает
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,27 +126,18 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         var actionTableView = UIContextualAction()
-        if self.groups[indexPath.row].is_member.description == "0" {
+        if self.output?.getIndexPathRowGroup(indexPath.row)?.is_member.description == "0" {
             let action = UIContextualAction(style: .normal, title: "Add") { [weak self] (action, view, completionHandler) in
-                //тут логика подписки на группу
-                GroupService().followGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
-                    self?.output?.filterContentForSearchText(self?.currentSearchText ?? "")
-                    tableView.reloadData()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
-                })
+                self?.output?.followGroup(indexPath.row, self?.currentSearchText ?? "")
+                self?.tableView.reloadData()
                 completionHandler(true)
             }
             actionTableView = action
             action.backgroundColor = .systemBlue
-        } else if self.groups[indexPath.row].is_member.description == "1" {
+        } else if self.output?.getIndexPathRowGroup(indexPath.row)?.is_member.description == "1" {
             let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
-                //тут логика подписки на группу
-                GroupService().leaveGroup(groupId: self?.groups[indexPath.row].id ?? 1, success: { [weak self] in
-                    self?.output?.filterContentForSearchText(self?.currentSearchText ?? "")
-                    tableView.reloadData()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
-                })
-                //тут нотификация должна отрабатывать о добавлении элемента
+                self?.output?.leaveGroup(self?.output?.getIndexPathRowGroup(indexPath.row)?.id ?? 1, self?.currentSearchText ?? "")
+                self?.tableView.reloadData()
                 completionHandler(true)
             }
             actionTableView = action
@@ -153,10 +147,10 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 extension OtherGroupsViewController: OtherGroupsViewInput {
-    func loadSearchData(_ searchText: String, groups: [Group]) {
-        self.currentSearchText = searchText
-        self.groups = groups
-    }
+//    func loadSearchData(_ searchText: String, groups: [Group]) {
+//        self.currentSearchText = searchText
+//        self.groups = self.output?.getGroups()
+//    }
     
     func getVC() -> UIViewController {
         return self

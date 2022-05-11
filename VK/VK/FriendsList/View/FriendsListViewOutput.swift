@@ -12,4 +12,6 @@ protocol FriendListViewOutput {
     func viewIsReady()
     func enterFriendCell(friend: Friend)
     func loadData()
+    func getCountFriends() -> Int
+    func getIndexPathRowFriend(_ row: Int) -> Friend?
 }

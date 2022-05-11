@@ -26,8 +26,6 @@ extension AllGroupsPresenter: AllGroupsInteractorOutput {
     func loadGroupsError(_ error: Error) {
         self.router.showLoadGroupsError(error)
     }
-    
-    
 }
 
 extension AllGroupsPresenter: AllGroupsRouterOutput {
@@ -57,7 +55,6 @@ extension AllGroupsPresenter: AllGroupsViewOutput {
     }
     
     func viewIsReady() {
-        //ниже в viewIsReady засунуть
         var config = Realm.Configuration(
             schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in

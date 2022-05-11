@@ -15,7 +15,7 @@ class TabBarViewController: UITabBarController {
         overrideUserInterfaceStyle = .light
         
         var viewControllers: [UIViewController] = []
-        let modules: [TabBarViewProtocol] = [AllGroupsConfig()]
+        let modules: [TabBarViewProtocol] = [AllGroupsConfig(), FriendListConfig()]
 
         for module in modules {
             viewControllers.append(setupPageController(module))

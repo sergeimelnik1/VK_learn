@@ -26,7 +26,6 @@ class FriendListConfig: TabBarViewProtocol {
         vc.modalPresentationStyle = .fullScreen
         
         view = vc
-//        view = FriendListViewController()
         let router = FriendListRouter()
         let interactor = FriendListInteractor()
         

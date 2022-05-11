@@ -27,11 +27,6 @@ class CurrentFriendViewController: UIViewController {
         self.collectionImage.dataSource = self
         self.collectionImage.register(UINib(nibName: "ViewCell", bundle: nil), forCellWithReuseIdentifier: "ViewCell")
     }
-    
-    @objc private func logPrint() {
-        print("done")
-    }
-
 }
 extension CurrentFriendViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     //центрирование cell по центру

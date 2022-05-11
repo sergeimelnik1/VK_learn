@@ -11,7 +11,7 @@
         <!--All Groups View Controller-->
         <scene sceneID="OLL-vM-wzE">
             <objects>
-                <viewController storyboardIdentifier="AllGroupsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MB8-Qw-sDe" customClass="AllGroupsViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllGroupsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MB8-Qw-sDe" customClass="AllGroupsViewController" customModule="VK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="szm-yh-Z3G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

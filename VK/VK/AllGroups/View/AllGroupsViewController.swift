@@ -15,6 +15,7 @@ class AllGroupsViewController: UIViewController {
     @IBAction func otherGroupsButton(_ sender: Any) {
         self.output?.openOtherGroups()
     }
+    
     @IBOutlet var table: UITableView!
     
     private let myRefreshControl: UIRefreshControl = {

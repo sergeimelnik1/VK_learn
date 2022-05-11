@@ -12,5 +12,4 @@ protocol FriendListViewInput {
     
     var output: FriendListViewOutput? { get set }
     func getVC() -> UIViewController
-    func loadFriendData(friend: Results<Friend>)
 }
