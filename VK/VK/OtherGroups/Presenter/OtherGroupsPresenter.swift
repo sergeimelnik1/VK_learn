@@ -5,30 +5,39 @@
 //  Created by Sergey Melnik on 27.04.2022.
 //
 
-import Foundation
+import UIKit
 
 class OtherGroupsPresenter {
     
-        weak var view: OtherGroupsViewInput!
-        var interactor: OtherGroupsInteractorInput!
-        var router: OtherGroupsRouterInput!
-        var groups: [Group] = []
+    weak var view: OtherGroupsViewInput!
+    var interactor: OtherGroupsInteractorInput!
+    var router: OtherGroupsRouterInput!
+    var groups: [Group] = []
+    var currentSearchText = ""
+}
+
+extension OtherGroupsPresenter {
+    func present(from vc: UIViewController) {
+        vc.present(view as! UIViewController, animated: true, completion: nil)
     }
+}
 
 extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
     func sendSearchDataToView(_ searchText: String, groups: [Group]) {
         self.groups = groups
-//        view.loadSearchData(searchText, groups: groups)
+        self.currentSearchText = searchText
     }
-    
-        
-    }
+}
 
-    extension OtherGroupsPresenter: OtherGroupsRouterOutput {
-        
-    }
+extension OtherGroupsPresenter: OtherGroupsRouterOutput {
+    
+}
 
 extension OtherGroupsPresenter: OtherGroupsViewOutput {
+    func getCurrentSearchText() -> String {
+        return currentSearchText
+    }
+    
     func getGroups() -> [Group] {
         return groups
     }
@@ -54,9 +63,9 @@ extension OtherGroupsPresenter: OtherGroupsViewOutput {
     }
     
     func viewIsReady() {
-    
+        
     }
     
-
-    }
+    
+}
 

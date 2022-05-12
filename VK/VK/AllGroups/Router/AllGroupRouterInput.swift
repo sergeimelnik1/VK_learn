@@ -10,6 +10,6 @@ import UIKit
 protocol AllGroupsRouterInput {
     
     var output: AllGroupsRouterOutput? { get set }
-    func openOtherGroups(from vc: UIViewController)
+    func openOtherGroups(_ vc: UIViewController)
     func showLoadGroupsError(_ error: Error)
 }

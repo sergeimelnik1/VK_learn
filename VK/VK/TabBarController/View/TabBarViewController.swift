@@ -26,6 +26,7 @@ class TabBarViewController: UITabBarController {
         navigation.navigationBar.isHidden = true
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigation
+
     }
     
     private func setupPageController(_ module: TabBarViewProtocol) -> UIViewController {
@@ -39,6 +40,9 @@ class TabBarViewController: UITabBarController {
         controller.title = module.title
         
         return controller
+    }
+    func getVC() -> UIViewController {
+        return self
     }
 }
 protocol TabBarViewProtocol {

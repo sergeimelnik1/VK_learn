@@ -10,10 +10,10 @@ import UIKit
 class FriendListRouter: FriendListRouterInput {
     func showCurrentFriend(from vc: UIViewController, friend: Friend) {
         let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
-        vc.friend = friend
-        vc.modalPresentationStyle = .fullScreen
-        vc.present(vc, animated: false, completion: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
+        viewController.friend = friend
+        viewController.modalPresentationStyle = .fullScreen
+        vc.present(viewController, animated: false, completion: nil)
     }
     
     func showLoadFriendsError(_ error: Error) {

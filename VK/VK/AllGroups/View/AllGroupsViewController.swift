@@ -59,19 +59,17 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.output?.getCountGroups() ?? 1
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! AllGroupsCell
-        if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
-            cell.hideSeparator()
-        }
-        // получаем название группы для конкретной строки
-        if let group = self.output?.getIndexPathRowGroup(indexPath.row) {
-            cell.setup(group: group)
-        }
-        return cell
+//         получаем ячейку из пула
+               let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! AllGroupsCell
+               if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
+                   cell.hideSeparator()
+               }
+               // получаем название группы для конкретной строки
+               if let group = self.output?.getIndexPathRowGroup(indexPath.row) {
+                   cell.setup(group: group)
+               }
+               return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

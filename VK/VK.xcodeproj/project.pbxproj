@@ -243,10 +243,10 @@
 				09C372AD2822A64B009D4185 /* TabBarController */,
 				090CCAED2809AF9100DD5CC0 /* Services */,
 				09C3729328226CBC009D4185 /* Login */,
-				09E935152805E5DA0032F99A /* OtherGroups */,
 				09E935102805E1A00032F99A /* AllGroups */,
-				09E9350B2805E13B0032F99A /* CurrentFriend */,
 				09E935062805DE960032F99A /* FriendsList */,
+				09E935152805E5DA0032F99A /* OtherGroups */,
+				09E9350B2805E13B0032F99A /* CurrentFriend */,
 				09B5AC782804AD6C00F20D27 /* AppDelegate.swift */,
 				09B5AC7A2804AD6C00F20D27 /* SceneDelegate.swift */,
 				09B5AC7C2804AD6C00F20D27 /* ViewController.swift */,
@@ -927,6 +927,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -957,6 +958,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

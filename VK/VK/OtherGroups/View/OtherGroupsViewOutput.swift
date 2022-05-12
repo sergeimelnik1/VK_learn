@@ -15,4 +15,5 @@ protocol OtherGroupsViewOutput {
     func followGroup(_ groupId: Int, _ currentSearchText: String)
     func leaveGroup(_ groupId: Int, _ currentSearchText: String)
     func getGroups() -> [Group]
+    func getCurrentSearchText() -> String
 }

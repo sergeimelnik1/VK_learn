@@ -13,6 +13,7 @@ class AllGroupsPresenter {
     var view: AllGroupsViewInput!
     var interactor: AllGroupsInteractorInput!
     var router: AllGroupsRouterInput!
+    var tab: TabBarViewController!
     
     private var groups: Results<Group>?
 }
@@ -51,7 +52,7 @@ extension AllGroupsPresenter: AllGroupsViewOutput {
     }
     
     func openOtherGroups() {
-        self.router.openOtherGroups(from: view.getVC())
+        self.router.openOtherGroups(self.view.getVC())
     }
     
     func viewIsReady() {

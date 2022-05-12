@@ -29,7 +29,7 @@ class GroupService: GroupServiceProtocol {
                 guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
                 let groups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
-                print(groups)
+//                print(groups)
                 //тут мы данные сохраняем в Realm
                 self.saveGroupsData(groups)
                 success()

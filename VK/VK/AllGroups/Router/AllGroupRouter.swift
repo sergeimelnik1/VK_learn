@@ -12,13 +12,9 @@ class AllGroupsRouter: AllGroupsRouterInput {
         print(error)
     }
     
-    func openOtherGroups(from vc: UIViewController) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "OtherGroupsViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "OtherGroupsVC") as! OtherGroupsViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.present(vc, animated: false, completion: nil)
+    func openOtherGroups(_ vc: UIViewController) {
+        OtherGroupsConfig().present(from: vc)
     }
-
     
     var output: AllGroupsRouterOutput?
     
