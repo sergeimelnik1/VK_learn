@@ -74,6 +74,7 @@ class GroupService: GroupServiceProtocol {
             do {
                 guard let data = repsons.value else { return }
                 _ = try JSON(data: data)
+                print("все загрузилось")
                 success()
             } catch {
                 print(error)

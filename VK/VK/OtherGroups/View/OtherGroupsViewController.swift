@@ -54,6 +54,7 @@ extension OtherGroupsViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.output?.filterContentForSearchText(searchBar.text!)
+        self.output?.edidCurrentSearchText(searchBar.text!)
         self.tableView.reloadData()
     }
 }
@@ -94,7 +95,7 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
         var actionTableView = UIContextualAction()
         if self.output?.getIndexPathRowGroup(indexPath.row)?.is_member.description == "0" {
             let action = UIContextualAction(style: .normal, title: "Add") { [weak self] (action, view, completionHandler) in
-                //                self?.output?.followGroup(indexPath.row, self?.currentSearchText ?? "")
+                self?.output?.followGroup(self?.output?.getIndexPathRowGroup(indexPath.row)?.id ?? 1, self?.output?.getCurrentSearchText() ?? "")
                 self?.tableView.reloadData()
                 completionHandler(true)
             }
@@ -102,7 +103,7 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
             action.backgroundColor = .systemBlue
         } else if self.output?.getIndexPathRowGroup(indexPath.row)?.is_member.description == "1" {
             let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
-                //                self?.output?.leaveGroup(self?.output?.getIndexPathRowGroup(indexPath.row)?.id ?? 1, self?.currentSearchText ?? "")
+                self?.output?.leaveGroup(self?.output?.getIndexPathRowGroup(indexPath.row)?.id ?? 1, self?.output?.getCurrentSearchText() ?? "")
                 self?.tableView.reloadData()
                 completionHandler(true)
             }

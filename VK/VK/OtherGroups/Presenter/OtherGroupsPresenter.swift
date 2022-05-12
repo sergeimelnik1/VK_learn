@@ -34,6 +34,10 @@ extension OtherGroupsPresenter: OtherGroupsRouterOutput {
 }
 
 extension OtherGroupsPresenter: OtherGroupsViewOutput {
+    func edidCurrentSearchText(_ searchText: String) {
+        self.currentSearchText = searchText
+    }
+    
     func getCurrentSearchText() -> String {
         return currentSearchText
     }
@@ -65,7 +69,5 @@ extension OtherGroupsPresenter: OtherGroupsViewOutput {
     func viewIsReady() {
         
     }
-    
-    
 }
 
