@@ -13,7 +13,7 @@ class AllGroupsPresenter {
     var view: AllGroupsViewInput!
     var interactor: AllGroupsInteractorInput!
     var router: AllGroupsRouterInput!
-    var tab: TabBarViewController!
+    var bar: Bar!
     
     private var groups: Results<Group>?
 }

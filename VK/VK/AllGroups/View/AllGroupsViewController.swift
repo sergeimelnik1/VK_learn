@@ -9,12 +9,16 @@ import UIKit
 import RealmSwift
 import SwiftUI
 
-class AllGroupsViewController: UIViewController {
+class AllGroupsViewController: UIViewController, BarOutput {///////
+   
+    var output : AllGroupsViewOutput?///////
+//    @IBAction func otherGroupsButton(_ sender: Any) {
+//        self.output?.openOtherGroups()
+//    }
     
-    var output : AllGroupsViewOutput?
-    @IBAction func otherGroupsButton(_ sender: Any) {
-        self.output?.openOtherGroups()
-    }
+    
+    
+    @IBOutlet var bar: Bar!///////
     
     @IBOutlet var table: UITableView!
     
@@ -26,7 +30,7 @@ class AllGroupsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.bar.output = self
         overrideUserInterfaceStyle = .light
 
         self.table.dataSource = self
@@ -47,6 +51,9 @@ class AllGroupsViewController: UIViewController {
         self.output?.loadGroups()
         self.table.reloadData()
         sender.endRefreshing()
+    }
+    func openOtherGroups() {
+        self.output?.openOtherGroups()
     }
 }
 // MARK: - Table view data source

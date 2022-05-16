@@ -33,7 +33,7 @@ class AllGroupsConfig: TabBarViewProtocol {
         
         router.output = presenter
         presenter.router = router
-        
+
         view.output = presenter
         presenter.view = view
     }
