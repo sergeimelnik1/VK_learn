@@ -32,7 +32,5 @@ class OtherGroupsInteractor : OtherGroupsInteractorInput {
         }
     }
     
-    
     var output : OtherGroupsInteractorOutput?
-    
 }

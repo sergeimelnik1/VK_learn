@@ -9,16 +9,11 @@ import UIKit
 import RealmSwift
 import SwiftUI
 
-class AllGroupsViewController: UIViewController, BarOutput {///////
+class AllGroupsViewController: UIViewController, BarOutput {//нужно для работы xib
    
-    var output : AllGroupsViewOutput?///////
-//    @IBAction func otherGroupsButton(_ sender: Any) {
-//        self.output?.openOtherGroups()
-//    }
+    var output : AllGroupsViewOutput?//нужно для работы xib
     
-    
-    
-    @IBOutlet var bar: Bar!///////
+    @IBOutlet var bar: Bar!//нужно для работы xib
     
     @IBOutlet var table: UITableView!
     
@@ -30,7 +25,7 @@ class AllGroupsViewController: UIViewController, BarOutput {///////
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bar.output = self
+        self.bar.output = self//нужно для работы xib
         overrideUserInterfaceStyle = .light
 
         self.table.dataSource = self

@@ -9,25 +9,23 @@ import Foundation
 
 class CurrentFriendPresenter {
     
-        var view: CurrentFriendViewInput!
-        var interactor: CurrentFriendInteractorInput!
-        var router: CurrentFriendRouterInput!
-        
-    }
+    var view: CurrentFriendViewInput!
+    var interactor: CurrentFriendInteractorInput!
+    var router: CurrentFriendRouterInput!
+    
+}
 
-    extension CurrentFriendPresenter: CurrentFriendInteractorOutput {
-        
-    }
+extension CurrentFriendPresenter: CurrentFriendInteractorOutput {
+    
+}
 
-    extension CurrentFriendPresenter: CurrentFriendRouterOutput {
-        
-    }
+extension CurrentFriendPresenter: CurrentFriendRouterOutput {
+    
+}
 
 extension CurrentFriendPresenter: CurrentFriendViewOutput {
     func viewIsReady() {
-    
+        
     }
-    
-
-    }
+}
 

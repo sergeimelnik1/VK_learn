@@ -9,15 +9,13 @@ import UIKit
 
 @IBDesignable class Bar: UIView {
     
-    var output: BarOutput?///////
+    var output: BarOutput?//нужно для работы xib
 
     @IBOutlet weak var myLabel: UILabel!
     
     @IBAction func openOtherGroupsButton(_ sender: Any) {
         self.output?.openOtherGroups()
     }
-    
-    
     
     var textLabelText: String {
         get {
@@ -40,7 +38,6 @@ import UIKit
     }
     
     func loadFromNib() -> UIView {
-//        let bundle = NSBundle(forClass: self.)
         let nib = UINib(nibName: nibName, bundle: nil)
         let view = nib.instantiate(withOwner: self).first as! UIView
         

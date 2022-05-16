@@ -11,5 +11,4 @@ protocol OtherGroupsViewInput: AnyObject {
     
     var output: OtherGroupsViewOutput? { get set }
     func getVC() -> UIViewController
-//    func loadSearchData(_ searchText: String, groups: [Group])
 }

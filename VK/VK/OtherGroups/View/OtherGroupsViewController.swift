@@ -23,11 +23,6 @@ class OtherGroupsViewController: UIViewController {
         return text.isEmpty
     }
     
-    //        private var isFiltering: Bool {
-    //            let searchBarScopeIsFiltering = searchBar.selectedScopeButtonIndex != 0
-    //            return searchController.isActive && (!searchBarIsEmpty || searchBarScopeIsFiltering)
-    //        }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -114,11 +109,6 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 extension OtherGroupsViewController: OtherGroupsViewInput {
-    //        func loadSearchData(_ searchText: String, groups: [Group]) {
-    //            self.currentSearchText = searchText
-    //            self.groups = self.output?.getGroups()
-    //        }
-    
     func getVC() -> UIViewController {
         return self
     }
@@ -126,17 +116,13 @@ extension OtherGroupsViewController: OtherGroupsViewInput {
 extension UIViewController {
     func activityIndicator(style: UIActivityIndicatorView.Style = .medium, frame: CGRect? = nil, center: CGPoint? = nil) -> UIActivityIndicatorView {
         
-        // 2
         let activityIndicatorView = UIActivityIndicatorView(style: style)
-        // 3
         if let frame = frame {
             activityIndicatorView.frame = frame
         }
-        // 4
         if let center = center {
             activityIndicatorView.center = center
         }
-        // 5
         return activityIndicatorView
     }
 }

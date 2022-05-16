@@ -19,14 +19,11 @@ class FriendListPresenter {
 extension FriendListPresenter: FriendListInteractorOutput {
     func loadFriendsSuccess(_ friends: Results<Friend>) {
         self.friends = friends
-//        self.view.reload()
     }
     
     func loadFriendsError(_ error: Error) {
         self.router.showLoadFriendsError(error)
     }
-    
-
 }
 
 extension FriendListPresenter: FriendListRouterOutput {
@@ -57,6 +54,4 @@ extension FriendListPresenter: FriendListViewOutput {
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
     }
-    
-    
 }

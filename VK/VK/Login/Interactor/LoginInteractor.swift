@@ -28,9 +28,7 @@ class LoginInteractor: LoginInteractorInput {
             userDefaults.set(accessToken, forKey: "accessToken")
             userDefaults.set(userId, forKey: "userId")
             Singleton.sharedInstance().accessToken = accessToken
-//            print(accessToken)
             Singleton.sharedInstance().userId = userId
-            //тут мы уходим через презентер в роутер
             output?.loginSuccess()
             decisionHandler(.cancel)
     }

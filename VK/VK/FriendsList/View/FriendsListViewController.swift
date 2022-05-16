@@ -19,7 +19,7 @@ class FriendsListViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +59,8 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
         }
         // получаем имя друга для конкретной строки
         if let friend = self.output?.getIndexPathRowFriend(indexPath.row) {
-        // устанавливаем имя друга в надпись ячейки
-        cell.setup(friend: friend)
+            // устанавливаем имя друга в надпись ячейки
+            cell.setup(friend: friend)
         }
         return cell
     }

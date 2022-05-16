@@ -8,7 +8,7 @@
 import UIKit
 
 class OtherGroupsConfig {
-
+    
     var view : OtherGroupsViewInput?
     let presenter = OtherGroupsPresenter()
     
@@ -39,6 +39,4 @@ extension OtherGroupsConfig: OtherGroupsConfigInput {
     func present(from vc: UIViewController) {
         presenter.present(from: vc)
     }
-    
-    
 }
