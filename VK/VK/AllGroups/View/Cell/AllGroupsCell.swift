@@ -8,21 +8,27 @@
 import UIKit
 
 class AllGroupsCell: UITableViewCell {
-
+    
     @IBOutlet private weak var groupName: UILabel!
     @IBOutlet private weak var groupImage: UIImageView!
     @IBOutlet private var separatorView: UIView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.groupImage.layer.cornerRadius = 15.0;
         self.groupImage.layer.masksToBounds = true;
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
+    override func prepareForReuse() {
+        self.accessoryType = .none
+        super.prepareForReuse()
+        self.separatorView.isHidden = false
+    }
+    
     func hideSeparator() {
         separatorView.isHidden = true
     }
