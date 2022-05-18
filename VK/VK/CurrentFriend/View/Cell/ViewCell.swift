@@ -6,19 +6,15 @@
 //
 
 import UIKit
-import UIKit
 
 class ViewCell: UICollectionViewCell {
     @IBOutlet private weak var friendImage: UIImageView!
     @IBOutlet private weak var friendName: UILabel!
-    @IBOutlet private var separatorView: UIView!
-    
-    func hideSeparator() {
-        separatorView.isHidden = true
-    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     func setup(name: String, image: String) {
         self.friendName.text = name
         do {

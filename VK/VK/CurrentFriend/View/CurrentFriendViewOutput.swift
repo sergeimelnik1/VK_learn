@@ -9,4 +9,6 @@ import Foundation
 
 protocol CurrentFriendViewOutput {
     func viewIsReady()
+    func setFriendValue(_ friend: FriendModel)
+    func getFriendValue() -> FriendModel?
 }

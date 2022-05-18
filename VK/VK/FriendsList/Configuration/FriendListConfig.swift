@@ -8,14 +8,14 @@
 import UIKit
 
 class FriendListConfig: TabBarViewProtocol {
+    
     var title: String = "Друзья"
     
-    var image: UIImage? = UIImage(named: "")
+    var image: UIImage? = UIImage(named: "friends")
     
     func configured() -> UIViewController {
         return view.getVC()
     }
-    
     
     var view : FriendListViewInput
     let presenter = FriendListPresenter()
@@ -32,7 +32,6 @@ class FriendListConfig: TabBarViewProtocol {
         interactor.output = presenter
         presenter.interactor = interactor
         
-        router.output = presenter
         presenter.router = router
         
         view.output = presenter

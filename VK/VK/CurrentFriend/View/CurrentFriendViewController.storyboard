@@ -17,20 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAv-Ey-TTz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="cv7-JY-j4a">
-                                        <barButtonItem key="leftBarButtonItem" title="Назад" id="PS3-CE-mNN">
-                                            <connections>
-                                                <action selector="backButtonTapped:" destination="dY3-c6-0RP" id="BSd-2e-wkf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ7-oT-buz" customClass="Bar" customModule="VK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dBC-5O-xUt"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-L7-OxZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8Tw-rQ-kzF">
                                     <size key="itemSize" width="128" height="128"/>
@@ -54,15 +49,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SKq-L7-OxZ" firstAttribute="bottom" secondItem="EOv-Bw-CnB" secondAttribute="bottom" constant="34" id="0vg-ew-nPP"/>
+                            <constraint firstItem="eZ7-oT-buz" firstAttribute="leading" secondItem="EOv-Bw-CnB" secondAttribute="leading" id="JNl-1M-CXG"/>
                             <constraint firstItem="SKq-L7-OxZ" firstAttribute="leading" secondItem="EOv-Bw-CnB" secondAttribute="leading" id="OFt-vA-pmj"/>
-                            <constraint firstItem="EOv-Bw-CnB" firstAttribute="trailing" secondItem="EAv-Ey-TTz" secondAttribute="trailing" id="Vx2-RI-d3b"/>
-                            <constraint firstItem="SKq-L7-OxZ" firstAttribute="top" secondItem="EAv-Ey-TTz" secondAttribute="bottom" id="eZL-Zv-dQ5"/>
-                            <constraint firstItem="EAv-Ey-TTz" firstAttribute="top" secondItem="EOv-Bw-CnB" secondAttribute="top" id="jGB-m5-jSX"/>
-                            <constraint firstItem="EAv-Ey-TTz" firstAttribute="leading" secondItem="EOv-Bw-CnB" secondAttribute="leading" id="jiy-6L-W9y"/>
+                            <constraint firstItem="EOv-Bw-CnB" firstAttribute="trailing" secondItem="eZ7-oT-buz" secondAttribute="trailing" id="Pqa-9a-SoM"/>
+                            <constraint firstItem="SKq-L7-OxZ" firstAttribute="top" secondItem="eZ7-oT-buz" secondAttribute="bottom" id="nCr-Fm-0Ek"/>
                             <constraint firstItem="EOv-Bw-CnB" firstAttribute="trailing" secondItem="SKq-L7-OxZ" secondAttribute="trailing" id="rPW-a2-rpa"/>
+                            <constraint firstItem="EOv-Bw-CnB" firstAttribute="top" secondItem="eZ7-oT-buz" secondAttribute="top" id="zTY-fe-0mm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bar" destination="eZ7-oT-buz" id="rcN-eI-Jda"/>
                         <outlet property="collectionImage" destination="SKq-L7-OxZ" id="7Bi-VN-xiE"/>
                     </connections>
                 </viewController>

@@ -11,8 +11,7 @@ class OtherGroupsPresenter {
     
     weak var view: OtherGroupsViewInput!
     var interactor: OtherGroupsInteractorInput!
-    var router: OtherGroupsRouterInput!
-    var groups: [Group] = []
+    var groups: [GroupModel] = []
     var currentSearchText = ""
 }
 
@@ -23,14 +22,10 @@ extension OtherGroupsPresenter {
 }
 
 extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
-    func sendSearchDataToView(_ searchText: String, groups: [Group]) {
+    func sendSearchDataToView(_ searchText: String, groups: [GroupModel]) {
         self.groups = groups
         self.currentSearchText = searchText
     }
-}
-
-extension OtherGroupsPresenter: OtherGroupsRouterOutput {
-    
 }
 
 extension OtherGroupsPresenter: OtherGroupsViewOutput {
@@ -42,7 +37,7 @@ extension OtherGroupsPresenter: OtherGroupsViewOutput {
         return currentSearchText
     }
     
-    func getGroups() -> [Group] {
+    func getGroups() -> [GroupModel] {
         return groups
     }
     
@@ -58,16 +53,13 @@ extension OtherGroupsPresenter: OtherGroupsViewOutput {
         return groups.count
     }
     
-    func getIndexPathRowGroup(_ row: Int) -> Group? {
-        return self.groups[row]
+    func getIndexPathRowGroup(_ row: Int) -> GroupModel? {
+        if let index: GroupModel? = self.groups[row] {
+            return index
+        }
     }
     
     func filterContentForSearchText(_ searchText: String) {
         self.interactor.loadSearchData(searchText)
     }
-    
-    func viewIsReady() {
-        
-    }
 }
-

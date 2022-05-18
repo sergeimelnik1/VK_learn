@@ -13,21 +13,19 @@ class FriendListPresenter {
     var view: FriendListViewInput!
     var interactor: FriendListInteractorInput!
     var router: FriendListRouterInput!
-    var friends: Results<Friend>?
+    
+    private var friends: Results<FriendModel>?
 }
 
 extension FriendListPresenter: FriendListInteractorOutput {
-    func loadFriendsSuccess(_ friends: Results<Friend>) {
+    func loadFriendsSuccess(_ friends: Results<FriendModel>) {
         self.friends = friends
+        self.view.reload()
     }
     
     func loadFriendsError(_ error: Error) {
-        self.router.showLoadFriendsError(error)
+        self.router.showLoadFriendsError(error, view.getVC())
     }
-}
-
-extension FriendListPresenter: FriendListRouterOutput {
-    
 }
 
 extension FriendListPresenter: FriendListViewOutput {
@@ -35,16 +33,18 @@ extension FriendListPresenter: FriendListViewOutput {
         return self.friends?.count ?? 1
     }
     
-    func getIndexPathRowFriend(_ row: Int) -> Friend? {
+    func getIndexPathRowFriend(_ row: Int) -> FriendModel? {
         return self.friends?[row]
     }
     
-    func enterFriendCell(friend: Friend) {
+    func enterFriendCell(friend: FriendModel) {
         self.router.showCurrentFriend(from: view.getVC(), friend: friend)
     }
+    
     func loadData() {
         interactor.loadData()
     }
+    
     func viewIsReady() {
         var config = Realm.Configuration(
             schemaVersion: 1,
@@ -53,5 +53,11 @@ extension FriendListPresenter: FriendListViewOutput {
             })
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
+    
+        self.view.onActivityIndicator()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.loadData()
+        }
+        self.view.offActivityIndicator()
     }
 }

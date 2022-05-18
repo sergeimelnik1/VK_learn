@@ -14,7 +14,7 @@ class FriendListInteractor : FriendListInteractorInput {
                 let realm = try Realm()
                 print(realm.configuration.fileURL!)
                 FriendService.loadFriendList()
-                let friends = realm.objects(Friend.self)
+                let friends = realm.objects(FriendModel.self)
                 self.output?.loadFriendsSuccess(friends)
                 
             } catch {
@@ -23,9 +23,6 @@ class FriendListInteractor : FriendListInteractorInput {
             }
     }
     
-    
     var output : FriendListInteractorOutput?
-    
-    
     
 }

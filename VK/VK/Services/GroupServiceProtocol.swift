@@ -9,7 +9,7 @@ import Foundation
 
 protocol GroupServiceProtocol: AnyObject {
     func loadGroupList(success: @escaping () -> ())
-    func loadSearchGroupList(query: String, success: @escaping ([Group]) -> ())
+    func loadSearchGroupList(query: String, success: @escaping ([GroupModel]) -> ())
     func followGroup(groupId: Int, success: @escaping () -> ())
     func leaveGroup(groupId: Int, success: @escaping () -> ())
 }

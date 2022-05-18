@@ -7,21 +7,18 @@
 
 import UIKit
 
-class CurrentFriendViewController: UIViewController {
-    
-    var output : CurrentFriendViewOutput?
+class CurrentFriendViewController: UIViewController, BarOutput {
 
+    var output : CurrentFriendViewOutput?
+    
+    @IBOutlet var bar: Bar!//нужно для работы xib
     @IBOutlet var collectionImage: UICollectionView!
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    var friend: Friend?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.bar.output = self//нужно для работы xib
+        bar.setup("Назад", "", "")
         overrideUserInterfaceStyle = .light
         self.collectionImage.delegate = self
         self.collectionImage.dataSource = self
@@ -49,7 +46,7 @@ extension CurrentFriendViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ViewCell", for: indexPath) as! ViewCell
-        cell.setup(name: friend!.name, image: friend!.image200)
+        cell.setup(name: self.output?.getFriendValue()?.name ?? "", image: self.output?.getFriendValue()?.image200 ?? "")
         return cell
     }
 }
@@ -57,5 +54,15 @@ extension CurrentFriendViewController: CurrentFriendViewInput {
     func getVC() -> UIViewController {
         return self
     }
+    
+    func openOtherGroups() {
+        
+    }
+    
+    func dismiss() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 

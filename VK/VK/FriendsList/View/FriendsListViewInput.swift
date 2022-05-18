@@ -12,4 +12,7 @@ protocol FriendListViewInput {
     
     var output: FriendListViewOutput? { get set }
     func getVC() -> UIViewController
+    func reload()
+    func onActivityIndicator()
+    func offActivityIndicator()
 }

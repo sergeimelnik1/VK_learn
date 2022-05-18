@@ -7,6 +7,7 @@
 
 import Foundation
 
-protocol BarOutput {///////
+protocol BarOutput {
     func openOtherGroups()
+    func dismiss()
 }

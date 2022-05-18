@@ -8,8 +8,6 @@
 import UIKit
 
 protocol FriendListRouterInput {
-    
-    var output: FriendListRouterOutput? { get set }
-    func showCurrentFriend(from vc: UIViewController, friend: Friend)
-    func showLoadFriendsError(_ error: Error)
+    func showCurrentFriend(from vc: UIViewController, friend: FriendModel)
+    func showLoadFriendsError(_ error: Error, _ vc: UIViewController)
 }

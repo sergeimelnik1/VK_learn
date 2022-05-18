@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Bar" customModule="VK">
+            <connections>
+                <outlet property="backButton" destination="Rjb-qf-q8w" id="ls1-eX-XeL"/>
+                <outlet property="myLabel" destination="oSz-Kk-hre" id="lWx-gI-rXg"/>
+                <outlet property="openOtherGroupImage" destination="Z59-Ez-PS5" id="v8v-m2-dfS"/>
+                <outlet property="openOtherGroupsButton" destination="tX2-fl-Yiy" id="bnQ-l0-sCK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="5ca-fS-IJw">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjb-qf-q8w">
+                    <rect key="frame" x="15" y="31.5" width="67" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <connections>
+                        <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="dcu-Gu-4d7"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSz-Kk-hre">
+                    <rect key="frame" x="186.5" y="36.5" width="41.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z59-Ez-PS5">
+                    <rect key="frame" x="371" y="33" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="X1n-Xh-DSq"/>
+                        <constraint firstAttribute="height" constant="28" id="bQv-aK-TeW"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tX2-fl-Yiy">
+                    <rect key="frame" x="363" y="25" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="G9m-Ak-9B7"/>
+                        <constraint firstAttribute="width" constant="44" id="IZ8-Dk-ztW"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                    <connections>
+                        <action selector="openOtherGroupsButton:" destination="-1" eventType="touchUpInside" id="sLq-NF-1XR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="cNG-sX-OXJ"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Rjb-qf-q8w" firstAttribute="centerY" secondItem="cNG-sX-OXJ" secondAttribute="centerY" id="9QJ-qM-e7a"/>
+                <constraint firstItem="cNG-sX-OXJ" firstAttribute="trailing" secondItem="Z59-Ez-PS5" secondAttribute="trailing" constant="15" id="Dhf-Li-VxK"/>
+                <constraint firstItem="tX2-fl-Yiy" firstAttribute="centerY" secondItem="Z59-Ez-PS5" secondAttribute="centerY" id="Ivh-fh-f6r"/>
+                <constraint firstItem="tX2-fl-Yiy" firstAttribute="centerX" secondItem="Z59-Ez-PS5" secondAttribute="centerX" id="JJr-TI-mro"/>
+                <constraint firstItem="Rjb-qf-q8w" firstAttribute="leading" secondItem="cNG-sX-OXJ" secondAttribute="leading" constant="15" id="SFt-JE-MuY"/>
+                <constraint firstItem="Z59-Ez-PS5" firstAttribute="top" secondItem="oSz-Kk-hre" secondAttribute="bottom" constant="-24.5" id="UBs-Xb-aOs"/>
+                <constraint firstItem="oSz-Kk-hre" firstAttribute="centerX" secondItem="cNG-sX-OXJ" secondAttribute="centerX" id="ax2-fU-Pue"/>
+                <constraint firstItem="oSz-Kk-hre" firstAttribute="centerY" secondItem="cNG-sX-OXJ" secondAttribute="centerY" id="mf2-7M-kb9"/>
+                <constraint firstItem="oSz-Kk-hre" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rjb-qf-q8w" secondAttribute="trailing" constant="15" id="vwi-FW-RqT"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-107.24637681159422" y="-82.366071428571431"/>
+        </view>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GIs-0h-rAe">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="textColor"/>
+            <nil key="highlightedColor"/>
+            <point key="canvasLocation" x="149" y="-12"/>
+        </label>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

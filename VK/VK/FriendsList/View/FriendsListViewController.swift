@@ -8,9 +8,12 @@
 import UIKit
 import RealmSwift
 
-class FriendsListViewController: UIViewController {
-    
+class FriendsListViewController: UIViewController, BarOutput {
+     
     var output : FriendListViewOutput?
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet var bar: Bar!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,21 +26,16 @@ class FriendsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.bar.output = self
+        self.bar.setup("", "", "Мои друзья")
         overrideUserInterfaceStyle = .light
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.tableView.refreshControl = myRefreshControl
-        
+        self.activityIndicator.isHidden = true
+
         self.output?.viewIsReady()
-        self.output?.loadData()
-    }
-    
-    //принудительное скрытие кнопки back
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.navigationItem.hidesBackButton = true
     }
 }
 // MARK: - Table view data source
@@ -76,7 +74,6 @@ extension FriendsListViewController {
     
     @objc func refresh(sender: UIRefreshControl){
         self.output?.loadData()
-        self.tableView.reloadData()
         sender.endRefreshing()
     }
     
@@ -85,5 +82,27 @@ extension FriendsListViewController: FriendListViewInput {
     
     func getVC() -> UIViewController {
         return self
+    }
+    
+    func reload() {
+        self.tableView.reloadData()
+    }
+    
+    func dismiss() {
+        
+    }
+    
+    func openOtherGroups() {
+        
+    }
+    
+    func onActivityIndicator() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+    
+    func offActivityIndicator() {
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
     }
 }

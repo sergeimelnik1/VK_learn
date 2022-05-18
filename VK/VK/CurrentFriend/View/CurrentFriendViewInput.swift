@@ -8,8 +8,7 @@
 import UIKit
 
 protocol CurrentFriendViewInput {
-    
     var output: CurrentFriendViewOutput? { get set }
+
     func getVC() -> UIViewController
-    
 }

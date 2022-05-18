@@ -15,6 +15,5 @@ class LoginRouter: LoginRouterInput {
         let vc = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
         vc.modalPresentationStyle = .fullScreen
         UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
-
     }
 }

@@ -13,24 +13,19 @@ class AllGroupsPresenter {
     var view: AllGroupsViewInput!
     var interactor: AllGroupsInteractorInput!
     var router: AllGroupsRouterInput!
-    var bar: Bar!
     
-    private var groups: Results<Group>?
+    private var groups: Results<GroupModel>?
 }
 
 extension AllGroupsPresenter: AllGroupsInteractorOutput {
-    func loadGroupsSuccess(_ groups: Results<Group>) {
+    func loadGroupsSuccess(_ groups: Results<GroupModel>) {
         self.groups = groups
         self.view.reload()
     }
     
     func loadGroupsError(_ error: Error) {
-        self.router.showLoadGroupsError(error)
+        self.router.showLoadGroupsError(error, view.getVC())
     }
-}
-
-extension AllGroupsPresenter: AllGroupsRouterOutput {
-    
 }
 
 extension AllGroupsPresenter: AllGroupsViewOutput {
@@ -38,8 +33,8 @@ extension AllGroupsPresenter: AllGroupsViewOutput {
         self.interactor.leaveGroup(groupId)
     }
     
-    func getIndexPathRowGroup(_ row: Int) -> Group? {
-            return self.groups?[row]
+    func getIndexPathRowGroup(_ row: Int) -> GroupModel? {
+        return self.groups?[row]
     }
     
     func getCountGroups() -> Int {
@@ -64,13 +59,20 @@ extension AllGroupsPresenter: AllGroupsViewOutput {
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadGroupsAfterEdit), name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
-        self.interactor.loadGroups()
-
+        self.view.onActivityIndicator()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.interactor.loadGroups()
+        }
+        self.view.offActivityIndicator()
     }
     //метод дергается после нотификации о удалении или добавлении группы
     @objc func loadGroupsAfterEdit(notification: Notification) {
-        self.interactor.loadGroups()
-        self.view.reload()
+        self.view.onActivityIndicator()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.interactor.loadGroups()
+            self.view.reload()
+            self.view.offActivityIndicator()
+        }
     }
 }
 

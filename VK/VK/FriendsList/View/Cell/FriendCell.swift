@@ -28,7 +28,7 @@ class FriendCell: UITableViewCell {
         separatorView.isHidden = true
     }
     
-    func setup(friend: Friend) {
+    func setup(friend: FriendModel) {
         self.friendName.text = friend.name
         do {
             try self.friendImage.image = UIImage(data: NSData(contentsOf: friend.image50.asURL()) as Data )

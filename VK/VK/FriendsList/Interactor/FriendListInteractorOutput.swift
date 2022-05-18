@@ -9,6 +9,6 @@ import Foundation
 import RealmSwift
 
 protocol FriendListInteractorOutput {
-    func loadFriendsSuccess(_ friends: Results<Friend>)
+    func loadFriendsSuccess(_ friends: Results<FriendModel>)
     func loadFriendsError(_ error: Error)
 }

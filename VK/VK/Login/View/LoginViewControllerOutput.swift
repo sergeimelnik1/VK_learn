@@ -8,6 +8,7 @@
 import Foundation
 import WebKit
 
-protocol LoginViewOutput {
+protocol LoginViewControllerOutput {
     func authVK(decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void)
+    func viewIsReady()
 }

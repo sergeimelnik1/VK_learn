@@ -10,8 +10,8 @@ import UIKit
 protocol FriendListViewOutput {
     
     func viewIsReady()
-    func enterFriendCell(friend: Friend)
+    func enterFriendCell(friend: FriendModel)
     func loadData()
     func getCountFriends() -> Int
-    func getIndexPathRowFriend(_ row: Int) -> Friend?
+    func getIndexPathRowFriend(_ row: Int) -> FriendModel?
 }

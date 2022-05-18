@@ -28,9 +28,7 @@ class GroupService: GroupServiceProtocol {
             do {
                 guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
-                let groups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
-//                print(groups)
-                //тут мы данные сохраняем в Realm
+                let groups: [GroupModel] = json["response"]["items"].arrayValue.compactMap { GroupModel(with: $0) }
                 self.saveGroupsData(groups)
                 success()
             } catch {
@@ -39,7 +37,7 @@ class GroupService: GroupServiceProtocol {
         }
     }
     
-    func loadSearchGroupList(query: String, success: @escaping ([Group]) -> ()) {
+    func loadSearchGroupList(query: String, success: @escaping ([GroupModel]) -> ()) {
         let url = "https://api.vk.com/method/groups.search"
         let parameters: Parameters = [
             "v": "5.131",
@@ -53,7 +51,7 @@ class GroupService: GroupServiceProtocol {
             do {
                 guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
-                let searchGroups: [Group] = json["response"]["items"].arrayValue.compactMap { Group(with: $0) }
+                let searchGroups: [GroupModel] = json["response"]["items"].arrayValue.compactMap { GroupModel(with: $0) }
                 print(searchGroups)
                 success(searchGroups)
             } catch {
@@ -61,6 +59,7 @@ class GroupService: GroupServiceProtocol {
             }
         }
     }
+    
     //подписка на группу по ID
     func followGroup(groupId: Int, success: @escaping () -> ()) {
         let url = "https://api.vk.com/method/groups.join"
@@ -81,6 +80,7 @@ class GroupService: GroupServiceProtocol {
             }
         }
     }
+    
     //покинуть группу по ID
     func leaveGroup(groupId: Int, success: @escaping () -> ()) {
         let url = "https://api.vk.com/method/groups.leave"
@@ -99,14 +99,15 @@ class GroupService: GroupServiceProtocol {
             }
         }
     }
+    
     //сохранение групп в realm
-    private func saveGroupsData(_ groups: [Group]) {
+    private func saveGroupsData(_ groups: [GroupModel]) {
         // обработка исключений при работе с хранилищем
         do {
             // получаем доступ к хранилищу
             let realm = try Realm()
             // все старые данные друзей
-            let oldGroups = realm.objects(Group.self)
+            let oldGroups = realm.objects(GroupModel.self)
             // начинаем изменять хранилище
             realm.beginWrite()
             //удаляем старые данные

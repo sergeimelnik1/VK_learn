@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol LoginViewInput {
-    var output: LoginViewOutput? { get set }
+protocol LoginViewControllerInput {
+    var output: LoginViewControllerOutput? { get set }
     func getVC() -> UIViewController
-
+    func loadWebView(_ url: URLRequest)
 }

@@ -9,12 +9,12 @@ import UIKit
 import RealmSwift
 import SwiftUI
 
-class AllGroupsViewController: UIViewController, BarOutput {//нужно для работы xib
-   
+class AllGroupsViewController: UIViewController, BarOutput {
+  
     var output : AllGroupsViewOutput?//нужно для работы xib
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var bar: Bar!//нужно для работы xib
-    
     @IBOutlet var table: UITableView!
     
     private let myRefreshControl: UIRefreshControl = {
@@ -22,33 +22,26 @@ class AllGroupsViewController: UIViewController, BarOutput {//нужно для 
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
-
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.bar.output = self//нужно для работы xib
+        bar.setup("", "plus_icon", "Все группы")
         overrideUserInterfaceStyle = .light
-
         self.table.dataSource = self
         self.table.delegate = self
         self.table.refreshControl = myRefreshControl
-        
+        self.activityIndicator.isHidden = true
+    
         self.output?.viewIsReady()
     }
     
-    //принудительное скрытие кнопки back
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.hidesBackButton = true
-    }
-    
     //перезагрузка контроллера руками
-    @objc func refresh(sender: UIRefreshControl){
+    @objc func refresh(sender: UIRefreshControl) {
         self.output?.loadGroups()
         self.table.reloadData()
         sender.endRefreshing()
-    }
-    func openOtherGroups() {
-        self.output?.openOtherGroups()
     }
 }
 // MARK: - Table view data source
@@ -61,22 +54,24 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.output?.getCountGroups() ?? 1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//         получаем ячейку из пула
-               let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! AllGroupsCell
-               if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
-                   cell.hideSeparator()
-               }
-               // получаем название группы для конкретной строки
-               if let group = self.output?.getIndexPathRowGroup(indexPath.row) {
-                   cell.setup(group: group)
-               }
-               return cell
+        //         получаем ячейку из пула
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! AllGroupsCell
+        if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
+            cell.hideSeparator()
+        }
+        // получаем название группы для конкретной строки
+        if let group = self.output?.getIndexPathRowGroup(indexPath.row) {
+            cell.setup(group: group)
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Leave") { [weak self] (action, view, completionHandler) in
             //тут логика отписки от группы
@@ -85,17 +80,37 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
                 completionHandler(true)
             }
             self?.table.reloadData()
-
+            
         }
         action.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [action])
     }
 }
+
 extension AllGroupsViewController: AllGroupsViewInput {
+    
     func getVC() -> UIViewController {
         return self
     }
+    
     func reload() {
         self.table.reloadData()
+    }
+    func dismiss() {
+        
+    }
+    
+    func openOtherGroups() {
+        self.output?.openOtherGroups()
+    }
+    
+    func onActivityIndicator() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+    
+    func offActivityIndicator() {
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
     }
 }

@@ -5,25 +5,25 @@
 //  Created by Sergey Melnik on 26.04.2022.
 //
 
-import Foundation
+import UIKit
 
 class CurrentFriendConfig {
     
     var view : CurrentFriendViewInput?
     let presenter = CurrentFriendPresenter()
     
-    init(){
-        view = CurrentFriendViewController()
-        let router = CurrentFriendRouter()
-        let interactor = CurrentFriendInteractor()
+    init() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
+        viewController.modalPresentationStyle = .fullScreen
         
-        interactor.output = presenter
-        presenter.interactor = interactor
-        
-        router.output = presenter
-        presenter.router = router
-        
-        view!.output = presenter
+        view = viewController
+        view?.output = presenter
         presenter.view = view
+    }
+}
+extension CurrentFriendConfig: CurrentFriendConfigInput {
+    func present(from vc: UIViewController) {
+        presenter.present(from: vc)
     }
 }

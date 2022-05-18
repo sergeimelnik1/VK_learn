@@ -9,16 +9,16 @@ import UIKit
 
 class AllGroupsConfig: TabBarViewProtocol {
     var title: String = "Группы"
-    
-    var image: UIImage? = UIImage(named: "")
+    var image: UIImage? = UIImage(named: "groups")
     
     func configured() -> UIViewController {
         return view.getVC()
     }
+    
     var view : AllGroupsViewInput
     let presenter = AllGroupsPresenter()
     
-    init(){
+    init() {
         let storyboard: UIStoryboard = UIStoryboard(name: "AllGroupsViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AllGroupsViewController") as! AllGroupsViewController
         vc.modalPresentationStyle = .fullScreen
@@ -31,7 +31,6 @@ class AllGroupsConfig: TabBarViewProtocol {
         interactor.output = presenter
         presenter.interactor = interactor
         
-        router.output = presenter
         presenter.router = router
 
         view.output = presenter

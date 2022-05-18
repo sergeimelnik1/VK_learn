@@ -9,5 +9,5 @@ import Foundation
 import SwiftUI
 
 protocol OtherGroupsInteractorOutput {
-    func sendSearchDataToView(_ searchText: String, groups: [Group])
+    func sendSearchDataToView(_ searchText: String, groups: [GroupModel])
 }

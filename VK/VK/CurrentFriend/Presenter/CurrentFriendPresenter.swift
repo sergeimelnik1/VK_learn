@@ -5,27 +5,31 @@
 //  Created by Sergey Melnik on 26.04.2022.
 //
 
-import Foundation
+import UIKit
 
 class CurrentFriendPresenter {
     
     var view: CurrentFriendViewInput!
-    var interactor: CurrentFriendInteractorInput!
-    var router: CurrentFriendRouterInput!
-    
-}
+    private var friend: FriendModel?
 
-extension CurrentFriendPresenter: CurrentFriendInteractorOutput {
-    
-}
-
-extension CurrentFriendPresenter: CurrentFriendRouterOutput {
-    
 }
 
 extension CurrentFriendPresenter: CurrentFriendViewOutput {
+    func setFriendValue(_ friend: FriendModel) {
+        self.friend = friend
+    }
+    
+    func getFriendValue() -> FriendModel? {
+        return self.friend
+    }
+    
     func viewIsReady() {
         
+    }
+}
+extension CurrentFriendPresenter {
+    func present(from vc: UIViewController) {
+        vc.present(view as! UIViewController, animated: true, completion: nil)
     }
 }
 
