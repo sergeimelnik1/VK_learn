@@ -23,7 +23,7 @@ final class GroupService: GroupServiceProtocol {
             "fields" : ["name", "photo_50"],
             "access_token": Singleton.sharedInstance().accessToken
         ]
-        //выходит сразу же после попадания в строчку ниже, даже не скачивая данные
+
         AF.request(url, method: .get, parameters: parameters).responseData { [self] repsonse in
             do {
                 guard let data = repsonse.value else { return }

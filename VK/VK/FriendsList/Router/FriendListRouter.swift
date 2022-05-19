@@ -9,12 +9,9 @@ import UIKit
 
 final class FriendListRouter: FriendListRouterInput {
     func showCurrentFriend(from vc: UIViewController, friend: FriendModel) {
-        #warning("Сделать тут конфиг презент")
-        let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
 //        viewController.output?.setFriendValue(friend)
-        viewController.modalPresentationStyle = .fullScreen
-        vc.present(viewController, animated: false, completion: nil)
+        CurrentFriendConfig().present(from: vc)
+
     }
     
     func showLoadFriendsError(_ error: Error, _ vc: UIViewController) {

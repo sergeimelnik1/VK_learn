@@ -11,5 +11,6 @@ protocol OtherGroupsViewInput: AnyObject {
     
     var output: OtherGroupsViewOutput? { get set }
     
+    func offActivityIndicator()
     func getVC() -> UIViewController
 }

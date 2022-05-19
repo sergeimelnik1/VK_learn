@@ -19,11 +19,13 @@ class FriendListPresenter {
 
 extension FriendListPresenter: FriendListInteractorOutput {
     func loadFriendsSuccess(_ friends: Results<FriendModel>) {
+        self.view.offActivityIndicator()
         self.friends = friends
         self.view.reload()
     }
     
     func loadFriendsError(_ error: Error) {
+        self.view.offActivityIndicator()
         self.router.showLoadFriendsError(error, view.getVC())
     }
 }

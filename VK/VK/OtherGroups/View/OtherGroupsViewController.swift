@@ -48,10 +48,8 @@ extension OtherGroupsViewController: UISearchBarDelegate {
         self.activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.output?.filterContentForSearchText(searchBar.text!)
-            self.output?.edidCurrentSearchText(searchBar.text!)
+            self.output?.editCurrentSearchText(searchBar.text!)
             self.tableView.reloadData()
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
         }
     }
 }
@@ -111,6 +109,11 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 extension OtherGroupsViewController: OtherGroupsViewInput {
+    func offActivityIndicator() {
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
+    }
+    
     func getVC() -> UIViewController {
         return self
     }

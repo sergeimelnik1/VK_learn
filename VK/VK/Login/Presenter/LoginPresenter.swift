@@ -11,7 +11,7 @@ import WebKit
 
 final class LoginPresenter {
     
-    var view: LoginViewControllerInput!
+    weak var view: LoginViewControllerInput!
     var interactor: LoginInteractorInput!
     var router: LoginRouterInput!
     

@@ -20,10 +20,12 @@ final class AllGroupsPresenter {
 extension AllGroupsPresenter: AllGroupsInteractorOutput {
     func loadGroupsSuccess(_ groups: Results<GroupModel>) {
         self.groups = groups
+        self.view.offActivityIndicator()
         self.view.reload()
     }
     
     func loadGroupsError(_ error: Error) {
+        self.view.offActivityIndicator()
         self.router.showLoadGroupsError(error, view.getVC())
     }
 }

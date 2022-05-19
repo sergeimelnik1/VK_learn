@@ -24,13 +24,14 @@ extension OtherGroupsPresenter {
 
 extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
     func sendSearchDataToView(_ searchText: String, groups: [GroupModel]) {
+        self.view.offActivityIndicator()
         self.groups = groups
         self.currentSearchText = searchText
     }
 }
 
 extension OtherGroupsPresenter: OtherGroupsViewOutput {
-    func edidCurrentSearchText(_ searchText: String) {
+    func editCurrentSearchText(_ searchText: String) {
         self.currentSearchText = searchText
     }
     
