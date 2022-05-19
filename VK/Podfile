@@ -9,4 +9,11 @@ target 'VK' do
   pod 'Alamofire', '~> 5.5'
   pod 'RealmSwift'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+
+	target 'VKTests' do
+	 inherit! :search_paths
+	 pod 'Alamofire', '~> 5.5'
+  	 pod 'RealmSwift'
+  	 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+	end
 end
