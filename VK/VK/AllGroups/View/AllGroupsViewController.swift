@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import SwiftUI
 
-class AllGroupsViewController: UIViewController, BarOutput {
+final class AllGroupsViewController: UIViewController {
   
     var output : AllGroupsViewOutput?//нужно для работы xib
     
@@ -96,13 +96,6 @@ extension AllGroupsViewController: AllGroupsViewInput {
     func reload() {
         self.table.reloadData()
     }
-    func dismiss() {
-        
-    }
-    
-    func openOtherGroups() {
-        self.output?.openOtherGroups()
-    }
     
     func onActivityIndicator() {
         self.activityIndicator.isHidden = false
@@ -112,5 +105,14 @@ extension AllGroupsViewController: AllGroupsViewInput {
     func offActivityIndicator() {
         self.activityIndicator.isHidden = true
         self.activityIndicator.stopAnimating()
+    }
+}
+extension AllGroupsViewController: BarOutput {
+    func dismiss() {
+        
+    }
+    
+    func openOtherGroups() {
+        self.output?.openOtherGroups()
     }
 }

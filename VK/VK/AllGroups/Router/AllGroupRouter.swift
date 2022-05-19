@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllGroupsRouter: AllGroupsRouterInput {
+final class AllGroupsRouter: AllGroupsRouterInput {
     func showLoadGroupsError(_ error: Error, _ vc: UIViewController) {
         let alert = UIAlertController(title: "ОШИБКА ПОДГРУЗКИ", message: "ВЕРНИСЬ НАЗАД", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

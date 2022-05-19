@@ -205,11 +205,11 @@
 			isa = PBXGroup;
 			children = (
 				09DF46F528071EC00093DCD5 /* FriendModel.swift */,
-				090CCAEE2809AF9100DD5CC0 /* FriendService.swift */,
 				09E9351A280708F90032F99A /* GroupModel.swift */,
 				09ED1ED8281045C4009AF6FF /* GroupService.swift */,
 				09ED1ED628104564009AF6FF /* Singleton.swift */,
 				09B1888928255E380080813F /* GroupServiceProtocol.swift */,
+				090CCAEE2809AF9100DD5CC0 /* FriendService.swift */,
 				093CA86928329EF000B82C3C /* FriendServiceProtocol.swift */,
 			);
 			path = Services;

@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class AllGroupsPresenter {
+final class AllGroupsPresenter {
     
     weak var view: AllGroupsViewInput!
     var interactor: AllGroupsInteractorInput!

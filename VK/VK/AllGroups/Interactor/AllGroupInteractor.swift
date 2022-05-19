@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class AllGroupsInteractor : AllGroupsInteractorInput {
+final class AllGroupsInteractor : AllGroupsInteractorInput {
     
     var output : AllGroupsInteractorOutput?
     var groupService: GroupServiceProtocol!

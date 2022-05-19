@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllGroupsCell: UITableViewCell {
+final class AllGroupsCell: UITableViewCell {
     
     @IBOutlet private var groupName: UILabel!
     @IBOutlet private var groupImage: UIImageView!

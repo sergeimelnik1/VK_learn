@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class LoginInteractor: LoginInteractorInput {
+final class LoginInteractor: LoginInteractorInput {
     
     var output : LoginInteractorOutput?
     

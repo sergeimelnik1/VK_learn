@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class FriendsListViewController: UIViewController, BarOutput {
+class FriendsListViewController: UIViewController {
      
     var output : FriendListViewOutput?
     
@@ -87,14 +87,6 @@ extension FriendsListViewController: FriendListViewInput {
         self.tableView.reloadData()
     }
     
-    func dismiss() {
-        
-    }
-    
-    func openOtherGroups() {
-        
-    }
-    
     func onActivityIndicator() {
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
@@ -103,5 +95,14 @@ extension FriendsListViewController: FriendListViewInput {
     func offActivityIndicator() {
         self.activityIndicator.isHidden = true
         self.activityIndicator.stopAnimating()
+    }
+}
+extension FriendsListViewController: BarOutput {
+    func dismiss() {
+        
+    }
+    
+    func openOtherGroups() {
+        
     }
 }

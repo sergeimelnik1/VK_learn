@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrentFriendViewController: UIViewController, BarOutput {
+class CurrentFriendViewController: UIViewController {
 
     var output : CurrentFriendViewOutput?
     
@@ -54,6 +54,9 @@ extension CurrentFriendViewController: CurrentFriendViewInput {
     func getVC() -> UIViewController {
         return self
     }
+}
+
+extension CurrentFriendViewController: BarOutput {
     
     func openOtherGroups() {
         
@@ -62,7 +65,4 @@ extension CurrentFriendViewController: CurrentFriendViewInput {
     func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
 }
-

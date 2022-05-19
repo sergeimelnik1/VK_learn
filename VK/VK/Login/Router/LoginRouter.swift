@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginRouter: LoginRouterInput {
+final class LoginRouter: LoginRouterInput {
     
     func showTabBarController(from vc: UIViewController) {
         let storyboard: UIStoryboard = UIStoryboard(name: "TabBarView", bundle: nil)

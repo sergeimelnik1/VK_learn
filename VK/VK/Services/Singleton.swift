@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Singleton {
+final class Singleton {
     
     var accessToken: String = ""
     var userId: String = ""

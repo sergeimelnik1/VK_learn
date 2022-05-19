@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllGroupsConfig: TabBarViewProtocol {
+final class AllGroupsConfig: TabBarViewProtocol {
     var title: String = "Группы"
     var image: UIImage? = UIImage(named: "groups")
     

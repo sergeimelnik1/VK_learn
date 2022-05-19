@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FriendListConfig: TabBarViewProtocol {
+final class FriendListConfig: TabBarViewProtocol {
     
     var title: String = "Друзья"
     

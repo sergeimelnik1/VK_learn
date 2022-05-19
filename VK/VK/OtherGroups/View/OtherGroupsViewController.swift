@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OtherGroupsViewController: UIViewController, BarOutput {
+class OtherGroupsViewController: UIViewController {
 
     var output: OtherGroupsViewOutput?
     
@@ -114,15 +114,8 @@ extension OtherGroupsViewController: OtherGroupsViewInput {
     func getVC() -> UIViewController {
         return self
     }
-    #warning("вынести в отдельный extention")
-    func dismiss() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func openOtherGroups() {
-        
-    }
 }
+
 extension UIViewController {
     func activityIndicator(style: UIActivityIndicatorView.Style = .medium, frame: CGRect? = nil, center: CGPoint? = nil) -> UIActivityIndicatorView {
         
@@ -134,5 +127,14 @@ extension UIViewController {
             activityIndicatorView.center = center
         }
         return activityIndicatorView
+    }
+}
+extension OtherGroupsViewController: BarOutput {
+    func dismiss() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func openOtherGroups() {
+        
     }
 }

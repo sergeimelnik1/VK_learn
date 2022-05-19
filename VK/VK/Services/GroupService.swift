@@ -10,7 +10,7 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-class GroupService: GroupServiceProtocol {
+final class GroupService: GroupServiceProtocol {
     
     var token: NotificationToken?
     

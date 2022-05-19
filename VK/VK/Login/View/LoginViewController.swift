@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class LoginFormController: UIViewController {
+final class LoginFormController: UIViewController {
     
     var output: LoginViewControllerOutput?
     
@@ -25,8 +25,6 @@ class LoginFormController: UIViewController {
         
         overrideUserInterfaceStyle = .light
         output = LoginPresenter(vc: self)
-        //вынести в презентер в метод через протокол
-
         self.output?.viewIsReady()
     }
 }

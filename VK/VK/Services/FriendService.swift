@@ -10,7 +10,7 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-class FriendService: FriendServiceProtocol {
+final class FriendService: FriendServiceProtocol {
     var token: NotificationToken?
     
     static func loadFriendList() {

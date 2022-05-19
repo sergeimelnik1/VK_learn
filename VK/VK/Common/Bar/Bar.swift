@@ -11,10 +11,10 @@ import UIKit
     
     var output: BarOutput?//нужно для работы xib
 
-    @IBOutlet weak var myLabel: UILabel!
-    @IBOutlet weak var openOtherGroupImage: UIImageView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var openOtherGroupsButton: UIButton!
+    @IBOutlet private var myLabel: UILabel!
+    @IBOutlet private var openOtherGroupImage: UIImageView!
+    @IBOutlet private var backButton: UIButton!
+    @IBOutlet private var openOtherGroupsButton: UIButton!
     
     @IBAction func openOtherGroupsButton(_ sender: Any) {
         self.output?.openOtherGroups()

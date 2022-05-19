@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import WebKit
 
-class LoginPresenter {
+final class LoginPresenter {
     
     var view: LoginViewControllerInput!
     var interactor: LoginInteractorInput!

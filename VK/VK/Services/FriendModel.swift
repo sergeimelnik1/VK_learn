@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
-class FriendModel: Object {
+final class FriendModel: Object {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
     @objc dynamic var image50 = ""

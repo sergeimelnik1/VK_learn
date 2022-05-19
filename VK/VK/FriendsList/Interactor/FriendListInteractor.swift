@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class FriendListInteractor : FriendListInteractorInput {
+final class FriendListInteractor : FriendListInteractorInput {
     func loadData() {
             do {
                 let realm = try Realm()

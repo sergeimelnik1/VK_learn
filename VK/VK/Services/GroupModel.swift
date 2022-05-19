@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
-class GroupModel: Object {
+final class GroupModel: Object {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
     @objc dynamic var image50 = ""
