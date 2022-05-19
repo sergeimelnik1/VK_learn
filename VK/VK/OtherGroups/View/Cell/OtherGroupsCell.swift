@@ -9,7 +9,7 @@ import UIKit
 
 final class OtherGroupsCell: UITableViewCell {
     
-    @IBOutlet weak var groupImage: UIImageView!
+    @IBOutlet  var groupImage: UIImageView!
     @IBOutlet private weak var groupName: UILabel!
     @IBOutlet private var separatorView: UIView!
     

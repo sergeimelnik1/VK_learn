@@ -11,7 +11,8 @@ import WebKit
 class LoginFormController: UIViewController {
     
     var output: LoginViewControllerOutput?
-    var webView: WKWebView!
+    
+    private var webView: WKWebView!
     
     override func loadView() {
         webView = WKWebView()

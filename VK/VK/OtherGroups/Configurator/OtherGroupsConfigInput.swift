@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol OtherGroupsConfigInput {
+protocol OtherGroupsConfigInput: AnyObject {
     func present(from vc: UIViewController)
 }

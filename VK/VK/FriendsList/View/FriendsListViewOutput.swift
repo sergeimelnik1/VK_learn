@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FriendListViewOutput {
+protocol FriendListViewOutput: AnyObject {
     
     func viewIsReady()
     func enterFriendCell(friend: FriendModel)

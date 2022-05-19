@@ -16,11 +16,6 @@ class OtherGroupsViewController: UIViewController, BarOutput {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-//    private var searchBarIsEmpty: Bool {
-//        guard let text = searchBar.text else { return false }
-//        return text.isEmpty
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -119,7 +114,7 @@ extension OtherGroupsViewController: OtherGroupsViewInput {
     func getVC() -> UIViewController {
         return self
     }
-    
+    #warning("вынести в отдельный extention")
     func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }

@@ -6,30 +6,33 @@
 //
 
 import XCTest
+import Alamofire
+import SwiftyJSON
+import RealmSwift
+
 
 class VKTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    func loadGroupList() {
+//        let url = "https://api.vk.com/method/groups.get"
+//        let parameters: Parameters = [
+//            "v": "5.131",
+//            "extended" : "1",
+//            "count": "50",
+//            "fields" : ["name", "photo_50"],
+//            "access_token": Singleton.sharedInstance().accessToken
+//        ]
+//        //выходит сразу же после попадания в строчку ниже, даже не скачивая данные
+//        AF.request(url, method: .get, parameters: parameters).responseData { [self] repsonse in
+//            do {
+//                guard let data = repsonse.value else { return }
+//                let json = try JSON(data: data)
+//                let groups: [GroupModel] = json["response"]["items"].arrayValue.compactMap { GroupModel(with: $0) }
+//                self.saveGroupsData(groups)
+//                success()
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
 
 }

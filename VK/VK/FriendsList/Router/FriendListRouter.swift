@@ -11,7 +11,7 @@ class FriendListRouter: FriendListRouterInput {
     func showCurrentFriend(from vc: UIViewController, friend: FriendModel) {
         let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
-        viewController.output?.setFriendValue(friend)
+//        viewController.output?.setFriendValue(friend)
         viewController.modalPresentationStyle = .fullScreen
         vc.present(viewController, animated: false, completion: nil)
     }

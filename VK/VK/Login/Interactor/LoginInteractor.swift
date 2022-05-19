@@ -11,6 +11,7 @@ import WebKit
 class LoginInteractor: LoginInteractorInput {
     
     var output : LoginInteractorOutput?
+    
     func authVK(decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment else {

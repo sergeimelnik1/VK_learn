@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AllGroupsRouterInput {
+protocol AllGroupsRouterInput: AnyObject {
     
     func openOtherGroups(_ vc: UIViewController)
     func showLoadGroupsError(_ error: Error, _ vc: UIViewController)

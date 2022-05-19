@@ -12,7 +12,6 @@ class AllGroupsRouter: AllGroupsRouterInput {
         let alert = UIAlertController(title: "ОШИБКА ПОДГРУЗКИ", message: "ВЕРНИСЬ НАЗАД", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
-        
     }
     
     func openOtherGroups(_ vc: UIViewController) {

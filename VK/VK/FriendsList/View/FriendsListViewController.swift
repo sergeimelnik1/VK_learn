@@ -11,10 +11,9 @@ import RealmSwift
 class FriendsListViewController: UIViewController, BarOutput {
      
     var output : FriendListViewOutput?
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet var bar: Bar!
-    
     @IBOutlet weak var tableView: UITableView!
     
     private let myRefreshControl: UIRefreshControl = {

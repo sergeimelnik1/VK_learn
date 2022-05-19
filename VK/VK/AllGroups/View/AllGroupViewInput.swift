@@ -7,8 +7,9 @@
 
 import UIKit
 
-protocol AllGroupsViewInput {
+protocol AllGroupsViewInput: AnyObject {
     var output: AllGroupsViewOutput? { get set }
+    
     func getVC() -> UIViewController
     func reload()
     func onActivityIndicator()

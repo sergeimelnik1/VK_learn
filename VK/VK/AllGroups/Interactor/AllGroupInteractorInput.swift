@@ -7,8 +7,9 @@
 
 import Foundation
 
-protocol AllGroupsInteractorInput {
+protocol AllGroupsInteractorInput: AnyObject {
     var output: AllGroupsInteractorOutput? { get set }
+    
     func loadGroups()
     func leaveGroup(_ groupId: Int)
 }

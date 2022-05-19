@@ -9,9 +9,8 @@ import UIKit
 
 class CurrentFriendPresenter {
     
-    var view: CurrentFriendViewInput!
+    weak var view: CurrentFriendViewInput!
     private var friend: FriendModel?
-
 }
 
 extension CurrentFriendPresenter: CurrentFriendViewOutput {

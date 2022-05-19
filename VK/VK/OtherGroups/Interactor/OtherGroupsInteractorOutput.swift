@@ -8,6 +8,6 @@
 import Foundation
 import SwiftUI
 
-protocol OtherGroupsInteractorOutput {
+protocol OtherGroupsInteractorOutput: AnyObject {
     func sendSearchDataToView(_ searchText: String, groups: [GroupModel])
 }

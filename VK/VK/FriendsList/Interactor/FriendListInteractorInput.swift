@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol FriendListInteractorInput {
+protocol FriendListInteractorInput: AnyObject {
     var output: FriendListInteractorOutput? { get set }
     
     func loadData()

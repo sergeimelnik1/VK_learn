@@ -14,12 +14,14 @@ import UIKit
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var openOtherGroupImage: UIImageView!
     @IBOutlet weak var backButton: UIButton!
-    @IBAction func backButtonTapped(_ sender: Any) {
-        self.output?.dismiss()
-    }
     @IBOutlet weak var openOtherGroupsButton: UIButton!
+    
     @IBAction func openOtherGroupsButton(_ sender: Any) {
         self.output?.openOtherGroups()
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.output?.dismiss()
     }
     
     var textLabelText: String {
@@ -52,6 +54,7 @@ import UIKit
         return view
       }
 }
+
 extension Bar {
     func setup(_ backName: String, _ nextButtonImage: String, _ title: String) {
         //тут куски кода, которые можно использовать для шаблона xib

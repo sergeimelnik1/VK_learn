@@ -10,7 +10,7 @@ import RealmSwift
 
 class AllGroupsPresenter {
     
-    var view: AllGroupsViewInput!
+    weak var view: AllGroupsViewInput!
     var interactor: AllGroupsInteractorInput!
     var router: AllGroupsRouterInput!
     

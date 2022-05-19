@@ -9,8 +9,8 @@ import UIKit
 
 class AllGroupsCell: UITableViewCell {
     
-    @IBOutlet private weak var groupName: UILabel!
-    @IBOutlet private weak var groupImage: UIImageView!
+    @IBOutlet private var groupName: UILabel!
+    @IBOutlet private var groupImage: UIImageView!
     @IBOutlet private var separatorView: UIView!
     
     override func awakeFromNib() {

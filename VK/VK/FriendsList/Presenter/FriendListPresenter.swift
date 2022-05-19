@@ -34,6 +34,7 @@ extension FriendListPresenter: FriendListViewOutput {
     }
     
     func getIndexPathRowFriend(_ row: Int) -> FriendModel? {
+        #warning("Сделать проверку на индекс")
         return self.friends?[row]
     }
     

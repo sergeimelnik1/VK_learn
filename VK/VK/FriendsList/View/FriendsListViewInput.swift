@@ -8,9 +8,10 @@
 import UIKit
 import RealmSwift
 
-protocol FriendListViewInput {
+protocol FriendListViewInput: AnyObject {
     
     var output: FriendListViewOutput? { get set }
+    
     func getVC() -> UIViewController
     func reload()
     func onActivityIndicator()

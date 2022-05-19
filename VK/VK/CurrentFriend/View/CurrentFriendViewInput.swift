@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CurrentFriendViewInput {
+protocol CurrentFriendViewInput: AnyObject {
     var output: CurrentFriendViewOutput? { get set }
 
     func getVC() -> UIViewController

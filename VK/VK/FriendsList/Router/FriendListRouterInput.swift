@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FriendListRouterInput {
+protocol FriendListRouterInput: AnyObject {
     func showCurrentFriend(from vc: UIViewController, friend: FriendModel)
     func showLoadFriendsError(_ error: Error, _ vc: UIViewController)
 }

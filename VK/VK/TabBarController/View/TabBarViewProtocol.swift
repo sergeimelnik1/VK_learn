@@ -7,9 +7,10 @@
 
 import UIKit
 
-protocol TabBarViewProtocol {
+protocol TabBarViewProtocol: AnyObject {
     
     var title: String { get }
     var image: UIImage? { get }
+    
     func configured() -> UIViewController
 }

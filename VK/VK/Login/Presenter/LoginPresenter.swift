@@ -26,18 +26,15 @@ class LoginPresenter {
         interactor.output = self
         self.interactor = interactor
         
-        router.output = self
+//        router.output = self
         self.router = router
     }
 }
+
 extension LoginPresenter: LoginInteractorOutput {
     func loginSuccess() {
         router.showTabBarController(from: view.getVC())
     }
-}
-
-extension LoginPresenter: LoginRouterOutput {
-    
 }
 
 extension LoginPresenter: LoginViewControllerOutput {

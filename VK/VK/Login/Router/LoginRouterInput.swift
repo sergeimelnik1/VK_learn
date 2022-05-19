@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol LoginRouterInput {
+protocol LoginRouterInput: AnyObject {
     func showTabBarController(from vc: UIViewController)
 }

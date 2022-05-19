@@ -11,6 +11,7 @@ class OtherGroupsPresenter {
     
     weak var view: OtherGroupsViewInput!
     var interactor: OtherGroupsInteractorInput!
+    
     var groups: [GroupModel] = []
     var currentSearchText = ""
 }
@@ -54,8 +55,9 @@ extension OtherGroupsPresenter: OtherGroupsViewOutput {
     }
     
     func getIndexPathRowGroup(_ row: Int) -> GroupModel? {
-        if let index: GroupModel? = self.groups[row] {
-            return index
+        #warning("переделать. Неправильное использование проверки if'ом")
+        if let group: GroupModel? = self.groups[row] {
+            return group
         }
     }
     

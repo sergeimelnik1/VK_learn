@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol OtherGroupsViewOutput {
+protocol OtherGroupsViewOutput: AnyObject {
     func filterContentForSearchText(_ searchText: String)
     func getCountGroups() -> Int
     func getIndexPathRowGroup(_ row: Int) -> GroupModel?

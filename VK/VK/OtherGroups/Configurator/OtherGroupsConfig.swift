@@ -9,7 +9,7 @@ import UIKit
 
 class OtherGroupsConfig {
     
-    var view : OtherGroupsViewInput?
+    weak var view : OtherGroupsViewInput?
     let presenter = OtherGroupsPresenter()
     
     init() {

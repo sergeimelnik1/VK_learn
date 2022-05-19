@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-protocol AllGroupsInteractorOutput {
+protocol AllGroupsInteractorOutput: AnyObject {
     func loadGroupsSuccess(_ groups: Results<GroupModel>)
     func loadGroupsError(_ error: Error)
 }

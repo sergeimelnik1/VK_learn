@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AllGroupsViewOutput {
+protocol AllGroupsViewOutput: AnyObject {
     func viewIsReady()
     func openOtherGroups()
     func loadGroups()

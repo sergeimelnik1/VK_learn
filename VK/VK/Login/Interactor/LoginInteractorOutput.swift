@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol LoginInteractorOutput {
+protocol LoginInteractorOutput: AnyObject {
     func loginSuccess()
 }

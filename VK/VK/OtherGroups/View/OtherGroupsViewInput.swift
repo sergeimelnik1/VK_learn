@@ -10,5 +10,6 @@ import UIKit
 protocol OtherGroupsViewInput: AnyObject {
     
     var output: OtherGroupsViewOutput? { get set }
+    
     func getVC() -> UIViewController
 }

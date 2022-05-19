@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol CurrentFriendConfigInput {
+protocol CurrentFriendConfigInput: AnyObject {
     func present(from vc: UIViewController)
 }
