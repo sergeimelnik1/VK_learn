@@ -9,5 +9,6 @@ import Foundation
 import SwiftUI
 
 protocol OtherGroupsInteractorOutput: AnyObject {
-    func sendSearchDataToView(_ searchText: String, groups: [GroupModel])
+    func success(groups: [GroupModel])
+    func error(_ error: String)
 }

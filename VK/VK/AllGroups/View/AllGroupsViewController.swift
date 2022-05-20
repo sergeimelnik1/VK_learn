@@ -32,8 +32,8 @@ final class AllGroupsViewController: UIViewController {
         self.table.dataSource = self
         self.table.delegate = self
         self.table.refreshControl = myRefreshControl
-        self.activityIndicator.isHidden = true
-    
+        self.table.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+
         self.output?.viewIsReady()
     }
     
@@ -57,13 +57,13 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //         получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! AllGroupsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
             cell.hideSeparator()
         }
         // получаем название группы для конкретной строки
         if let group = self.output?.getIndexPathRowGroup(indexPath.row) {
-            cell.setup(group: group)
+            cell.setup(name: group.name, image: group.image50)
         }
         return cell
     }

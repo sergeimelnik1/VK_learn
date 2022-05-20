@@ -9,16 +9,16 @@ import UIKit
 
 class CurrentFriendConfig {
     
-    var view : CurrentFriendViewInput?
+    var view : CurrentFriendViewInput
     let presenter = CurrentFriendPresenter()
     
-    init() {
+    init(friend: FriendModel) {
         let storyboard: UIStoryboard = UIStoryboard(name: "CurrentFriendViewController", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CurrentFriendViewController") as! CurrentFriendViewController
         viewController.modalPresentationStyle = .fullScreen
-        
+        presenter.friend = friend
         view = viewController
-        view?.output = presenter
+        view.output = presenter
         presenter.view = view
     }
 }

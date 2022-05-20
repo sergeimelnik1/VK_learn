@@ -9,9 +9,7 @@ import UIKit
 
 final class FriendListRouter: FriendListRouterInput {
     func showCurrentFriend(from vc: UIViewController, friend: FriendModel) {
-//        viewController.output?.setFriendValue(friend)
-        CurrentFriendConfig().present(from: vc)
-
+        CurrentFriendConfig(friend: friend).present(from: vc)
     }
     
     func showLoadFriendsError(_ error: Error, _ vc: UIViewController) {

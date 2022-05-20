@@ -32,7 +32,8 @@ class FriendsListViewController: UIViewController {
         self.tableView.dataSource = self
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.tableView.refreshControl = myRefreshControl
-        self.activityIndicator.isHidden = true
+        self.activityIndicator.isHidden = false
+        self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
 
         self.output?.viewIsReady()
     }
@@ -50,14 +51,14 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         if indexPath.row == (self.output?.getCountFriends() ?? 1) - 1 {
             cell.hideSeparator()
         }
         // получаем имя друга для конкретной строки
         if let friend = self.output?.getIndexPathRowFriend(indexPath.row) {
             // устанавливаем имя друга в надпись ячейки
-            cell.setup(friend: friend)
+            cell.setup(name: friend.name, image: friend.image50)
         }
         return cell
     }

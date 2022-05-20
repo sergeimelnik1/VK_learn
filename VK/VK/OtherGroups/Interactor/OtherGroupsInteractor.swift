@@ -7,10 +7,10 @@
 
 import Foundation
 
-class OtherGroupsInteractor : OtherGroupsInteractorInput {
+final class OtherGroupsInteractor : OtherGroupsInteractorInput {
     
     var groupService: GroupServiceProtocol!
-
+    
     func leaveGroup(_ groupId: Int, _ currentSearchText: String) {
         groupService.leaveGroup(groupId: groupId, success: { [weak self] in
             self?.loadSearchData(currentSearchText)
@@ -28,10 +28,10 @@ class OtherGroupsInteractor : OtherGroupsInteractorInput {
     func loadSearchData(_ searchText: String) {
         if searchText != "" {
             groupService.loadSearchGroupList(query: searchText, success: { [weak self] groups in
-                self?.output?.sendSearchDataToView(searchText, groups: groups)
+                self?.output?.success(groups: groups)
             })
         } else {
-            self.output?.sendSearchDataToView(searchText, groups: [])
+            self.output?.error("Ошибка")
         }
     }
     

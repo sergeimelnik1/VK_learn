@@ -11,6 +11,8 @@ class OtherGroupsPresenter {
     
     weak var view: OtherGroupsViewInput!
     var interactor: OtherGroupsInteractorInput!
+    var router: OtherGroupsRouterInput!
+
     
     var groups: [GroupModel] = []
     var currentSearchText = ""
@@ -23,17 +25,20 @@ extension OtherGroupsPresenter {
 }
 
 extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
-    func sendSearchDataToView(_ searchText: String, groups: [GroupModel]) {
+    func error(_ error: String) {
+        self.groups = []
+        self.view.offActivityIndicator()
+        self.router.showLoadGroupsError(error, view.getVC())
+    }
+    
+    func success(groups: [GroupModel]) {
         self.view.offActivityIndicator()
         self.groups = groups
-        self.currentSearchText = searchText
+        self.view.reload()
     }
 }
 
 extension OtherGroupsPresenter: OtherGroupsViewOutput {
-    func editCurrentSearchText(_ searchText: String) {
-        self.currentSearchText = searchText
-    }
     
     func getCurrentSearchText() -> String {
         return currentSearchText
@@ -56,13 +61,16 @@ extension OtherGroupsPresenter: OtherGroupsViewOutput {
     }
     
     func getIndexPathRowGroup(_ row: Int) -> GroupModel? {
-        #warning("переделать. Неправильное использование проверки if'ом")
-        if let group: GroupModel? = self.groups[row] {
-            return group
-        }
+        guard row < groups.count else { return nil }
+        return self.groups[row]
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        self.interactor.loadSearchData(searchText)
+        self.groups = []
+        self.view.reload()
+        if searchText != "" {
+            self.interactor.loadSearchData(searchText)
+            self.currentSearchText = searchText
+        }
     }
 }

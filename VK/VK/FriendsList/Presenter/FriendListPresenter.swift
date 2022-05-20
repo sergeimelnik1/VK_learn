@@ -36,8 +36,8 @@ extension FriendListPresenter: FriendListViewOutput {
     }
     
     func getIndexPathRowFriend(_ row: Int) -> FriendModel? {
-        #warning("Сделать проверку на индекс")
-        return self.friends?[row]
+        guard let friends = self.friends, row < friends.count else { return nil }
+            return friends[row]
     }
     
     func enterFriendCell(friend: FriendModel) {
@@ -56,11 +56,7 @@ extension FriendListPresenter: FriendListViewOutput {
             })
         config.deleteRealmIfMigrationNeeded = true
         Realm.Configuration.defaultConfiguration = config
-    
-        self.view.onActivityIndicator()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.loadData()
-        }
-        self.view.offActivityIndicator()
+        
+        self.loadData()
     }
 }

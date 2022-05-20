@@ -18,10 +18,14 @@ class OtherGroupsConfig {
         viewController.modalPresentationStyle = .fullScreen
         
         view = viewController
+        let router = OtherGroupsRouter()
         let interactor = OtherGroupsInteractor()
+        interactor.groupService = GroupService()
         
         interactor.output = presenter
         presenter.interactor = interactor
+        
+        presenter.router = router
                 
         view?.output = presenter
         presenter.view = view

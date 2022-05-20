@@ -1,13 +1,13 @@
 //
-//  AllGroupsCell.swift
+//  TableViewCell.swift
 //  VK
 //
-//  Created by Sergey Melnik on 12.04.2022.
+//  Created by Sergey Melnik on 20.05.2022.
 //
 
 import UIKit
 
-final class AllGroupsCell: UITableViewCell {
+final class TableViewCell: UITableViewCell {
     
     @IBOutlet private var groupName: UILabel!
     @IBOutlet private var groupImage: UIImageView!
@@ -33,10 +33,10 @@ final class AllGroupsCell: UITableViewCell {
         separatorView.isHidden = true
     }
     
-    func setup(group: GroupModel) {
-        self.groupName.text = group.name
+    func setup(name: String, image: String) {
+        self.groupName.text = name
         do {
-            try self.groupImage.image = UIImage(data: NSData(contentsOf: group.image50.asURL()) as Data)
+            try self.groupImage.image = UIImage(data: NSData(contentsOf: image.asURL()) as Data)
         } catch {
             print(error)
         }

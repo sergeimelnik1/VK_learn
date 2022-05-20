@@ -36,6 +36,7 @@ extension AllGroupsPresenter: AllGroupsViewOutput {
     }
     
     func getIndexPathRowGroup(_ row: Int) -> GroupModel? {
+        guard let groups = self.groups, row < groups.count else { return nil }
         return self.groups?[row]
     }
     
@@ -62,10 +63,7 @@ extension AllGroupsPresenter: AllGroupsViewOutput {
         Realm.Configuration.defaultConfiguration = config
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadGroupsAfterEdit), name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
         self.view.onActivityIndicator()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.interactor.loadGroups()
-        }
-        self.view.offActivityIndicator()
     }
     //метод дергается после нотификации о удалении или добавлении группы
     @objc func loadGroupsAfterEdit(notification: Notification) {

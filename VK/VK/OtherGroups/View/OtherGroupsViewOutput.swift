@@ -15,5 +15,4 @@ protocol OtherGroupsViewOutput: AnyObject {
     func leaveGroup(_ groupId: Int, _ currentSearchText: String)
     func getGroups() -> [GroupModel]
     func getCurrentSearchText() -> String
-    func editCurrentSearchText(_ searchText: String)
 }

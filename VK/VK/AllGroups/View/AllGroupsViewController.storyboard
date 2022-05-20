@@ -26,55 +26,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="grj-Jc-ueS">
                                 <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCell" rowHeight="75" id="CwG-Kk-qfT" customClass="AllGroupsCell" customModule="VK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CwG-Kk-qfT" id="BC4-0G-5EL">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pzK-xd-43k">
-                                                    <rect key="frame" x="15" y="22.5" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="F5S-XQ-C4l"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="bf3-4Y-zMZ"/>
-                                                        <constraint firstAttribute="width" constant="30" id="oIB-0p-daM"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="voV-XU-qwr"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ri-NK-fjL">
-                                                    <rect key="frame" x="60" y="37.5" width="0.0" height="0.0"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zV2-VK-Lsu">
-                                                    <rect key="frame" x="0.0" y="74" width="414" height="1"/>
-                                                    <color key="backgroundColor" systemColor="linkColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="dBt-MX-qTJ"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="zV2-VK-Lsu" firstAttribute="leading" secondItem="BC4-0G-5EL" secondAttribute="leading" id="5sM-NU-qXO"/>
-                                                <constraint firstAttribute="trailing" secondItem="zV2-VK-Lsu" secondAttribute="trailing" id="FZ4-gc-uz8"/>
-                                                <constraint firstAttribute="bottom" secondItem="zV2-VK-Lsu" secondAttribute="bottom" id="GlX-4N-usG"/>
-                                                <constraint firstItem="1ri-NK-fjL" firstAttribute="leading" secondItem="pzK-xd-43k" secondAttribute="trailing" constant="15" id="Wvz-bu-jnJ"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1ri-NK-fjL" secondAttribute="trailing" constant="15" id="f6C-BE-Piv"/>
-                                                <constraint firstItem="pzK-xd-43k" firstAttribute="leading" secondItem="BC4-0G-5EL" secondAttribute="leading" constant="15" id="iUR-hJ-gaQ"/>
-                                                <constraint firstItem="1ri-NK-fjL" firstAttribute="centerY" secondItem="BC4-0G-5EL" secondAttribute="centerY" id="ll7-ZG-0sr"/>
-                                                <constraint firstItem="pzK-xd-43k" firstAttribute="centerY" secondItem="BC4-0G-5EL" secondAttribute="centerY" id="maJ-iD-4Ed"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="groupImage" destination="pzK-xd-43k" id="3iG-EY-0py"/>
-                                            <outlet property="groupName" destination="1ri-NK-fjL" id="Qmu-BG-BWx"/>
-                                            <outlet property="separatorView" destination="zV2-VK-Lsu" id="zm1-H7-ElY"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GPg-vs-vlG">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
@@ -105,9 +56,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

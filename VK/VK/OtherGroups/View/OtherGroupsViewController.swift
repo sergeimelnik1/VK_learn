@@ -27,6 +27,7 @@ class OtherGroupsViewController: UIViewController {
 
         self.activityIndicator.isHidden = true
         //        https://debash.medium.com/uisearchcontroller-48dbc0f4cb63
+        self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         setupSearchBar()
     }
     private func setupSearchBar() {
@@ -44,13 +45,14 @@ extension OtherGroupsViewController: UISearchResultsUpdating {
 
 extension OtherGroupsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.output?.filterContentForSearchText(searchBar.text!)
-            self.output?.editCurrentSearchText(searchBar.text!)
-            self.tableView.reloadData()
-        }
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.loadAfterDelay(_:)), object: searchBar)
+        self.perform(#selector(self.loadAfterDelay(_:)), with: searchBar, afterDelay: 1)
+    }
+    
+    @objc func loadAfterDelay(_ searchBar: UISearchBar) {
+        self.onActivityIndicator()
+        guard let searchText = searchBar.text else { return }
+        self.output?.filterContentForSearchText(searchText)
     }
 }
 
@@ -69,17 +71,15 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // получаем ячейку из пула
-        let cell = tableView.dequeueReusableCell(withIdentifier: "otherGroupCell", for: indexPath) as! OtherGroupsCell
-        //        var group: Group
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         
         if let group: GroupModel = self.output?.getIndexPathRowGroup(indexPath.row) {
             if indexPath.row == (self.output?.getCountGroups() ?? 1) - 1 {
                 cell.hideSeparator()
             }
-            cell.setup(group: group)
+            cell.setup(name: group.name, image: group.image50)
         }
         return cell
-        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -109,6 +109,12 @@ extension OtherGroupsViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 extension OtherGroupsViewController: OtherGroupsViewInput {
+    
+    func onActivityIndicator() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+    
     func offActivityIndicator() {
         self.activityIndicator.isHidden = true
         self.activityIndicator.stopAnimating()
@@ -116,6 +122,9 @@ extension OtherGroupsViewController: OtherGroupsViewInput {
     
     func getVC() -> UIViewController {
         return self
+    }
+    func reload() {
+        self.tableView.reloadData()
     }
 }
 

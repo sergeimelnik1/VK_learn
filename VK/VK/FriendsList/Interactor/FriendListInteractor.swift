@@ -19,7 +19,7 @@ final class FriendListInteractor : FriendListInteractorInput {
                 
             } catch {
                 // если произошла ошибка, выводим ее в консоль
-                print(error)
+                self.output?.loadFriendsError(error)
             }
     }
     
