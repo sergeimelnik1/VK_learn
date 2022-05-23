@@ -16,6 +16,8 @@ final class AllGroupsInteractor : AllGroupsInteractorInput {
     func leaveGroup(_ groupId: Int) {
         groupService.leaveGroup(groupId: groupId, success: { [weak self] in
             self?.loadGroups()
+        }, fail: { [weak self] error in
+            self?.output?.loadGroupsError(error)
         })
     }
     
@@ -26,6 +28,8 @@ final class AllGroupsInteractor : AllGroupsInteractorInput {
             groupService.loadGroupList(success: { [weak self] in
                 let groups = realm.objects(GroupModel.self)
                 self?.output?.loadGroupsSuccess(groups)
+            }, fail: { [weak self] error in
+                self?.output?.loadGroupsError(error)
             })
         } catch {
             output?.loadGroupsError(error)

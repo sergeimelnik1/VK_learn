@@ -8,7 +8,6 @@
 import Foundation
 
 protocol CurrentFriendViewOutput: AnyObject {
-    func viewIsReady()
     func setFriendValue(_ friend: FriendModel)
     func getFriendValue() -> FriendModel?
 }

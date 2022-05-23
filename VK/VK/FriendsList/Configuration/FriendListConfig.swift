@@ -28,6 +28,7 @@ final class FriendListConfig: TabBarViewProtocol {
         view = vc
         let router = FriendListRouter()
         let interactor = FriendListInteractor()
+        interactor.friendService = FriendService()
         
         interactor.output = presenter
         presenter.interactor = interactor

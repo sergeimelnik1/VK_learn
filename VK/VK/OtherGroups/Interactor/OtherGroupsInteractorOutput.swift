@@ -10,5 +10,5 @@ import SwiftUI
 
 protocol OtherGroupsInteractorOutput: AnyObject {
     func success(groups: [GroupModel])
-    func error(_ error: String)
+    func error(_ error: Error)
 }

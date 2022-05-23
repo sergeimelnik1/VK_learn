@@ -8,6 +8,6 @@
 import Foundation
 
 protocol FriendServiceProtocol: AnyObject {
-    static func loadFriendList()
-    static func saveFriendsData(_ friends: [FriendModel])
+    func loadFriendList(success: @escaping () -> (), fail: @escaping (Error) -> ())
+    func saveFriendsData(_ friends: [FriendModel])
 }

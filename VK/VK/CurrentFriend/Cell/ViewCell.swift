@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewCell: UICollectionViewCell {
-    @IBOutlet private weak var friendImage: UIImageView!
-    @IBOutlet private weak var friendName: UILabel!
+final class ViewCell: UICollectionViewCell {
+    @IBOutlet private var friendImage: UIImageView!
+    @IBOutlet private var friendName: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

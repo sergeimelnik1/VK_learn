@@ -15,6 +15,8 @@ final class OtherGroupsInteractor : OtherGroupsInteractorInput {
         groupService.leaveGroup(groupId: groupId, success: { [weak self] in
             self?.loadSearchData(currentSearchText)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
+        }, fail: { [weak self] error in
+            self?.output?.error(error)
         })
     }
     
@@ -22,6 +24,8 @@ final class OtherGroupsInteractor : OtherGroupsInteractorInput {
         groupService.followGroup(groupId: groupId, success: { [weak self] in
             self?.loadSearchData(currentSearchText)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoadGroups"), object: nil)
+        }, fail: { [weak self] error in
+            self?.output?.error(error)
         })
     }
     
@@ -29,9 +33,9 @@ final class OtherGroupsInteractor : OtherGroupsInteractorInput {
         if searchText != "" {
             groupService.loadSearchGroupList(query: searchText, success: { [weak self] groups in
                 self?.output?.success(groups: groups)
+            }, fail: { [weak self] error in
+                self?.output?.error(error)
             })
-        } else {
-            self.output?.error("Ошибка")
         }
     }
     

@@ -18,7 +18,7 @@ class CurrentFriendViewController: UIViewController {
         super.viewDidLoad()
         
         self.bar.output = self//нужно для работы xib
-        bar.setup("Назад", "", "")
+        bar.setup(backButtonText: "Назад", title: "Мой друг")
         overrideUserInterfaceStyle = .light
         self.collectionImage.delegate = self
         self.collectionImage.dataSource = self
@@ -50,6 +50,7 @@ extension CurrentFriendViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
 }
+
 extension CurrentFriendViewController: CurrentFriendViewInput {
     func getVC() -> UIViewController {
         return self

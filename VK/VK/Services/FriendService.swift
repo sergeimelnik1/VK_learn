@@ -11,9 +11,9 @@ import RealmSwift
 import SwiftyJSON
 
 final class FriendService: FriendServiceProtocol {
-    var token: NotificationToken?
+    private var token: NotificationToken?
     
-    static func loadFriendList() {
+    func loadFriendList(success: @escaping () -> (), fail: @escaping (Error) -> ()) {
         let url = "https://api.vk.com/method/friends.get"
         let parameters: Parameters = [
             "v": "5.131",
@@ -22,24 +22,24 @@ final class FriendService: FriendServiceProtocol {
             "fields" : ["nickname", "photo_50", "photo_200_orig"],
             "access_token": Singleton.sharedInstance().accessToken
         ]
-        
+
         AF.request(url, method: .get, parameters: parameters).responseData { [self] repsonse in
             do {
                 guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
                 let friends: [FriendModel] = json["response"]["items"].arrayValue.compactMap { FriendModel(with: $0) }
-                print(friends)
                 //тут мы данные сохраняем в Realm
                 self.saveFriendsData(friends)
+                success()
             } catch {
-                print(error)
+                fail(error)
             }
         }
         
     }
     
     //сохранение друзей в realm
-    static func saveFriendsData(_ friends: [FriendModel]) {
+    func saveFriendsData(_ friends: [FriendModel]) {
         // обработка исключений при работе с хранилищем
         do {
             // получаем доступ к хранилищу

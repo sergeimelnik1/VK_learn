@@ -14,8 +14,8 @@ class OtherGroupsPresenter {
     var router: OtherGroupsRouterInput!
 
     
-    var groups: [GroupModel] = []
-    var currentSearchText = ""
+    private var groups: [GroupModel] = []
+    private var currentSearchText = ""
 }
 
 extension OtherGroupsPresenter {
@@ -25,7 +25,7 @@ extension OtherGroupsPresenter {
 }
 
 extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
-    func error(_ error: String) {
+    func error(_ error: Error) {
         self.groups = []
         self.view.offActivityIndicator()
         self.router.showLoadGroupsError(error, view.getVC())
@@ -39,6 +39,11 @@ extension OtherGroupsPresenter: OtherGroupsInteractorOutput {
 }
 
 extension OtherGroupsPresenter: OtherGroupsViewOutput {
+    func clearGroup() {
+        self.groups = []
+        self.view.reload()
+    }
+    
     
     func getCurrentSearchText() -> String {
         return currentSearchText

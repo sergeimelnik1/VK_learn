@@ -7,9 +7,9 @@
 
 import UIKit
 
-class OtherGroupsConfig {
+final class OtherGroupsConfig {
     
-    weak var view : OtherGroupsViewInput?
+    var view : OtherGroupsViewInput
     let presenter = OtherGroupsPresenter()
     
     init() {
@@ -27,7 +27,7 @@ class OtherGroupsConfig {
         
         presenter.router = router
                 
-        view?.output = presenter
+        view.output = presenter
         presenter.view = view
     }
 }

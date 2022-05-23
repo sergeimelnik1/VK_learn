@@ -10,7 +10,7 @@ import RealmSwift
 
 class FriendListPresenter {
     
-    var view: FriendListViewInput!
+    weak var view: FriendListViewInput!
     var interactor: FriendListInteractorInput!
     var router: FriendListRouterInput!
     

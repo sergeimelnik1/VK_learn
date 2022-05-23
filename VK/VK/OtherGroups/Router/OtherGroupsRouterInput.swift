@@ -8,5 +8,5 @@
 import UIKit
 
 protocol OtherGroupsRouterInput: AnyObject {
-    func showLoadGroupsError(_ error: String, _ vc: UIViewController)
+    func showLoadGroupsError(_ error: Error, _ vc: UIViewController)
 }

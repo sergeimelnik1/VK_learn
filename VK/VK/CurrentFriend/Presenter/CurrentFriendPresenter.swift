@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrentFriendPresenter {
+final class CurrentFriendPresenter {
     
     weak var view: CurrentFriendViewInput!
     var friend: FriendModel!
@@ -21,11 +21,8 @@ extension CurrentFriendPresenter: CurrentFriendViewOutput {
     func getFriendValue() -> FriendModel? {
         return self.friend
     }
-    
-    func viewIsReady() {
-        
-    }
 }
+
 extension CurrentFriendPresenter {
     func present(from vc: UIViewController) {
         vc.present(view as! UIViewController, animated: true, completion: nil)

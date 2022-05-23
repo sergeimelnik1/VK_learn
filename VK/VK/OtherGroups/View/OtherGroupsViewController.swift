@@ -20,7 +20,7 @@ class OtherGroupsViewController: UIViewController {
         super.viewDidLoad()
         
         self.bar.output = self//нужно для работы xib
-        self.bar.setup("Назад", "", "Поиск по группам")
+        self.bar.setup(backButtonText: "Назад", title: "Поиск по группам")
         overrideUserInterfaceStyle = .light
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -50,9 +50,13 @@ extension OtherGroupsViewController: UISearchBarDelegate {
     }
     
     @objc func loadAfterDelay(_ searchBar: UISearchBar) {
-        self.onActivityIndicator()
-        guard let searchText = searchBar.text else { return }
-        self.output?.filterContentForSearchText(searchText)
+        if searchBar.text != "" {
+            self.onActivityIndicator()
+            guard let searchText = searchBar.text else { return }
+            self.output?.filterContentForSearchText(searchText)
+        } else {
+            self.output?.clearGroup()
+        }
     }
 }
 
@@ -141,6 +145,7 @@ extension UIViewController {
         return activityIndicatorView
     }
 }
+
 extension OtherGroupsViewController: BarOutput {
     func dismiss() {
         self.dismiss(animated: true, completion: nil)

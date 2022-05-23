@@ -12,9 +12,9 @@ import SwiftyJSON
 
 final class GroupService: GroupServiceProtocol {
     
-    var token: NotificationToken?
+    private var token: NotificationToken?
     
-    func loadGroupList(success: @escaping () -> ()) {
+    func loadGroupList(success: @escaping () -> (), fail: @escaping (Error) -> ()) {
         let url = "https://api.vk.com/method/groups.get"
         let parameters: Parameters = [
             "v": "5.131",
@@ -23,7 +23,7 @@ final class GroupService: GroupServiceProtocol {
             "fields" : ["name", "photo_50"],
             "access_token": Singleton.sharedInstance().accessToken
         ]
-
+        
         AF.request(url, method: .get, parameters: parameters).responseData { [self] repsonse in
             do {
                 guard let data = repsonse.value else { return }
@@ -32,12 +32,12 @@ final class GroupService: GroupServiceProtocol {
                 self.saveGroupsData(groups)
                 success()
             } catch {
-                print(error)
+                fail(error)
             }
         }
     }
     
-    func loadSearchGroupList(query: String, success: @escaping ([GroupModel]) -> ()) {
+    func loadSearchGroupList(query: String, success: @escaping ([GroupModel]) -> (), fail: @escaping (Error) -> ()) {
         let url = "https://api.vk.com/method/groups.search"
         let parameters: Parameters = [
             "v": "5.131",
@@ -52,16 +52,15 @@ final class GroupService: GroupServiceProtocol {
                 guard let data = repsonse.value else { return }
                 let json = try JSON(data: data)
                 let searchGroups: [GroupModel] = json["response"]["items"].arrayValue.compactMap { GroupModel(with: $0) }
-                print(searchGroups)
                 success(searchGroups)
             } catch {
-                print(error)
+                fail(error)
             }
         }
     }
     
     //подписка на группу по ID
-    func followGroup(groupId: Int, success: @escaping () -> ()) {
+    func followGroup(groupId: Int, success: @escaping () -> (), fail: @escaping (Error) -> ()) {
         let url = "https://api.vk.com/method/groups.join"
         let parameters: Parameters = [
             "v": "5.131",
@@ -73,16 +72,15 @@ final class GroupService: GroupServiceProtocol {
             do {
                 guard let data = repsons.value else { return }
                 _ = try JSON(data: data)
-                print("все загрузилось")
                 success()
             } catch {
-                print(error)
+                fail(error)
             }
         }
     }
     
     //покинуть группу по ID
-    func leaveGroup(groupId: Int, success: @escaping () -> ()) {
+    func leaveGroup(groupId: Int, success: @escaping () -> (), fail: @escaping (Error) -> ()) {
         let url = "https://api.vk.com/method/groups.leave"
         let parameters: Parameters = [
             "v": "5.131",
@@ -95,7 +93,7 @@ final class GroupService: GroupServiceProtocol {
                 _ = try JSON(data: data)
                 success()
             } catch {
-                print(error)
+                fail(error)
             }
         }
     }

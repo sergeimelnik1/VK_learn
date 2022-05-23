@@ -13,9 +13,9 @@ final class AllGroupsViewController: UIViewController {
   
     var output : AllGroupsViewOutput?//нужно для работы xib
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var bar: Bar!//нужно для работы xib
-    @IBOutlet var table: UITableView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var bar: Bar!//нужно для работы xib
+    @IBOutlet private var table: UITableView!
     
     private let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,7 +27,7 @@ final class AllGroupsViewController: UIViewController {
         
         super.viewDidLoad()
         self.bar.output = self//нужно для работы xib
-        bar.setup("", "plus_icon", "Все группы")
+        bar.setup(nextButtonImage: "plus_icon", title: "Все группы")
         overrideUserInterfaceStyle = .light
         self.table.dataSource = self
         self.table.delegate = self
@@ -107,7 +107,9 @@ extension AllGroupsViewController: AllGroupsViewInput {
         self.activityIndicator.stopAnimating()
     }
 }
+
 extension AllGroupsViewController: BarOutput {
+    
     func dismiss() {
         
     }

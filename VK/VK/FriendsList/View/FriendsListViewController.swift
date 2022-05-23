@@ -12,9 +12,9 @@ class FriendsListViewController: UIViewController {
      
     var output : FriendListViewOutput?
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var bar: Bar!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var bar: Bar!
+    @IBOutlet private var tableView: UITableView!
     
     private let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -26,7 +26,7 @@ class FriendsListViewController: UIViewController {
         super.viewDidLoad()
         
         self.bar.output = self
-        self.bar.setup("", "", "Мои друзья")
+        self.bar.setup(title: "Мои друзья")
         overrideUserInterfaceStyle = .light
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -70,14 +70,15 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
         }
     }
 }
+
 extension FriendsListViewController {
     
     @objc func refresh(sender: UIRefreshControl){
         self.output?.loadData()
         sender.endRefreshing()
     }
-    
 }
+
 extension FriendsListViewController: FriendListViewInput {
     
     func getVC() -> UIViewController {
@@ -98,6 +99,7 @@ extension FriendsListViewController: FriendListViewInput {
         self.activityIndicator.stopAnimating()
     }
 }
+
 extension FriendsListViewController: BarOutput {
     func dismiss() {
         

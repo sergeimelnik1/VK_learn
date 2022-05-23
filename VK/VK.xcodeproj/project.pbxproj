@@ -11,7 +11,6 @@
 		091D59B928379A8900883216 /* OtherGroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D59B828379A8900883216 /* OtherGroupsRouter.swift */; };
 		091D59BB28379A8E00883216 /* OtherGroupsRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D59BA28379A8E00883216 /* OtherGroupsRouterInput.swift */; };
 		091D59BE2837B4D900883216 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D59BD2837B4D900883216 /* TableViewCell.swift */; };
-		091D59C02837B4E300883216 /* TableViewCellOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D59BF2837B4E300883216 /* TableViewCellOutput.swift */; };
 		091D59C42837B51300883216 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D59C32837B51300883216 /* TableViewCell.xib */; };
 		091D59C82837BCE200883216 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D59C62837BCE200883216 /* ViewCell.swift */; };
 		091D59C92837BCE200883216 /* ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091D59C72837BCE200883216 /* ViewCell.xib */; };
@@ -102,7 +101,6 @@
 		091D59B828379A8900883216 /* OtherGroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsRouter.swift; sourceTree = "<group>"; };
 		091D59BA28379A8E00883216 /* OtherGroupsRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGroupsRouterInput.swift; sourceTree = "<group>"; };
 		091D59BD2837B4D900883216 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		091D59BF2837B4E300883216 /* TableViewCellOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellOutput.swift; sourceTree = "<group>"; };
 		091D59C32837B51300883216 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		091D59C62837BCE200883216 /* ViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
 		091D59C72837BCE200883216 /* ViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewCell.xib; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				091D59BD2837B4D900883216 /* TableViewCell.swift */,
-				091D59BF2837B4E300883216 /* TableViewCellOutput.swift */,
 				091D59C32837B51300883216 /* TableViewCell.xib */,
 			);
 			path = Cell;
@@ -821,7 +818,6 @@
 				094A6A6528198C2800D9682C /* FriendListRouter.swift in Sources */,
 				0942B2A428353291003C1CDD /* CurrentFriendConfigInput.swift in Sources */,
 				09DF46F628071EC00093DCD5 /* FriendModel.swift in Sources */,
-				091D59C02837B4E300883216 /* TableViewCellOutput.swift in Sources */,
 				091D59BB28379A8E00883216 /* OtherGroupsRouterInput.swift in Sources */,
 				09E935082805DFFB0032F99A /* FriendsListViewController.swift in Sources */,
 				09CE2B82281A6DBE00CC0CC6 /* AllGroupInteractor.swift in Sources */,

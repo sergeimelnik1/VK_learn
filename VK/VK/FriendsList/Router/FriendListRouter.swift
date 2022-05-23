@@ -13,7 +13,7 @@ final class FriendListRouter: FriendListRouterInput {
     }
     
     func showLoadFriendsError(_ error: Error, _ vc: UIViewController) {
-        let alert = UIAlertController(title: "ОШИБКА ПОДГРУЗКИ", message: "ВЕРНИСЬ НАЗАД", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "ОШИБКА ПОДГРУЗКИ", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }

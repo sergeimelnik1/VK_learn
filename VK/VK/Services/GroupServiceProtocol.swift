@@ -8,8 +8,8 @@
 import Foundation
 
 protocol GroupServiceProtocol: AnyObject {
-    func loadGroupList(success: @escaping () -> ())
-    func loadSearchGroupList(query: String, success: @escaping ([GroupModel]) -> ())
-    func followGroup(groupId: Int, success: @escaping () -> ())
-    func leaveGroup(groupId: Int, success: @escaping () -> ())
+    func loadGroupList(success: @escaping () -> (), fail: @escaping (Error) -> ())
+    func loadSearchGroupList(query: String, success: @escaping ([GroupModel]) -> (), fail: @escaping (Error) -> ())
+    func followGroup(groupId: Int, success: @escaping () -> (), fail: @escaping (Error) -> ())
+    func leaveGroup(groupId: Int, success: @escaping () -> (), fail: @escaping (Error) -> ())
 }

@@ -26,7 +26,6 @@ final class LoginPresenter {
         interactor.output = self
         self.interactor = interactor
         
-//        router.output = self
         self.router = router
     }
 }

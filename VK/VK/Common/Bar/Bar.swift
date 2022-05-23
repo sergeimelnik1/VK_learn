@@ -24,7 +24,7 @@ import UIKit
         self.output?.dismiss()
     }
     
-    var textLabelText: String {
+    private var textLabelText: String {
         get {
             return myLabel.text!
         }
@@ -32,8 +32,8 @@ import UIKit
             myLabel.text = textLabelText
         }
     }
-    var view: UIView!
-    var nibName: String = "Bar"
+    private var view: UIView!
+    private var nibName: String = "Bar"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,10 +56,11 @@ import UIKit
 }
 
 extension Bar {
-    func setup(_ backName: String, _ nextButtonImage: String, _ title: String) {
+
+    func setup(backButtonText: String = "", nextButtonImage: String = "", title: String) {
         //тут куски кода, которые можно использовать для шаблона xib
-        if backName != "" {
-            self.backButton.setTitle(backName, for: .normal)
+        if backButtonText != "" {
+            self.backButton.setTitle(backButtonText, for: .normal)
         } else {
             self.backButton.isHidden = true
         }
